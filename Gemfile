@@ -50,6 +50,7 @@ end
 gem 'rubocop', require: false
 gem 'rubocop-rails'
 gem 'rubocop-performance'
+gem 'rubocop-rspec'
 
 #rspecの導入
 group :development, :test do
