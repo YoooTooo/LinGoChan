@@ -6,6 +6,7 @@
 
 import 'bootstrap';
 import '../stylesheets/application';
+import './bootstrap_custom.js'
 
 
 require("@rails/ujs").start()
