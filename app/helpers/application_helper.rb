@@ -2,7 +2,7 @@ module ApplicationHelper
 
 #タイトルを渡すためのヘルパー
   def full_title(page_title = '')
-      base_title = "LingGoChan"
+      base_title = "LinGoChan"
       if page_title.empty?
         base_title
       else

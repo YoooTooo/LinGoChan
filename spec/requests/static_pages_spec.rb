@@ -6,27 +6,19 @@ RSpec.describe 'Access to static_pages', type: :request do
     it 'responds successfully' do
       expect(response).to have_http_status 200
     end
-    it "has title 'Ruby on Rails Tutorial Sample App'" do
-      expect(response.body).to include 'Ruby on Rails Tutorial Sample App'
-      expect(response.body).to_not include '| Ruby on Rails Tutorial Sample App'
+    it "has title 'LinGoChan'" do
+      expect(response.body).to include 'LinGoChan'
+      expect(response.body).to_not include '/ LinGoChan'
     end
   end
-  context 'GET #help' do
-    before { get help_path }
-    it 'responds successfully' do
-      expect(response).to have_http_status 200
-    end
-    it "has title 'Home | Ruby on Rails Tutorial Sample App'" do
-      expect(response.body).to include 'Help | Ruby on Rails Tutorial Sample App'
-    end
-  end
+
   context 'GET #about' do
     before { get about_path }
     it 'responds successfully' do
       expect(response).to have_http_status 200
     end
-    it "has title 'Home | Ruby on Rails Tutorial Sample App'" do
-      expect(response.body).to include 'About | Ruby on Rails Tutorial Sample App'
+    it "has title 'LinGoChan / LinGoChanって何'" do
+      expect(response.body).to include 'LinGoChan / LinGoChanって何'
     end
   end
 end
