@@ -1,7 +1,8 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
-    <%= link_to "LinGoChan", root_path, id: "logo" %>
-    <nav>
+    <%= link_to image_tag("LinGoChan.png", alt: "LimGoChan"),
+                  root_path, id: "logo"%>
+    <nav id = "menu">
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "ホーム", root_path %></li>
         <li><%= link_to "LinGoChanって何?", about_path %></li>
@@ -13,6 +14,13 @@
         <li><%= link_to "タグ検索", '#' %></li>
         <li><%= link_to "アカウント", '#' %></li>
       </ul>
+
+<%#= 検索枠 %>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+
     </nav>
   </div>
 </header>

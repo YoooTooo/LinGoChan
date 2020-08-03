@@ -5,7 +5,7 @@
 
 
 import 'bootstrap';
-import '../stylesheets/application';
+import '../stylesheets/application.scss';
 import './bootstrap_custom.js'
 
 

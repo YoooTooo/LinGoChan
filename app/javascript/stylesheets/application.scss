@@ -1,1 +1,14 @@
 @import './bootstrap_custom.scss';
+
+
+/* header */
+
+#logo {
+  float: left;
+  padding-top: 9px;
+
+  &:hover {
+    opacity: 0.6;
+    transition-duration: 0.3s;
+    }
+  }
