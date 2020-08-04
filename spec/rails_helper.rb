@@ -1,3 +1,4 @@
+
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
@@ -49,6 +50,9 @@ end
 
 RSpec.configure do |config|
 
+  # FactoryBotの利用をON
+  config.include FactoryBot::Syntax::Methods
+
   config.before(:each, type: :system) do
     driven_by :rack_test
   end
@@ -59,6 +63,14 @@ RSpec.configure do |config|
     Capybara.server_port = 3000
     Capybara.app_host = "http://#{Capybara.server_host}:#{Capybara.server_port}"
   end
+
+  #shouldaの設定
+  Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
+end
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"

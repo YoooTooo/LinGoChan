@@ -45,6 +45,10 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+  # to generate samples
+  gem 'factory_bot_rails'
+  # to test validations
+  gem 'shoulda-matchers'
 end
 
 # rubocopの導入
