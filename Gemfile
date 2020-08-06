@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.6'
 # ハッシュ化のためのgem
-gem 'bcrypt', '3.1.12'
+gem 'bcrypt', '3.1.15'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.2'
 # Use mysql as the database for Active Record
@@ -64,6 +64,9 @@ end
 
 #annotateの導入
 gem 'annotate'
+
+#エラーメッセージ日本語化
+gem 'rails-i18n'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
