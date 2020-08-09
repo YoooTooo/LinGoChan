@@ -8,7 +8,7 @@ import 'bootstrap';
 import '../stylesheets/application.scss';
 import './bootstrap_custom.js'
 
-
+require("bootstrap");
 require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()

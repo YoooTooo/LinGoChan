@@ -1,4 +1,4 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
+<header class="navbar navbar-expand-md bg-dark navbar-dark bg-dark">
   <div class="container">
     <%= link_to image_tag("LinGoChan.png", alt: "LimGoChan"),
                   root_path, id: "logo"%>
@@ -6,13 +6,35 @@
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "ホーム", root_path %></li>
         <li><%= link_to "LinGoChanって何?", about_path %></li>
+
+          <% if logged_in? %>
+          <li><%= link_to "フォロー", '#' %></li>
+          <li><%= link_to "フォロワー", '#' %></li>
+
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              アカウント <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "プロフィール", current_user %></li>
+              <li><%= link_to "設定", '#' %></li>
+              <li class="divider"></li>
+              <li>
+                <%= link_to "ログアウト", logout_path, method: :delete %>
+              </li>
+            </ul>
+          </li>
+        <% else %>
+          <li><%= link_to "ログイン", login_path %></li>
+        <% end %>
+
+
+
+
         <li><%= link_to "投稿", '#' %></li>
         <li><%= link_to "一言", '#' %></li>
         <li><%= link_to "フィードバック", '#' %></li>
-        <li><%= link_to "フォロー", '#' %></li>
-        <li><%= link_to "フォロワー", '#' %></li>
         <li><%= link_to "タグ検索", '#' %></li>
-        <li><%= link_to "アカウント", '#' %></li>
       </ul>
 
 <%#= 検索枠 %>
