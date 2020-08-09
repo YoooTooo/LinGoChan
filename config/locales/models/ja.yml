@@ -1,0 +1,14 @@
+#エラーメッセージの日本語化
+
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+    attributes:
+      user:
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+        activated: アクティブプラグ
+        admin: 管理者プラグ
+    errors:
