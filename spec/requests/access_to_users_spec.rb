@@ -15,7 +15,7 @@ describe 'POST #create' do
         it { is_expected.to have_http_status 302 } #リダイレクト成功
       end
     end
-    #無効なリクエスト
+    #無効なリクエストの送信テスト
     context 'invalid request' do
       #無効なデータを作成
       let(:user_params) do
@@ -24,11 +24,33 @@ describe 'POST #create' do
                               password: '',
                               password_confirmation: '')
       end
-      #ユーザーが追加されない
+      #ユーザーが追加されないときのテスト
       it 'does not add a user' do
         expect do
           post signup_path, params: { user: user_params }
         end.to change(User, :count).by(0)
       end
     end
-  end
+end
+
+
+describe 'POST #create' do
+    context 'valid request' do
+      it 'adds a user' do
+        expect do
+          post signup_path, params: { user: attributes_for(:user) }
+        end.to change(User, :count).by(1)
+      end
+
+      context 'adds a user' do
+        before { post signup_path, params: { user: attributes_for(:user) } }
+        subject { response }
+
+        it { is_expected.to redirect_to user_path(User.last) }
+        it { is_expected.to have_http_status 302 }
+        it 'log in' do
+          expect(is_logged_in?).to be_truthy
+        end
+      end
+    end
+end
