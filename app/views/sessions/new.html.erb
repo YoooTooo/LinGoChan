@@ -7,14 +7,14 @@
       <%= f.email_field :email, class: 'form-control' %>
 <%= f.label :password, "パスワード" %>
       <%= f.password_field :password, class: 'form-control' %>
-<%= f.submit "ログイン", class: "btn btn-primary" %>
+<%= f.submit "ログインする！", class: "btn btn-primary" %>
 
 <%= f.label :remember_me, class: "checkbox inline" do %>
       <%= f.check_box :パスワードを記憶する %>
-      <span>Remember me on this computer</span>
+      <span>パスワードを記憶する</span>
     <% end %>
 
-<p>New user? <%= link_to "ログイン", signup_path %></p>
+<p><%= link_to "いますぐ始める！", signup_path %></p>
     <% end %>
 
   </div>

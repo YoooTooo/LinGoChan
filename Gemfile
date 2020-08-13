@@ -68,5 +68,11 @@ gem 'annotate'
 #エラーメッセージ日本語化
 gem 'rails-i18n'
 
+#フェイクユーザーを入れる
+gem 'faker', '1.7.3'
+
+#ページネーションのためのgem
+gem 'kaminari'
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
