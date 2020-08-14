@@ -1,0 +1,3 @@
+ようこそ、<%= @user.name %>さん,
+LinGoChanを始めるには、 以下のURLをクリックしてください！
+<%= edit_account_activation_url(@user.activation_token, email: @user.email) %>

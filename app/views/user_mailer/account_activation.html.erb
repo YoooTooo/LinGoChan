@@ -1,0 +1,7 @@
+<h1>LinGoChan</h1>
+<p>ようこそ、<%= @user.name %>さん,</p>
+<p>
+LinGoChanを始めるには、 以下のURLをクリックしてください！
+</p>
+<%= link_to "LinGoChanを始める！", edit_account_activation_url(@user.activation_token,
+                                                                email: @user.email) %>

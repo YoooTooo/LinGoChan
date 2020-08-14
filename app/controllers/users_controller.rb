@@ -18,8 +18,9 @@ before_action :admin_user,     only: :destroy
   def create
     @user = User.new(user_params)
     if @user.save
-      log_in @user
-      flash[:success] = "LinGoChanへようこそ！"
+      @user.send_activation_email
+      flash[:info] = "アカウントの認証メールを送信しました！"
+      redirect_to root_url
     else
       render 'new'
     end
