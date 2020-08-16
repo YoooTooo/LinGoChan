@@ -5,7 +5,7 @@ RSpec.describe 'access to sessions', type: :request do
 
   # ログインに成功
   it "user successfully login" do
-    sign_in_as(user)
+    sign_in_as user
     expect(response).to redirect_to user_path(user)
     expect(page).to_not have_content "ログインする！"
   end

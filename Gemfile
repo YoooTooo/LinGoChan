@@ -62,6 +62,11 @@ group :development, :test do
   gem 'rspec-rails'
 end
 
+#assignsメソッドを使用するために
+group :test do
+  gem 'rails-controller-testing'
+end
+
 #annotateの導入
 gem 'annotate'
 
