@@ -74,5 +74,10 @@ gem 'faker', '1.7.3'
 #ページネーションのためのgem
 gem 'kaminari'
 
+#開発環境で送信したメールを確認するgem
+group :development do
+  gem 'letter_opener_web'
+end
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

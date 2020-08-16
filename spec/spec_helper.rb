@@ -93,5 +93,9 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+  require 'capybara/rspec'
 
+  RSpec.configure do |config|
+    config.include Capybara::DSL # 追記
+  end
 end

@@ -1,16 +1,27 @@
 require 'rails_helper'
 
 RSpec.describe 'access to sessions', type: :request do
-  let!(:user) { create(:user) }
-  describe 'POST #create' do
-    it 'log in and redirect to detail page' do
-      post login_path, params: { session: { email: user.email,
-                                            password: user.password } }
-      expect(response).to redirect_to user_path(user)
-      expect(is_logged_in?).to be_truthy
-    end
+  let(:user) { FactoryBot.create(:user) }
+
+  # ログインに成功
+  it "user successfully login" do
+    sign_in_as(user)
+    expect(response).to redirect_to user_path(user)
+    expect(page).to_not have_content "ログインする！"
   end
-end
+
+  # 無効な情報ではログインに失敗
+  it "user doesn't login with invalid information" do
+    visit login_path
+    fill_in "メールアドレス", with: ""
+    fill_in "パスワード", with: ""
+    click_button "ログインする！"
+
+    expect(current_path).to eq login_path
+    page.has_content? ("メールアドレスかパスワードが正しくありません。")
+  end
+
+
 
 describe 'DELETE #destroy' do
   it 'log out and redirect to root page' do
@@ -25,4 +36,6 @@ describe 'DELETE #destroy' do
 
     expect(response).to have_http_status(200)
   end
+end
+
 end

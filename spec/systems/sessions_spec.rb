@@ -7,11 +7,9 @@ RSpec.describe 'Sessions', type: :system do
 
   #ログイン成功
   describe 'enter an valid values' do
-    let!(:user) { create(:user, email: 'loginuser@example.com', password: 'password') }
+    let(:user) { FactoryBot.create(:user) }
     before do
-      fill_in 'メールアドレス', with: 'loginuser@example.com'
-      fill_in 'パスワード', with: 'password'
-      click_button 'ログイン'
+      sign_in_as(user)
     end
     subject { page }
     #ログインしたときのページのレイアウトの確認

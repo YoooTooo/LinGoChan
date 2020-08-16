@@ -1,10 +1,10 @@
-describe 'POST #create' do
+describe 'POST #create for user' do
     #有効なユーザーの検証
     context 'valid request' do
       #ユーザーが追加される
       it 'adds a user' do
         expect do
-          post signup_path, params: { user: attributes_for(:user) }
+          post "/signup", params: { user: attributes_for(:user) }
         end.to change(User, :count).by(1)
       end
       #ユーザーが追加されたときの検証
@@ -34,7 +34,7 @@ describe 'POST #create' do
 end
 
 
-describe 'POST #create' do
+  describe 'POST #create' do
     context 'valid request' do
       it 'adds a user' do
         expect do
@@ -42,15 +42,15 @@ describe 'POST #create' do
         end.to change(User, :count).by(1)
       end
 
-      context 'adds a user' do
+      context 'adds a user but do not through email' do
         before { post signup_path, params: { user: attributes_for(:user) } }
         subject { response }
 
         it { is_expected.to redirect_to user_path(User.last) }
-        it { is_expected.to have_http_status 302 }
+        it { is_expected.to have_http_status 302 } #リダイレクト成功
         it 'log in' do
-          expect(is_logged_in?).to be_truthy
+          expect(is_logged_in?).to be_falsey
         end
       end
-    end
+  end
 end
