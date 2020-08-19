@@ -84,5 +84,16 @@ group :development do
   gem 'letter_opener_web'
 end
 
+#画像アップロードのためのgem
+gem 'carrierwave', '1.2.2'
+
+#画像のリサイズのためのgem
+gem 'mini_magick','4.7.0'
+
+group :production do
+  #AWSのS3を使うためのgem
+  gem 'fog-aws', '3.0.0'
+end
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

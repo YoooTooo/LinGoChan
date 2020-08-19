@@ -1,0 +1,6 @@
+<% if @subject_feed_items.any? %>
+  <ol class="sublect_posts">
+    <%= render @subject_feed_items %>
+  </ol>
+  <%= paginate @subject_feed_items %>
+<% end %>

@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :subject_posts, dependent: :destroy
 
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save   :downcase_email
@@ -71,8 +72,12 @@ class User < ApplicationRecord
     reset_sent_at < 2.hours.ago
   end
 
-  private
 
+  def subject_feed
+    SubjectPost.where("user_id = ?", id)
+  end
+
+  private
       # メールアドレスをすべて小文字にする
       def downcase_email
         self.email = email.downcase
@@ -83,6 +88,5 @@ class User < ApplicationRecord
         self.activation_token  = User.new_token
         self.activation_digest = User.digest(activation_token)
       end
-
 
 end
