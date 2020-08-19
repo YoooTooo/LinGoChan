@@ -88,7 +88,7 @@ end
 gem 'carrierwave', '1.2.2'
 
 #画像のリサイズのためのgem
-gem 'mini_magick','4.7.0'
+gem 'mini_magick',">= 4.9.4"
 
 group :production do
   #AWSのS3を使うためのgem
