@@ -1,5 +1,5 @@
 class SubjectPostsController < ApplicationController
-  before_action :logged_in_user, only: [:create, :destroy]
+  before_action :logged_in_user, only: [:create]
 #subject_postは画像削除を実装しない。
 
 

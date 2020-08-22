@@ -1,6 +1,23 @@
-<p>
-  <strong>Image:</strong>
-  <%= image_tag @post.img.url%>
-</p>
 
-<%=begin %>以下、reply_postsのための編集スペース<%=end %>
+<div>
+  <div>
+  <h1><%= link_to @subject_post.user, user_path @subject_post.user %>のお題</h1>
+  </div>
+
+  <div>
+    <div>
+      <p>
+        <strong>Image:</strong>
+        <%= image_tag @post.img.url%>
+      </p>
+    </div>
+
+    <div>
+      <%= render shared/reply_posts_form%>
+    </div>
+  </div>
+</div>
+
+<% if false %>
+  投稿成功後→reply_showに
+<% end %>

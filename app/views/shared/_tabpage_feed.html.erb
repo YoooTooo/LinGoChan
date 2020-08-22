@@ -1,0 +1,43 @@
+<%#home用のタブページ%>
+
+<main class="p-3">
+  <!-- 上部のタブの部分 -->
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a href="#subject_posts" class="nav-link active" data-toggle="tab">投稿</a>
+    </li>
+    <li class="nav-item">
+      <a href="#reply_posts" class="nav-link" data-toggle="tab">ひとこと</a>
+    </li>
+    <li class="nav-item">
+      <a href="#feedback_posts" class="nav-link" data-toggle="tab">フィードバック</a>
+    </li>
+  </ul>
+
+
+  <!-- 内容部分 -->
+  <div class="tab-content">
+    <div id="subject_posts" class="tab-pane active">
+      <%#お題投稿のタブのfeed%>
+      <h3>お題一覧</h3>
+        <%= render 'shared/subject_feed' %>
+    </div>
+
+    <div id="reply_posts" class="tab-pane">
+      <%#一言の投稿のタブの中身%>
+      <h3>ひとこと一覧</h3>
+        <%= render 'shared/reply_feed' %>
+    </div>
+
+    <div id="feedback_posts" class="tab-pane">
+      <%#フィードバックタブの中身%>
+      <h3>フィードバック一覧</h3>
+
+      <% if false %>
+      <%= render 'shared/feedback_feed' %>
+      <% end %>
+
+    </div>
+
+  </div>
+</main>

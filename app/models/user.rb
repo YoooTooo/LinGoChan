@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :subject_posts, dependent: :destroy
+  has_many :reply_posts, dependent: :destroy
 
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save   :downcase_email
@@ -75,6 +76,10 @@ class User < ApplicationRecord
 
   def subject_feed
     SubjectPost.where("user_id = ?", id)
+  end
+
+  def reply_feed
+    ReplyPost.where("user_id = ?", id)
   end
 
   private

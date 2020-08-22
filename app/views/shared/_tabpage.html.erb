@@ -1,0 +1,54 @@
+<%#user#show用のタブページ%>
+
+<main class="p-3">
+  <!-- 上部のタブの部分 -->
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a href="#subject_posts" class="nav-link active" data-toggle="tab">投稿</a>
+    </li>
+    <li class="nav-item">
+      <a href="#reply_posts" class="nav-link" data-toggle="tab">ひとこと</a>
+    </li>
+    <li class="nav-item">
+      <a href="#feedback_posts" class="nav-link" data-toggle="tab">フィードバック</a>
+    </li>
+  </ul>
+
+
+  <!-- 内容部分 -->
+  <div class="tab-content">
+    <div id="subject_posts" class="tab-pane active">
+      <%#お題投稿のタブの中身%>
+            <% if @user.subject_posts.any? %>
+              <h3>お題 (<%= @user.subject_posts.count %>)</h3>
+              <ol class="subject_posts">
+                <%= render @subject_posts %>
+              </ol>
+                <%= paginate @subject_posts %>
+            <% else %>
+              <p>まだ「お題」は投稿されていません</p>
+            <% end %>
+    </div>
+
+    <div id="reply_posts" class="tab-pane">
+      <%#一言の投稿のタブの中身%>
+            <div class="col-md-8">
+              <% if @user.reply_posts.any? %>
+                <h3>ひとこと (<%= @user.reply_posts.count %>)</h3>
+                <ol class="reply_posts">
+                  <%= render @reply_posts %>
+                </ol>
+                <%= paginate reply_posts %>
+              <%else%>
+                <p>まだ「ひとこと」は投稿されていません</p>
+              <% end %>
+            </div>
+    </div>
+
+    <div id="feedback_posts" class="tab-pane">
+      <%#フィードバックタブの中身%>
+      <p>まだ「フィードバック」は投稿されていません</p>
+    </div>
+
+  </div>
+</main>

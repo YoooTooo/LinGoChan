@@ -3,4 +3,7 @@
     <%= render @subject_feed_items %>
   </ol>
   <%= paginate @subject_feed_items %>
+
+<% else %>
+  <p>まだ「お題」は投稿されていません</p>
 <% end %>

@@ -1,0 +1,9 @@
+<% if @reply_feed_items.any? %>
+  <ol class="sublect_posts">
+    <%= render @reply_feed_items %>
+  </ol>
+  <%= paginate @reply_feed_items %>
+
+<% else %>
+  <p>まだ「ひとこと」は投稿されていません</p>  
+<% end %>

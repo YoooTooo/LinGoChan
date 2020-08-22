@@ -8,12 +8,6 @@
     </section>
   </aside>
   <div class="col-md-8">
-    <% if @user.subject_posts.any? %>
-      <h3>投稿 (<%= @user.subject_posts.count %>)</h3>
-      <ol class="subject_posts">
-        <%= render @subject_posts %>
-      </ol>
-        <%= paginate @subject_posts %>
-    <% end %>
+    <%= render "shared/tabpage"%>
   </div>
 </div>
