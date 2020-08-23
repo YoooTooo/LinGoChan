@@ -7,8 +7,8 @@ class StaticPagesController < ApplicationController
       @reply_post = current_user.reply_posts.build if logged_in?
       @reply_feed_items = current_user.reply_feed.page(params[:page]).per(10)
 
-#      @feedback_post = current_user.feedback_posts.build if logged_in?
-#      @feedback_feed_items = current_user.feedback_feed.page(params[:page]).per(10)
+      @feedback_post = current_user.feedback_posts.build if logged_in?
+      @feedback_feed_items = current_user.feedback_feed.page(params[:page]).per(10)
     end
   end
 

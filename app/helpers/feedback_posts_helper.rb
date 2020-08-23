@@ -1,0 +1,2 @@
+module FeedbackPostsHelper
+end

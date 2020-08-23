@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :subject_posts, dependent: :destroy
   has_many :reply_posts, dependent: :destroy
+  has_many :feedback_posts, dependent: :destroy
 
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save   :downcase_email
@@ -68,18 +69,24 @@ class User < ApplicationRecord
     UserMailer.password_reset(self).deliver_now
   end
 
-   # パスワード再設定の期限が切れている場合はtrueを返す
+ # パスワード再設定の期限が切れている場合はtrueを返す
   def password_reset_expired?
     reset_sent_at < 2.hours.ago
   end
 
-
+  #お題に対するフィード
   def subject_feed
     SubjectPost.where("user_id = ?", id)
   end
 
+  #ひとことに対するフィード
   def reply_feed
     ReplyPost.where("user_id = ?", id)
+  end
+
+  #フィードバックに対するフィード
+  def feedback_feed
+    FeedbackPost.where("user_id = ?", id)
   end
 
   private
@@ -93,5 +100,4 @@ class User < ApplicationRecord
         self.activation_token  = User.new_token
         self.activation_digest = User.digest(activation_token)
       end
-
 end

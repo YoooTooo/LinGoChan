@@ -1,6 +1,6 @@
 class ReplyPostsController < ApplicationController
   before_action :logged_in_user, only: [:create]
-#subject_postは画像削除を実装しない。
+#reply_postは画像削除を実装しない。
 
 
   def create

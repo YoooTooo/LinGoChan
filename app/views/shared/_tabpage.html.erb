@@ -24,7 +24,7 @@
               <ol class="subject_posts">
                 <%= render @subject_posts %>
               </ol>
-                <%= paginate @subject_posts %>
+                <%= paginate subject_posts %>
             <% else %>
               <p>まだ「お題」は投稿されていません</p>
             <% end %>
@@ -47,7 +47,15 @@
 
     <div id="feedback_posts" class="tab-pane">
       <%#フィードバックタブの中身%>
-      <p>まだ「フィードバック」は投稿されていません</p>
+      <% if @user.feedback_posts.any? %>
+        <h3>フィードバック (<%= @user.feedback_posts.count %>)</h3>
+        <ol class="reply_posts">
+          <%= render @feedback_posts %>
+        </ol>
+        <%= paginate feeback_posts %>
+      <%else%>
+        <p>まだ「フィードバック」は投稿されていません</p>
+      <% end %>
     </div>
 
   </div>

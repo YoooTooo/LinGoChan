@@ -14,9 +14,8 @@ before_action :admin_user,     only: :destroy
   def show
     @user = User.find(params[:id])
     @subject_posts = @user.subject_posts.all.page(params[:page]).per(10)
-    #@reply_posts = @user.reply_posts.all.page(params[:page]).per(10)
-    #@feedback_posts = @user.feedback_posts.all.page(params[:page]).per(10)
-
+    @reply_posts = @user.reply_posts.all.page(params[:page]).per(10)
+    @feedback_posts = @user.feedback_posts.all.page(params[:page]).per(10)
   end
 
   def create
