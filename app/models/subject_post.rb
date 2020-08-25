@@ -6,7 +6,7 @@ class SubjectPost < ApplicationRecord
 
   #postの順番を降順にする
   default_scope -> { order(created_at: :desc) }
-  mount_uploader :img, PictureUploader
+  mount_uploader :img, ImgUploader
   validates :user_id, presence: true
   #画像のサイズのためのバリデーションprivate以下に定義
   validate  :img_size

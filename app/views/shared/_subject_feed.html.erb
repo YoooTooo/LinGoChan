@@ -1,4 +1,4 @@
-<% if @subject_feed_items.any? %>
+<% if @subject_feed_items.present? %>
   <ol class="sublect_posts">
     <%= render @subject_feed_items %>
   </ol>

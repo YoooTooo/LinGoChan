@@ -82,6 +82,7 @@ gem 'kaminari'
 #開発環境で送信したメールを確認するgem
 group :development do
   gem 'letter_opener_web'
+  gem 'pry-byebug'
 end
 
 #画像アップロードのためのgem

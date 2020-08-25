@@ -13,10 +13,9 @@ Rails.application.routes.draw do
   resources :users
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
-  resources :subject_posts,       only: [:create]
-  resources :reply_posts,         only: [:create]
-  resources :feedback_posts,      only: [:create, :destroy, :edit]
-
+  resources :subject_posts,       only: [:create, :show, :index]
+  resources :reply_posts,         only: [:create, :show, :index]
+  resources :feedback_posts,      only: [:create, :show, :destroy, :edit, :index]
 
   #開発環境でメールを確認する
   #http://localhost:3000/letter_openerにアクセス

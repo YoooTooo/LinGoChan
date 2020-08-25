@@ -1,23 +1,17 @@
+<% if @subject_post.present? %>
 
-<div>
-  <div>
-  <h1><%= link_to @subject_post.user, user_path @subject_post.user %>のお題</h1>
-  </div>
+  <% provide(:title, @subject_post.id) %>
 
-  <div>
-    <div>
-      <p>
-        <strong>Image:</strong>
-        <%= image_tag @post.img.url%>
-      </p>
+  <div class = "main post-show">
+
+    <div class = "show-title">
+      <h1><%= link_to @subject_post.user.name, user_path(@subject_post.user)%>のお題</h1>
     </div>
 
-    <div>
-      <%= render shared/reply_posts_form%>
-    </div>
-  </div>
+    <%= render 'subject_post_reply_form' %>
+
+  <% else %>
+    <p>まだ投稿はありません</p>
+  <% end %>
+
 </div>
-
-<% if false %>
-  投稿成功後→reply_showに
-<% end %>

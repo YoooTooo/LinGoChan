@@ -24,7 +24,7 @@
               <ol class="subject_posts">
                 <%= render @subject_posts %>
               </ol>
-                <%= paginate subject_posts %>
+                <%= paginate @subject_posts %>
             <% else %>
               <p>まだ「お題」は投稿されていません</p>
             <% end %>
@@ -38,7 +38,7 @@
                 <ol class="reply_posts">
                   <%= render @reply_posts %>
                 </ol>
-                <%= paginate reply_posts %>
+                <%= paginate @reply_posts %>
               <%else%>
                 <p>まだ「ひとこと」は投稿されていません</p>
               <% end %>
@@ -52,7 +52,7 @@
         <ol class="reply_posts">
           <%= render @feedback_posts %>
         </ol>
-        <%= paginate feeback_posts %>
+        <%= paginate @feeback_posts %>
       <%else%>
         <p>まだ「フィードバック」は投稿されていません</p>
       <% end %>

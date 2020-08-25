@@ -24,6 +24,14 @@ class FeedbackPostsController < ApplicationController
   def edit
   end
 
+  def index
+    @feedback_posts = feedback_posts.all.page(params[:page]).per(10)
+  end
+
+  def show
+    
+  end
+
 private
   def reply_post_params
   params.require(:reply_post).permit(:content)

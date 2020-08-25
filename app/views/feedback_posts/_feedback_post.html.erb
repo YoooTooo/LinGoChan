@@ -1,16 +1,27 @@
 
+<%#↓はsubjectとreplyの両方が入っている。 %>
+<%= render reply_post %>
+
 <li id="feedback_post-<%= feedback_post.id %>">
-  <%= link_to gravatar_for(reply_post.user, size: 50), reply_post.user %>
-  <span class="user"><%= link_to reply_post.user.name, reply_post.user %></span>
-  <span class="content"><%= reply_post.content %></span>
+  <%= link_to gravatar_for(feedback_post.user, size: 50), feedback_post.user %>
+  <span class="user"><%= link_to feedback_post.user.name, feedback_post.user %></span>
+
+  <span class="content"><%= feedback_post.content %></span>
+
   <span class="timestamp">
+  <%= time_ago_in_words(feedback_post.created_at) %>前
+  </span>
 
-  <%= time_ago_in_words(reply_post.created_at) %>前
+  <span class = "delete">
+    <% if current_user?(feedback_post.user) %>
+      <%= link_to "消去", feedback_post, method: :delete,
+          data: { confirm: "本当に消去してもいいですか？" } %>
+    <% end %>
+  </span>
 
-  <% if current_user?(feedback_post.user) %>
-    <%= link_to "消去", feedback_post, method: :delete,
-        data: { confirm: "本当に消去してもいいですか？" } %>
-  <% end %>
-
+  <span class = "edit">
+    <% if current_user?(feedback_post.user) %>
+      <%= link_to "編集", edit_feedback_post_path(@feedback) %>
+    <% end %>
   </span>
 </li>
