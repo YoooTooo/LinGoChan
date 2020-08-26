@@ -21,7 +21,7 @@ class SubjectPostsController < ApplicationController
 
   def show
     @subject_post = SubjectPost.find(params[:id])
-    @reply_post = ReplyPost.new
+    @reply_post = @subject_post.reply_posts.build
   end
 
   private

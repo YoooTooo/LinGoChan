@@ -2,7 +2,7 @@ class SubjectPost < ApplicationRecord
   mount_uploader :img, ImgUploader
 
   has_many :reply_posts, dependent: :destroy
-  belongs_to :user, dependent: :destroy
+  belongs_to :user
 
   #postの順番を降順にする
   default_scope -> { order(created_at: :desc) }

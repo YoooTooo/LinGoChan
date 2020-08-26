@@ -1,0 +1,22 @@
+<%# 一言を選んでもらうためのインデックス %>
+
+<% provide(:title, 'All subject_posts') %>
+<h1>ひとこと書きたい画像を選んでください！</h1>
+
+<% if @reply_post.present? %>
+
+  <%= paginate @subject_posts %>
+
+  <ul class="subject_posts">
+
+  <%= render @subject_post%>
+
+</ul>
+
+<%= paginate @subject_posts %>
+
+<% else %>
+
+  <p>まだ投稿はありません</p>
+
+<% end %>

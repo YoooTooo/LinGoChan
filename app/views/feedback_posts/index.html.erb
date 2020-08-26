@@ -1,0 +1,22 @@
+<%# お題、一言、フェードバックの塊の羅列 %>
+
+<% provide(:title, 'All feedback_posts') %>
+<h1>フィードバックの一覧</h1>
+
+<% if @reply_post.present? %>
+
+<%= paginate @feedback_posts %>
+
+<ul class="feedback_posts">
+
+  <%= render @feedback%>
+
+</ul>
+
+<%= paginate @feedback_posts %>
+
+<% else %>
+
+  <p>まだ投稿はありません</p>
+
+<% end %>

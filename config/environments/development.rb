@@ -68,4 +68,7 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
   config.action_mailer.delivery_method = :letter_opener_web
 
+  #更に追加pryのためのホワイトリスト
+  config.web_console.whitelisted_ips = '172.18.0.1'
+
 end

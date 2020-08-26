@@ -1,0 +1,24 @@
+<div class = "container">
+  <div class = "subject_post">
+
+    <li id="subject_post-<%= @subject_post.id %>">
+      <%= link_to gravatar_for(@subject_post.user, size: 50), @subject_post.user %>
+      <span class="user"><%= link_to @subject_post.user.name, @subject_post.user %></span>
+
+      <div>
+        <%= link_to(subject_post_path(@subject_post), class: 'subject-content') do %>
+        <%= image_tag @subject_post.img.url if @subject_post.img? %>
+        <% end %>
+      </div>
+
+      <span class="timestamp">
+         <%= time_ago_in_words(@subject_post.created_at) %>前
+      </span>
+    </li>
+
+  </div>
+
+  <div class = "reply_form">
+    <%= render 'shared/reply_posts_form' %>
+  </div>
+</div>
