@@ -4,7 +4,6 @@ class ReplyPostsController < ApplicationController
 
   def create
     @reply_post = current_user.reply_posts.build(reply_post_params)
-
     if @reply_post.save
        @subject_post = SubjectPost.new
       flash[:success] = "投稿完了!"
@@ -22,7 +21,9 @@ class ReplyPostsController < ApplicationController
   end
 
   def show
-    @reply_posts = ReplyPost.find(params[:id])
+    @reply_post = ReplyPost.find(params[:id])
+    @feedback_posts = @reply_post.feedback_posts
+    @feedback_post = @reply_post.feedback_posts.build
   end
 
   private

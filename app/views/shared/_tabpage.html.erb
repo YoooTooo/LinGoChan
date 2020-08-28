@@ -4,7 +4,7 @@
   <!-- 上部のタブの部分 -->
   <ul class="nav nav-tabs">
     <li class="nav-item">
-      <a href="#subject_posts" class="nav-link active" data-toggle="tab">投稿</a>
+      <a href="#subject_posts" class="nav-link active" data-toggle="tab">お題</a>
     </li>
     <li class="nav-item">
       <a href="#reply_posts" class="nav-link" data-toggle="tab">ひとこと</a>
@@ -52,7 +52,7 @@
         <ol class="reply_posts">
           <%= render @feedback_posts %>
         </ol>
-        <%= paginate @feeback_posts %>
+        <%= paginate @feedback_posts %>
       <%else%>
         <p>まだ「フィードバック」は投稿されていません</p>
       <% end %>

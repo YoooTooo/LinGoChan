@@ -1,8 +1,8 @@
-<% if @subject_feed_items.present? %>
+<% if @subject_posts.present? %>
   <ol class="sublect_posts">
-    <%= render @subject_feed_items %>
+    <%= render @subject_posts %>
   </ol>
-  <%= paginate @subject_feed_items %>
+  <%= paginate @subject_posts %>
 
 <% else %>
   <p>まだ「お題」は投稿されていません</p>

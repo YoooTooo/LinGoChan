@@ -1,27 +1,75 @@
 
-<%#↓はsubjectとreplyの両方が入っている。 %>
-<%= render reply_post %>
+<% @feedback_posts.each do |feedback_post| %>
 
-<li id="feedback_post-<%= feedback_post.id %>">
-  <%= link_to gravatar_for(feedback_post.user, size: 50), feedback_post.user %>
-  <span class="user"><%= link_to feedback_post.user.name, feedback_post.user %></span>
+  <div class = "subject_post">
 
-  <span class="content"><%= feedback_post.content %></span>
+    <div id="subject_post-<%= feedback_post.reply_post.subject_post.id %>">
+      <%= link_to gravatar_for(feedback_post.reply_post.subject_post.user, size: 50), feedback_post.reply_post.subject_post.user %>
+      <span class="user"><%= link_to feedback_post.reply_post.subject_post.user.name, feedback_post.reply_post.subject_post.user %></span>
 
-  <span class="timestamp">
-  <%= time_ago_in_words(feedback_post.created_at) %>前
-  </span>
+      <div>
+        <%= link_to(subject_post_path(feedback_post.reply_post.subject_post), class: 'subject-content') do %>
+        <%= image_tag feedback_post.reply_post.subject_post.img.url if feedback_post.reply_post.subject_post.img? %>
+        <% end %>
+      </div>
 
-  <span class = "delete">
-    <% if current_user?(feedback_post.user) %>
-      <%= link_to "消去", feedback_post, method: :delete,
-          data: { confirm: "本当に消去してもいいですか？" } %>
-    <% end %>
-  </span>
+      <span class="timestamp">
+         <%= time_ago_in_words(feedback_post.reply_post.subject_post.created_at) %>前
+      </span>
+    </div>
 
-  <span class = "edit">
-    <% if current_user?(feedback_post.user) %>
-      <%= link_to "編集", edit_feedback_post_path(@feedback) %>
-    <% end %>
-  </span>
-</li>
+  </div>
+
+  <div class = "reply_post">
+
+    <div id="reply_post-<%= feedback_post.reply_post.id %>">
+      <%= link_to gravatar_for(feedback_post.reply_post.user, size: 50), feedback_post.reply_post.user %>
+      <span class="user"><%= link_to feedback_post.reply_post.user.name, feedback_post.reply_post.user %></span>
+
+      <div>
+        <%= link_to(reply_post_path(feedback_post.reply_post), class: 'reply-content') do %>
+        <div>
+          <%= feedback_post.reply_post.content %>
+        </div>
+        <% end %>
+      </div>
+
+      <span class="timestamp">
+         <%= time_ago_in_words(feedback_post.reply_post.created_at) %>前
+      </span>
+    </div>
+
+  </div>
+
+
+  <div class = "feedback_post">
+
+    <div id="feedback_post-<%= feedback_post.id %>">
+      <%= link_to gravatar_for(feedback_post.user, size: 50), feedback_post.user %>
+      <span class="user"><%= link_to feedback_post.user.name, feedback_post.user %></span>
+
+      <span class="content"><%= feedback_post.content %></span>
+
+      <span class="timestamp">
+      <%= time_ago_in_words(feedback_post.created_at) %>前
+      </span>
+
+      <span class = "delete">
+        <% if current_user?(feedback_post.user) %>
+          <%= link_to "消去", feedback_post, method: :delete,
+              data: { confirm: "本当に消去してもいいですか？" } %>
+        <% end %>
+      </span>
+
+      <span class = "edit">
+
+      <% if false %>
+        <% if current_user?(feedback_post.user) %>
+          <%= link_to "編集", edit_feedback_post_path(@feedback_post) %>
+        <% end %>
+      <% end %>
+      </span>
+    </div>
+  </div>
+
+<% end %>

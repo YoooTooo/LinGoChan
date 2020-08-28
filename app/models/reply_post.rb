@@ -1,5 +1,5 @@
 class ReplyPost < ApplicationRecord
-  has_many :subject_posts, dependent: :destroy
+  has_many :feedback_posts, dependent: :destroy
   belongs_to :user
   belongs_to :subject_post
 

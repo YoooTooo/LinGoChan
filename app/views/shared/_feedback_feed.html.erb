@@ -1,8 +1,8 @@
-<% if @feedback_feed_items.present? %>
+<% if @feedback_posts.present? %>
   <ol class="sublect_posts">
-    <%= render @feedback_feed_items %>
+    <%= render @feedback_posts %>
   </ol>
-  <%= paginate @feedback_feed_items %>
+  <%= paginate @feedback_posts %>
 
 <% else %>
   <p>まだ「フィードバック」は投稿されていません</p>

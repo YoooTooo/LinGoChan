@@ -1,7 +1,9 @@
-<%= form_for(@reply_post) do |f| %>
+
+<%= form_for(@feedback_post) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field" "フィードバック">
     <%= f.text_area :content, placeholder: "フィードバックを書いてください" %>
   </div>
+<%= f.hidden_field :reply_post_id, value: @reply_post.id %>
   <%= f.submit "投稿する！", class: "btn btn-primary" %>
 <% end %>

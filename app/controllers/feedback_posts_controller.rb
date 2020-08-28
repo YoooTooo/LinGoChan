@@ -11,6 +11,7 @@ class FeedbackPostsController < ApplicationController
       redirect_to root_url
     else
       @feedback_feed_items = []
+      flash[:danger] = '投稿に失敗しました'
       render 'static_pages/home'
     end
   end
@@ -22,19 +23,20 @@ class FeedbackPostsController < ApplicationController
   end
 
   def edit
+    @feedback_post = FeedbackPost.find(params[:id])
   end
 
   def index
-    @feedback_posts = feedback_posts.all.page(params[:page]).per(10)
+    @feedback_posts = FeedbackPost.all.page(params[:page]).per(10)
   end
 
   def show
-    
+
   end
 
 private
-  def reply_post_params
-  params.require(:reply_post).permit(:content)
+  def feedback_post_params
+  params.require(:feedback_post).permit(:content, :subject_post_id, :reply_post_id)
   end
 
   def correct_user

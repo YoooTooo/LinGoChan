@@ -4,5 +4,6 @@
   <div class="field" "ひとこと！">
     <%= f.text_area :content, placeholder: "お題に対して一言..." %>
   </div>
-  <%= f.submit "投稿する！", class: "btn btn-primary" %>
+  <%= f.hidden_field :subject_post_id, value: @subject_post.id %>
+  <%= f.submit "投稿する！", class: "btn btn-primary"%>
 <% end %>

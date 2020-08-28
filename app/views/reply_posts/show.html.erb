@@ -1,15 +1,14 @@
 <% provide(:title, @reply_post.id) %>
 
-
 <div class = "main post-show">
 
   <% if @reply_post.present? %>
 
     <div class = "show-title">
-      <h1><%= link_to @reply_posts.user.name, user_path(@reply_posts.user)%>のひとこと</h1>
+      <h1><%= link_to @reply_post.user.name, user_path(@reply_post.user)%>のひとこと</h1>
     </div>
 
-    <%= render subject-reply-feedback_form%>
+    <%= render 'subject-reply-feedback_form' %>
 
   <% else %>
     <p>まだ投稿はありません</p>

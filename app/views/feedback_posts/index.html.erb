@@ -3,13 +3,13 @@
 <% provide(:title, 'All feedback_posts') %>
 <h1>フィードバックの一覧</h1>
 
-<% if @reply_post.present? %>
+<% if @feedback_posts.present? %>
 
 <%= paginate @feedback_posts %>
 
 <ul class="feedback_posts">
 
-  <%= render @feedback%>
+  <%= render "feedback_post" %>
 
 </ul>
 
