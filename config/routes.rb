@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   resources :subject_posts,       only: [:create, :show, :index]
   resources :reply_posts,         only: [:create, :show, :index]
 
-  resources :feedback_posts,      only: [:create, :show, :destroy, :edit, :index]
+  resources :feedback_posts,      only: [:create, :show, :destroy, :edit, :index, :update]
 
   #開発環境でメールを確認する
   #http://localhost:3000/letter_openerにアクセス

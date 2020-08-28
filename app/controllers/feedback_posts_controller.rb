@@ -1,8 +1,7 @@
 class FeedbackPostsController < ApplicationController
 
   before_action :logged_in_user, only: [:create, :destroy, :edit]
-  before_action :correct_user, only: [:destroy, :edit]
-
+  before_action :correct_user, only: [:destroy, :edit, :update]
 
   def create
     @feedback_post = current_user.feedback_posts.build(feedback_post_params)
@@ -26,12 +25,23 @@ class FeedbackPostsController < ApplicationController
     @feedback_post = FeedbackPost.find(params[:id])
   end
 
+  def update
+    @feedback_post = FeedbackPost.find(params[:id])
+    if @feedback_post.update_attributes(feedback_post_params)
+      flash[:success] = "投稿内容を変更しました！"
+      redirect_to @feedback_post
+    else
+      flash[:danger] = '投稿の内容を変更できませんでした。'
+      render 'edit'
+    end
+  end
+
   def index
     @feedback_posts = FeedbackPost.all.page(params[:page]).per(10)
   end
 
   def show
-
+    @feedback_post = FeedbackPost.find(params[:id])
   end
 
 private

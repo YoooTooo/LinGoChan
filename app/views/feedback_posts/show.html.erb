@@ -1,15 +1,14 @@
 <% provide(:title, @feedback_post.id) %>
 
-
 <div class = "main post-show">
 
-  <% if @reply_post.present? %>
+  <% if @feedback_post.present? %>
 
     <div class = "show-title">
-      <h1><%= link_to @feedback_posts.user.name, user_path(@feedback_posts.user)%>のフィードバック</h1>
+      <h1><%= link_to @feedback_post.user.name, user_path(@feedback_post.user)%>のフィードバック</h1>
     </div>
 
-    <%= render _feedback_post%>
+    <%= render "/feedback_posts/at_feedback_post"%>
 
   <% else %>
     <p>まだ投稿はありません</p>

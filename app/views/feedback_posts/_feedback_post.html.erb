@@ -20,6 +20,7 @@
 
   </div>
 
+
   <div class = "reply_post">
 
     <div id="reply_post-<%= feedback_post.reply_post.id %>">
@@ -38,12 +39,10 @@
          <%= time_ago_in_words(feedback_post.reply_post.created_at) %>前
       </span>
     </div>
-
   </div>
 
 
   <div class = "feedback_post">
-
     <div id="feedback_post-<%= feedback_post.id %>">
       <%= link_to gravatar_for(feedback_post.user, size: 50), feedback_post.user %>
       <span class="user"><%= link_to feedback_post.user.name, feedback_post.user %></span>
@@ -62,12 +61,9 @@
       </span>
 
       <span class = "edit">
-
-      <% if false %>
         <% if current_user?(feedback_post.user) %>
-          <%= link_to "編集", edit_feedback_post_path(@feedback_post) %>
+          <%= link_to "編集", edit_feedback_post_path(feedback_post) %>
         <% end %>
-      <% end %>
       </span>
     </div>
   </div>
