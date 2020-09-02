@@ -16,6 +16,7 @@ before_action :admin_user,     only: :destroy
     @subject_posts = @user.subject_posts.all.page(params[:page]).per(10)
     @reply_posts = @user.reply_posts.all.page(params[:page]).per(10)
     @feedback_posts = @user.feedback_posts.all.page(params[:page]).per(10)
+    @tag = Tag.new
   end
 
   def create

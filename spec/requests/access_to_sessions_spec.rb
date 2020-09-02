@@ -2,11 +2,12 @@ require 'rails_helper'
 
 RSpec.describe 'access to sessions', type: :request do
   let(:user) { FactoryBot.create(:user) }
+  let(:other_user) { FactoryBot.create(:other_user) }
 
   # ログインに成功
   it "user successfully login" do
-    sign_in_as user
-    expect(response).to redirect_to user_path(user)
+    sign_in_as other_user
+    expect(response).to redirect_to user_path(other_user)
     expect(page).to_not have_content "ログインする！"
   end
 
