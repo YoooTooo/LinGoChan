@@ -1,13 +1,18 @@
 require 'rails_helper'
+require 'pp'
+require 'pry'
 
 RSpec.describe 'access to sessions', type: :request do
   let(:user) { FactoryBot.create(:user) }
+  let(:other_user) { FactoryBot.create(:other_user) }
 
   # ログインに成功
   it "user successfully login" do
+
+    binding.pry
+
     sign_in_as user
     expect(response).to redirect_to user_path(user)
-    expect(page).to_not have_content "ログインする！"
   end
 
   # 無効な情報ではログインに失敗
@@ -20,8 +25,6 @@ RSpec.describe 'access to sessions', type: :request do
     expect(current_path).to eq login_path
     page.has_content? ("メールアドレスかパスワードが正しくありません。")
   end
-
-
 
 describe 'DELETE #destroy' do
   it 'log out and redirect to root page' do

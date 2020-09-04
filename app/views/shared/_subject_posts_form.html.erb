@@ -1,12 +1,25 @@
 
-<%= form_for (@subject_post) do |f| %>
-
+<%= form_with model: @subject_post do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
 
-<div class="picture">
- <%= f.label :img, "お題を投稿してください！" %><br />
- <%= f.file_field :img, class: "image", accept: 'image/jpeg,image/gif,image/png' %>
+<div class="img_explanation">
+  <%= f.label :img, "お題を投稿してください！" %>
 </div>
+<div class = "image_field">
+  <%= f.file_field :img, class: "image", accept: 'image/jpeg,image/gif,image/png' %>
+</div>
+
+<div class = tag_field_container>
+    <div class = tag_explanation>
+      <p> "スペースを入力することで複数のタグを付けることができます" </p>
+    </div>
+    <div class = "tag_field">
+
+        <%= f.label :tag_name, "タグ"%>
+        <%= f.text_field :tag_name %>
+    </div>
+</div>
+
  <%= f.submit "投稿する！", class: "btn btn-primary" %>
 
 <% end %>
@@ -15,7 +28,7 @@
   $('#micropost_picture').bind('change', function() {
     var size_in_megabytes = this.files[0].size/1024/1024;
     if (size_in_megabytes > 5) {
-      alert('Maximum file size is 5MB. Please choose a smaller file.');
+      alert('最大画像サイズは5MBです。画像のサイズをもう少し小さくしてください。');
     }
   });
 </script>

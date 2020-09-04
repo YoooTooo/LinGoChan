@@ -8,6 +8,10 @@
     <% end %>
   </div>
 
+    <%= render "/shared/subject_post_tag_list", subject_post: subject_post  %>
+
+    <%= render "/shared/subject_post_tag_edit", subject_post: subject_post  %>
+
   <span class="timestamp">
      <%= time_ago_in_words(subject_post.created_at) %>前
   </span>

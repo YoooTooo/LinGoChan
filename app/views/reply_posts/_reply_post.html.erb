@@ -16,6 +16,21 @@
         <% end %>
       </div>
 
+        <%#タグ%>
+        <div class = "tag_list_container">
+        <span class = "tag_list_name"> タグリスト </span>
+
+        <span class = tag_list>
+
+        <% if reply_post.subject_post.tags.present? %>
+          <% reply_post.subject_post.tags.each do |list| %>
+              <%= link_to list.tag_name, tag_subject_posts_path(tag_id: list.id) %>
+          <% end %>
+        <% end %>
+        </span>
+        </div>
+        <%# タグここまで%>
+
       <span class="timestamp">
          <%= time_ago_in_words(reply_post.subject_post.created_at) %>前
       </span>
