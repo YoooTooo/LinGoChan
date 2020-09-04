@@ -1,6 +1,6 @@
 require 'rails_helper'
 require 'pp'
-
+require 'pry'
 
 RSpec.describe 'access to sessions', type: :request do
   let(:user) { FactoryBot.create(:user) }
@@ -8,6 +8,9 @@ RSpec.describe 'access to sessions', type: :request do
 
   # ログインに成功
   it "user successfully login" do
+
+    binding.pry
+
     sign_in_as user
     expect(response).to redirect_to user_path(user)
   end

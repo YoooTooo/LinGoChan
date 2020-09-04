@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   get    '/tag_search', to: 'tags#search'
 
+  delete '/tags/:id', to: 'tags#destroy'
+
   resources :users
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
@@ -20,9 +22,12 @@ Rails.application.routes.draw do
   resources :reply_posts,         only: [:create, :show, :index]
   resources :feedback_posts,      only: [:create, :show, :destroy, :edit, :index, :update]
 
-  resources :tags,                only: [:destroy, :update] do
+  resources :tags,                only: [:destroy, :create] do
     get 'subject_posts', to: 'subject_posts#search'
   end
+
+    delete 'tags/:id', to: 'tags#destroy'
+    post 'tags/create', to: 'tags#create'
 
   #開発環境でメールを確認する
   #http://localhost:3000/letter_openerにアクセス
