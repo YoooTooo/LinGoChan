@@ -13,6 +13,8 @@ class SubjectPost < ApplicationRecord
   default_scope -> { order(created_at: :desc) }
   mount_uploader :img, ImgUploader
   validates :user_id, presence: true
+  validates :img, presence: { message: '画像を選択してください。' }
+
   #画像のサイズのためのバリデーションprivate以下に定義
   validate  :img_size
 
