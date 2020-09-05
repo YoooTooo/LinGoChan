@@ -29,6 +29,9 @@ Rails.application.routes.draw do
     delete 'tags/:id', to: 'tags#destroy'
     post 'tags/create', to: 'tags#create'
 
+    #簡単ログイン用のroute
+    post '/guest', to: 'guest_sessions#create'
+
   #開発環境でメールを確認する
   #http://localhost:3000/letter_openerにアクセス
   if Rails.env.development?

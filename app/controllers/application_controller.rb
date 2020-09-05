@@ -11,4 +11,10 @@ private
         redirect_to login_url
       end
     end
+
+    def log_in_as_guset(user)
+      user.authenticated?(:activation, params[:id])
+      user.activate
+      log_in(user)
+    end
 end
