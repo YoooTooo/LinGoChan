@@ -1,6 +1,10 @@
 <%# 一言を選んでもらうためのインデックス %>
 
 <% provide(:title, 'All subject_posts') %>
+
+<% breadcrumb :subject_post%>
+<%= render "shared/breadcrumbs" %>
+
 <h1>ひとこと書きたい画像を選んでください！</h1>
 
 <% if @subject_posts.present? %>
