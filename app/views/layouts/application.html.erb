@@ -9,6 +9,11 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
+    <%#ローディングアニメーションのための記述 %>
+    <div id="js-loader" class="loader">
+      <div class="loader-animation"></div>
+    </div>
+
     <%= render("layouts/shim") %>
   </head>
 
