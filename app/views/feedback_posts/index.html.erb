@@ -1,6 +1,10 @@
 <%# お題、一言、フェードバックの塊の羅列 %>
 
 <% provide(:title, 'All feedback_posts') %>
+
+<% breadcrumb :feedback_post%>
+<%= render "shared/breadcrumbs" %>
+
 <h1>フィードバックの一覧</h1>
 
 <% if @feedback_posts.present? %>

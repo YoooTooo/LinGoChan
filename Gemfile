@@ -96,5 +96,8 @@ group :production do
   gem 'fog-aws', '3.0.0'
 end
 
+#パンくずリストのためのgem
+gem "gretel"
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

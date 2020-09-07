@@ -62,7 +62,9 @@
       <%= link_to gravatar_for(feedback_post.user, size: 50), feedback_post.user %>
       <span class="user"><%= link_to feedback_post.user.name, feedback_post.user %></span>
 
-      <span class="content"><%= feedback_post.content %></span>
+      <%= link_to feedback_post_path(feedback_post) do %>
+        <span class="content"><%= feedback_post.content %></span>
+      <% end %>
 
       <span class="timestamp">
       <%= time_ago_in_words(feedback_post.created_at) %>前

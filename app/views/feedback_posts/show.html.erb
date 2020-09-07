@@ -1,5 +1,8 @@
 <% provide(:title, @feedback_post.id) %>
 
+<% breadcrumb :feedback_post_show, @feedback_post%>
+<%= render "shared/breadcrumbs" %>
+
 <div class = "main post-show">
 
   <% if @feedback_post.present? %>

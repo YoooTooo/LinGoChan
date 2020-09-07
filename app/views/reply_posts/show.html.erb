@@ -1,5 +1,8 @@
 <% provide(:title, @reply_post.id) %>
 
+<% breadcrumb :reply_post_show, @reply_post %>
+<%= render "shared/breadcrumbs" %>
+
 <div class = "main post-show">
 
   <% if @reply_post.present? %>
