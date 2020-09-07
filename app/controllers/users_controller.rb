@@ -53,7 +53,8 @@ before_action :admin_user,     only: :destroy
   private
     def user_params
       params.require(:user).permit(:name, :email, :password,
-                                   :password_confirmation)
+                                   :password_confirmation,
+                                   :self_introduction)
     end
 
 # 正しいユーザーかどうか確認
