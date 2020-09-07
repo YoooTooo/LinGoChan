@@ -18,7 +18,7 @@
       <%= f.password_field :password_confirmation, class: 'form-control' %>
 
 <%= f.label :self_introduction, "自己紹介文を書きましょう" %>
-      <%= f.text_area :self_introduction, class: 'form-control', id: 'user_introduction', value: "国籍, 日本語のレベル, 趣味, 特技など..."%>
+      <%= f.text_area :self_introduction, class: 'form-control', id: 'user_introduction', placeholder: "国籍, 日本語のレベル, 趣味, 特技など..."%>
 
 <%= f.submit "保存する！", class: "btn btn-primary" %>
     <% end %>
