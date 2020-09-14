@@ -7,7 +7,7 @@ gem 'bcrypt', '3.1.15'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.2'
 # Use mysql as the database for Active Record
-gem 'mysql2', '>= 0.4.4'
+gem 'mysql2', '~>0.5.3'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
@@ -93,11 +93,19 @@ gem 'mini_magick',">= 4.9.4"
 
 group :production do
   #AWSのS3を使うためのgem
-  gem 'fog-aws', '3.0.0'
+  gem 'fog-aws'
 end
 
 #パンくずリストのためのgem
 gem "gretel"
+
+#本番環境用
+group :production do
+  gem 'unicorn'
+end
+
+#envファイル作成のためのgem
+gem 'dotenv-rails'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
