@@ -1,7 +1,6 @@
 const { environment } = require('@rails/webpacker')
 
 module.exports = environment
-<<<<<<< HEAD
 
 
 const webpack = require('webpack')
@@ -13,5 +12,4 @@ environment.plugins.append(
     Popper: ['popper.js', 'default']
   })
 )
-=======
->>>>>>> modified_static_pages
+
