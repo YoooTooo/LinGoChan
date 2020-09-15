@@ -6,11 +6,11 @@
     <%= form_for(:session, url: login_path) do |f| %>
 
       <%= f.label :email, "メールアドレス" %>
-      <%= f.email_field :email, class: 'form-control' %>
+      <%= f.email_field :email, class: 'form-control', id: 'session_email'%>
 
       <%= f.label :password, "パスワード" %>
       <%= link_to "(パスワードを忘れた)", new_password_reset_path %>
-      <%= f.password_field :password, class: 'form-control' %>
+      <%= f.password_field :password, class: 'form-control', id: 'session_password' %>
 
       <%= f.submit "ログインする！", class: "btn btn-primary" %>
 

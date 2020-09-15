@@ -1,4 +1,4 @@
-<% if @reply_posts.any? %>
+<% if @reply_posts.present? %>
   <ol class="sublect_posts">
     <%= render @reply_posts %>
   </ol>

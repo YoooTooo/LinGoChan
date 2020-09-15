@@ -1,12 +1,22 @@
 require 'rails_helper'
+require 'pry'
 
-RSpec.feature "Edit", type: :feature do
-  let(:user) { FactoryBot.create(:user) }
+RSpec.describe "Edit", type: :system do
+  let(:customized_user) { FactoryBot.create(:customized_user) }
 
   # 編集に成功
   scenario "successful edit" do
-    sign_in_as user
-    visit user_path(user)
+#    sign_in_as customized_use
+    visit login_path
+
+    fill_in "session_email", with: customized_user.email
+    fill_in "session_password", with: customized_user.password
+    click_button 'ログインする！'
+    expect(page).to have_text ("他のユーザー")
+    visit user_path(customized_user)
+
+    expect(current_path).to eq (user_path(customized_user))
+
     click_link "プロフィールの設定"
 
     fill_in "メールアドレス", with: "edit@example.com"
@@ -23,6 +33,7 @@ RSpec.feature "Edit", type: :feature do
   scenario "unsuccessful edit" do
     sign_in_as user
     visit user_path(user)
+    click_link "アカウント"
     click_link "プロフィールの設定"
 
     fill_in "メールアドレス", with: "foo@invalid"

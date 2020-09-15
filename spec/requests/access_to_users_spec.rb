@@ -1,3 +1,5 @@
+require 'pry'
+
 describe 'POST #create for user' do
     #有効なユーザーの検証
     context 'valid request' do
@@ -7,7 +9,7 @@ describe 'POST #create for user' do
           post "/signup", params: { user: attributes_for(:user) }
         end.to change(User, :count).by(1)
       end
-      #ユーザーが追加されたときの検証
+
       context 'adds a user' do
         before { post signup_path, params: { user: attributes_for(:user) } }
         subject { response }

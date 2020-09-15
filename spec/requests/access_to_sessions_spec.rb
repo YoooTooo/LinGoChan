@@ -3,17 +3,29 @@ require 'pp'
 require 'pry'
 
 RSpec.describe 'access to sessions', type: :request do
-  let(:user) { FactoryBot.create(:user) }
+  let(:customized_user) { FactoryBot.create(:customized_user) }
   let(:other_user) { FactoryBot.create(:other_user) }
 
   # ログインに成功
   it "user successfully login" do
-
-    binding.pry
-
-    sign_in_as user
-    expect(response).to redirect_to user_path(user)
+    sign_in_as customized_user
+    expect(response).to redirect_to user_path(customized_user)
+    expect(page).to have_text("他のユーザー")
   end
+
+
+  before do
+      visit login_path
+    end
+
+    describe 'enter an valid values' do
+      let!(:user) { create(:user, email: 'loginuser@example.com', password: 'password') }
+      before do
+        fill_in 'Email', with: 'loginuser@example.com'
+        fill_in 'Password', with: 'password'
+        click_button 'Log in'
+      end
+
 
   # 無効な情報ではログインに失敗
   it "user doesn't login with invalid information" do
@@ -21,7 +33,6 @@ RSpec.describe 'access to sessions', type: :request do
     fill_in "メールアドレス", with: ""
     fill_in "パスワード", with: ""
     click_button "ログインする！"
-
     expect(current_path).to eq login_path
     page.has_content? ("メールアドレスかパスワードが正しくありません。")
   end
@@ -41,4 +52,5 @@ describe 'DELETE #destroy' do
   end
 end
 
+end
 end
