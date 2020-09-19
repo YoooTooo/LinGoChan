@@ -31,7 +31,7 @@
               <li><%= link_to "プロフィールの設定", edit_user_path(current_user), {class: "profile"} %></li>
               <li class="divider"></li>
               <li>
-                <%= link_to "ログアウト", logout_path, method: :delete %>
+                <%= button_to "ログアウト", logout_path, method: :delete %>
               </li>
             </ul>
           </li>
@@ -43,7 +43,6 @@
         <% else %>
           <li><%= link_to "ログイン", login_path %></li>
         <% end %>
-        <li><%= link_to "タグ検索", '#' %></li>
       </ul>
 
 

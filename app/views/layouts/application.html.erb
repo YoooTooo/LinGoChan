@@ -15,20 +15,24 @@
   <body>
     <%= render("layouts/header") %>
 
-<%#ロードアニメーションのための記述%>
-    <body class="is-slide" id="page-animate">
+    <div class = "main_contents">
 
-    </body>
-<%#ここまで%>
+  <%#ロードアニメーションのための記述%>
+      <body class="is-slide" id="page-animate">
 
-    <div class="container">
-      <% flash.each do |message_type, message| %>
-        <div class="alert alert-<%= message_type %>"><%= message %></div>
-      <% end %>
+      </body>
+  <%#ここまで%>
 
-      <%= yield %>
-      <%= render("layouts/footer")%>
-      <%= debug(params) if Rails.env.development? %>
+      <div class="container">
+        <% flash.each do |message_type, message| %>
+          <div class="alert alert-<%= message_type %>"><%= message %></div>
+        <% end %>
+
+        <%= yield %>
+        <%= render("layouts/footer")%>
+        <%= debug(params) if Rails.env.development? %>
+    </div>
+
     </div>
   </body>
 

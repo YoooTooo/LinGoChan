@@ -35,17 +35,24 @@
 }
 /*アニメここまで*/
 
-/*headerについて*/
+/*バックグラウンドについて*/
+.main_contents{
+  background-image:  image-url("/images/background_img.png");
+  background-size: cover;
+  background-repeat: repeat-x;
+}
+/*バックグラウンドここまで*/
 
-#logo{
+
+/*ヘッダーについて*/
+
+#logo:hover{
   opacity: 0.5;
 }
 
 .navbar {
     background-color: #ffffff;
 }
-
-/* forms */
 
 /*パスワード記憶のためのチェックボックス*/
 .checkbox {
@@ -60,7 +67,6 @@
   width: auto;
   margin-left: 0;
 }
-
 
 /*ページネーション自体のデザイン*/
 .pagination>li>a {
