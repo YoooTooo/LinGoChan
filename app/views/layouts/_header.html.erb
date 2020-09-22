@@ -13,10 +13,10 @@
               投稿 <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-              <li><%= link_to "お題を投稿する", root_path %></li>
-              <li><%= link_to "一言を書く", subject_posts_path %></li>
-              <li><%= link_to "フィードバックをする", reply_posts_path %></li>
-              <li><%= link_to "投稿一覧を見る", feedback_posts_path %></li>
+              <li><%= button_to "お題を投稿する", root_path, {method: :get, class: "drop_button"} %></li>
+              <li><%= button_to "一言を書く", subject_posts_path, {method: :get, class: "drop_button"} %></li>
+              <li><%= button_to "フィードバックをする", reply_posts_path, {method: :get, class: "drop_button"} %></li>
+              <li><%= button_to "投稿一覧を見る", feedback_posts_path, {method: :get, class: "drop_button"} %></li>
             </ul>
           </li>
 
@@ -27,11 +27,11 @@
               アカウント <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-              <li><%= link_to "プロフィール", current_user %></li>
-              <li><%= link_to "プロフィールの設定", edit_user_path(current_user), {class: "profile"} %></li>
+              <li><%= button_to "プロフィール", current_user, {method: :get, class: "drop_button"} %></li>
+              <li><%= button_to "プロフィールの設定", edit_user_path(current_user), {method: :get, class: "drop_button"} %></li>
               <li class="divider"></li>
               <li>
-                <%= button_to "ログアウト", logout_path, method: :delete %>
+                <%= button_to "ログアウト", logout_path, {method: :delete, class: "drop_button"} %>
               </li>
             </ul>
           </li>

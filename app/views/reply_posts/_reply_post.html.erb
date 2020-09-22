@@ -44,12 +44,11 @@
       <%= link_to gravatar_for(reply_post.user, size: 50), reply_post.user %>
       <span class="user"><%= link_to reply_post.user.name, reply_post.user %></span>
 
+      <div class = "reply_content">
+        <%= reply_post.content %>
+      </div>
       <div>
-        <%= link_to(reply_post_path(reply_post), class: 'reply-content') do %>
-        <div>
-          <%= reply_post.content %>
-        </div>
-        <% end %>
+        <%= button_to  "フィードバックをする！", reply_post_path(reply_post), {method: :get, class: "general_button"} %>
       </div>
 
       <span class="timestamp">

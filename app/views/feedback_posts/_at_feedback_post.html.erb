@@ -51,14 +51,13 @@
 
     <span class = "delete">
       <% if current_user?(@feedback_post.user) %>
-        <%= link_to "消去", @feedback_post, method: :delete,
-            data: { confirm: "本当に消去してもいいですか？" } %>
+        <%= button_to "消去", @feedback_post, {method: :delete, class: "general_button", data: { confirm: "本当に消去してもいいですか？" }} %>
       <% end %>
     </span>
 
     <span class = "edit">
       <% if current_user?(@feedback_post.user) %>
-        <%= link_to "編集", edit_feedback_post_path(@feedback_post) %>
+        <%= button_to "編集", edit_feedback_post_path(@feedback_post), {method: :get, class: "general_button"} %>
       <% end %>
     </span>
   </div>

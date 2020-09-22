@@ -1,5 +1,7 @@
 <div class = "tag_list_container">
-<span class = "tag_list_name"> タグリスト </span>
+<span class = "tag_list_name"> タグリスト: </span>
+
+<br>
 
 <span class = tag_list>
 
@@ -8,7 +10,7 @@
       <%= link_to list.tag_name, tag_subject_posts_path(tag_id: list.id) %>
 
       <% if logged_in? %>
-        <%= link_to '削除', "/tags/#{list.id}", method: :delete %>
+        <%= button_to '削除', "/tags/#{list.id}", {method: :delete, class: "general_button"} %>
       <% end %>
 
       <%#= "(#{list.subject_posts.count})" %>

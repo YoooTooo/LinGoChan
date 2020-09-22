@@ -42,12 +42,12 @@
       <%= link_to gravatar_for(feedback_post.reply_post.user, size: 50), feedback_post.reply_post.user %>
       <span class="user"><%= link_to feedback_post.reply_post.user.name, feedback_post.reply_post.user %></span>
 
+      <div class = "reply_content">
+        <%= feedback_post.reply_post.content %>
+      </div>
+
       <div>
-        <%= link_to(reply_post_path(feedback_post.reply_post), class: 'reply-content') do %>
-        <div>
-          <%= feedback_post.reply_post.content %>
-        </div>
-        <% end %>
+        <%= button_to "フィードバックをする！", reply_post_path(feedback_post.reply_post), {method: :get, class: "general_button"} %>
       </div>
 
       <span class="timestamp">
@@ -72,14 +72,13 @@
 
       <span class = "delete">
         <% if current_user?(feedback_post.user) %>
-          <%= link_to "消去", feedback_post, method: :delete,
-              data: { confirm: "本当に消去してもいいですか？" } %>
+          <%= button_to "消去", feedback_post, {method: :delete, class: "general_button", data: { confirm: "本当に消去してもいいですか？" }} %>
         <% end %>
       </span>
 
       <span class = "edit">
         <% if current_user?(feedback_post.user) %>
-          <%= link_to "編集", edit_feedback_post_path(feedback_post) %>
+          <%= button_to "編集", edit_feedback_post_path(feedback_post), {method: :get, class: "general_button"} %>
         <% end %>
       </span>
     </div>
