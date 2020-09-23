@@ -35,15 +35,68 @@
 }
 /*アニメここまで*/
 
+/*ボタン全般*/
+  /*ログイン系のボタン*/
+
+  /*一般ボタン*/
+.general_button{
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  background-color: #FFA500;
+  border-radius: 5px;
+  -weabkit-transition: all 0.5s;
+  transition: all 0.5s;
+  margin: 10px;
+}
+
+.general_button:hover{
+  background-color: #f9c500;
+}
+
+
+  /*ナビバーのボタン*/
+
+
+
+  /*タグ削除ボタン*/
+  .tag_delete_button{
+    font-size: 100%;/*ボタンの大きさ*/
+    font-weight: bold;
+    border: 1px solid #999;
+    color: #999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    width: 1.3em;
+    line-height: 1.3em;
+    cursor: pointer;
+    transition: .2s;
+    display: inline; /*タグを整列させるため*/
+}
+
+.tag_delete_button:hover{
+    background: #333;
+    border-color: #333;
+    color: #FFF;
+}
+
+/*ボタンここまで*/
+
+
 
 /*ヘッダーについて*/
+  /*ロゴについて*/
 #logo:hover{
   opacity: 0.5;
 }
-
+  /*ナビバーについて*/
 .navbar {
     background-color: #ffffff;
 }
+
+/*ヘッダーここまで*/
 
 /*パスワード記憶のためのチェックボックス*/
 .checkbox {
@@ -58,6 +111,14 @@
   width: auto;
   margin-left: 0;
 }
+
+/*タグの整列*/
+.tag_align{
+display: inline;
+width:100px;
+height:50px;
+}
+/*タグの整列終わり*/
 
 /*ページネーション自体のデザイン*/
 .pagination>li>a {
@@ -75,3 +136,4 @@
 .pagination>li>a:hover {
   border-radius: 15px;    /*角を丸くする*/
 }
+/*ページネーションのデザインここまで*/

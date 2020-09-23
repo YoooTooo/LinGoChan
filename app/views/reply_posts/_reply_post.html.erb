@@ -17,18 +17,7 @@
       </div>
 
         <%#タグ%>
-        <div class = "tag_list_container">
-        <span class = "tag_list_name"> タグリスト </span>
-
-        <span class = tag_list>
-
-        <% if reply_post.subject_post.tags.present? %>
-          <% reply_post.subject_post.tags.each do |list| %>
-              <%= link_to list.tag_name, tag_subject_posts_path(tag_id: list.id) %>
-          <% end %>
-        <% end %>
-        </span>
-        </div>
+        <%= render "/shared/subject_post_tag_list", subject_post: reply_post.subject_post  %>
         <%# タグここまで%>
 
       <span class="timestamp">

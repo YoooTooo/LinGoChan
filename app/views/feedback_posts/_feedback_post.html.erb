@@ -14,18 +14,7 @@
       </div>
 
       <%#タグ%>
-      <div class = "tag_list_container">
-      <span class = "tag_list_name"> タグリスト </span>
-
-      <span class = tag_list>
-
-      <% if feedback_post.reply_post.subject_post.tags.present? %>
-        <% feedback_post.reply_post.subject_post.tags.each do |list| %>
-            <%= link_to list.tag_name, tag_subject_posts_path(tag_id: list.id) %>
-        <% end %>
-      <% end %>
-      </span>
-      </div>
+      <%= render "/shared/subject_post_tag_list", subject_post: feedback_post.reply_post.subject_post  %>
       <%# タグここまで%>
 
       <span class="timestamp">
@@ -61,27 +50,20 @@
     <div id="feedback_post-<%= feedback_post.id %>">
       <%= link_to gravatar_for(feedback_post.user, size: 50), feedback_post.user %>
       <span class="user"><%= link_to feedback_post.user.name, feedback_post.user %></span>
-
-      <%= link_to feedback_post_path(feedback_post) do %>
-        <span class="content"><%= feedback_post.content %></span>
-      <% end %>
-
-      <span class="timestamp">
-      <%= time_ago_in_words(feedback_post.created_at) %>前
-      </span>
-
-      <span class = "delete">
-        <% if current_user?(feedback_post.user) %>
-          <%= button_to "消去", feedback_post, {method: :delete, class: "general_button", data: { confirm: "本当に消去してもいいですか？" }} %>
-        <% end %>
-      </span>
-
-      <span class = "edit">
-        <% if current_user?(feedback_post.user) %>
-          <%= button_to "編集", edit_feedback_post_path(feedback_post), {method: :get, class: "general_button"} %>
-        <% end %>
-      </span>
+<br>
+      <dev class = "feedback_content_box">
+        <dev class = "feedback_content">
+          <%= feedback_post.content %>
+        </dev>
+<br>
+        <span class="timestamp">
+        <%= time_ago_in_words(feedback_post.created_at) %>前
+        </span>
+      </dev>
     </div>
+    <span class = "details">
+      <%= button_to "詳しく見る", feedback_post_path(feedback_post), {method: :get, class: "general_button"}%>
+    </span>
   </div>
 
 <% end %>

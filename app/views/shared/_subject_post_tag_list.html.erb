@@ -4,17 +4,18 @@
 <br>
 
 <span class = tag_list>
-
+<ul>
 <% if subject_post.tags.present? %>
   <% subject_post.tags.each do |list| %>
-      <%= link_to list.tag_name, tag_subject_posts_path(tag_id: list.id) %>
-
-      <% if logged_in? %>
-        <%= button_to '削除', "/tags/#{list.id}", {method: :delete, class: "general_button"} %>
-      <% end %>
-
+      <li class = tag_align>
+        <%= link_to list.tag_name, tag_subject_posts_path(tag_id: list.id) %>
+        <% if logged_in? %>
+          <%= button_to '×', "/tags/#{list.id}", {method: :delete, class: "tag_delete_button", form: {style: 'display:inline;'}} %>
+        <% end %>
+      </li>
       <%#= "(#{list.subject_posts.count})" %>
   <% end %>
 <% end %>
+</ul>
 </span>
 </div>

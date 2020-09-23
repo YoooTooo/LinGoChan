@@ -12,8 +12,11 @@
     <span class="timestamp">
        <%= time_ago_in_words(@feedback_post.reply_post.subject_post.created_at) %>前
     </span>
-  </div>
 
+    <%#タグ%>
+    <%= render "/shared/subject_post_tag_list", subject_post: @feedback_post.reply_post.subject_post  %>
+
+  </div>
 </div>
 
 
@@ -23,13 +26,12 @@
     <%= link_to gravatar_for(@feedback_post.reply_post.user, size: 50), @feedback_post.reply_post.user %>
     <span class="user"><%= link_to @feedback_post.reply_post.user.name, @feedback_post.reply_post.user %></span>
 
-    <div>
-      <%= link_to(reply_post_path(@feedback_post.reply_post), class: 'reply-content') do %>
-      <div>
+      <div class = "reply_content">
         <%= @feedback_post.reply_post.content %>
       </div>
-      <% end %>
-    </div>
+      <div>
+        <%= button_to "フィードバックをする！", reply_post_path(@feedback_post.reply_post), {method: :get,  class: "general_button"} %>
+      </div>
 
     <span class="timestamp">
        <%= time_ago_in_words(@feedback_post.reply_post.created_at) %>前
@@ -43,11 +45,16 @@
     <%= link_to gravatar_for(@feedback_post.user, size: 50), @feedback_post.user %>
     <span class="user"><%= link_to @feedback_post.user.name, @feedback_post.user %></span>
 
-    <span class="content"><%= @feedback_post.content %></span>
-
-    <span class="timestamp">
-    <%= time_ago_in_words(@feedback_post.created_at) %>前
-    </span>
+<br>
+    <dev class = "feedback_content_box">
+      <dev class = "feedback_content">
+        <%= @feedback_post.content %>
+      </dev>
+<br>
+      <span class="timestamp">
+        <%= time_ago_in_words(@feedback_post.created_at) %>前
+      </span>
+    </dev>
 
     <span class = "delete">
       <% if current_user?(@feedback_post.user) %>
