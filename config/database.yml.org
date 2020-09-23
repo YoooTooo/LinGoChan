@@ -49,10 +49,6 @@ test:
 #
 production:
   <<: *default
-  adapter: mysql2
-  encoding: utf8
-  database: lingochan-db
-  username: yoootooo
-  password: abcdzyx444
-  host: lingochan-db.clgjibei7xmw.ap-northeast-1.rds.amazonaws.com
-  port: 3306
+  database: LinGoChan_production
+  username: LinGoChan
+  password: <%= ENV['LINGOCHAN_DATABASE_PASSWORD'] %>
