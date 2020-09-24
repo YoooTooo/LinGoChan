@@ -1,7 +1,8 @@
 class GuestSessionsController < ApplicationController
 
   def create
-    if user = User.find(999)
+    if User.find(999).present?
+       user = User.find(999)
       log_in(user)
       redirect_to user_path(user)
     else
