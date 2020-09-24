@@ -12,9 +12,12 @@ private
       end
     end
 
+#ログインユーザー用のログイン
     def log_in_as_guset(user)
+    if user.activated = false
       user.authenticated?(:activation, params[:id])
       user.activate
+    end
       log_in(user)
     end
 end
