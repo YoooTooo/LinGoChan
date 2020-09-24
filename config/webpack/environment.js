@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 const { environment } = require('@rails/webpacker')
 
 const webpack = require('webpack')
@@ -16,20 +16,3 @@ environment.loaders.get('sass').use.splice(-1, 0, {
 })
 
 module.exports = environment
-=======
-const { environment } = require('@rails/webpacker')
-
-module.exports = environment
-
-
-const webpack = require('webpack')
-environment.plugins.append(
-  'Provide',
-  new webpack.ProvidePlugin({
-    $: 'jquery',
-    jQuery: 'jquery',
-    Popper: ['popper.js', 'default']
-  })
-)
-
->>>>>>> 429cc1d12f9050e6e8504e73cb7a740263abe31e
