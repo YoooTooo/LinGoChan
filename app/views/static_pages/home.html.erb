@@ -1,37 +1,38 @@
-<div class="center jumbotron">
-  <% if logged_in? %>
+<% if logged_in? %>
+  <% breadcrumb :root%>
+  <%= render "shared/breadcrumbs" %>
 
-<% breadcrumb :root%>
-<%= render "shared/breadcrumbs" %>
+    <div class="row">
+      <aside class="col-md-4">
+        <section class="user_info">
+          <%= render 'shared/user_info' %>
+        </section>
+        <section class="subject_posts_form">
 
-  <div class="row">
-    <aside class="col-md-4">
-      <section class="user_info">
-        <%= render 'shared/user_info' %>
-      </section>
-      <section class="subject_posts_form">
+          <%= render 'shared/subject_posts_form' %>
+        </section>
+      </aside>
+      <div class="col-md-8">
 
-        <%= render 'shared/subject_posts_form' %>
-      </section>
-    </aside>
-    <div class="col-md-8">
+        <%= render 'shared/tabpage_feed' %>
 
-      <%= render 'shared/tabpage_feed' %>
-
+      </div>
     </div>
-  </div>
 <% else %>
 
-  <h1>LinGoChanにようこそ！</h1>
-  <div>
-    <p>誰かが画像を投稿し</p>
-    <p>誰かがコメントを残し</p>
-    <p>誰かがフィードバックしてくれる</p>
+  <div class="col-md-12 landing_container">
+    <div class = "landing">
+      <h1 class = main_title>LinGoChanにようこそ！</h1>
+      <div class = mongon>
+        <p>誰かが画像を投稿し</p>
+        <p>誰かがコメントを残し</p>
+        <p>誰かがフィードバックしてくれる</p>
+      </div>
+      <p class= "kimezerifu">全く新しい日本語学習アプリ</p>
+      <%= link_to "いますぐ始める！", signup_path, class: "btn btn-lg btn-primary landing_button" %>
+      <%= link_to "LinGoChanって何?", about_path, class: "btn btn-lg btn-primary landing_button" %>
+      <%= button_to "ゲストユーザーとしてログイン", guest_path, method: :post, class: 'btn btn-success landing_button' %>
+    </div>
   </div>
-  <p id= "kimezerifu">全く新しい日本語学習アプリ</p>
-  <%= link_to "いますぐ始める！", signup_path, class: "btn btn-lg btn-primary" %>
-  <%= link_to "LinGoChanって何?", about_path, class: "btn btn-lg btn-primary" %>
-  <%= button_to "ゲストユーザーとしてログイン", guest_path, method: :post, class: 'btn btn-success' %>
 
 <% end %>
-</div>

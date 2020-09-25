@@ -56,7 +56,22 @@
 
 
   /*ナビバーのボタン*/
+  .drop_button{
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    color: #ffffff;
+    background-color: #2e8b57; /*seagreen*/
+    border-radius: 5px;
+    -weabkit-transition: all 0.5s;
+    transition: all 0.5s;
+    margin: 10px;
+  }
 
+  .drop_button:hover{
+    background-color: #3cb371; /*mediumseagreen*/;
+    color: #ffffff;
+  }
 
 
   /*タグ削除ボタン*/
@@ -127,6 +142,7 @@
   width: auto;
   margin-left: 0;
 }
+/*パスワード記憶のためのチェックボックスここまで*/
 
 /*タグの整列*/
 .tag_align{
@@ -153,3 +169,33 @@ height:50px;
   border-radius: 15px;    /*角を丸くする*/
 }
 /*ページネーションのデザインここまで*/
+
+
+/*フッターについて*/
+.footer{
+  margin:100px;
+  border-top: solid 1px #2e8b57; /*seagreen*/
+}
+
+.footer_ul{
+  list-style: none;
+}
+
+.footer-menu{
+    font-size: 1rem;
+    color: #2e8b57; /*seagreen*/
+    background-color: #ffffff;
+    display: inline-block;
+    padding: 0 15px;
+    cursor: pointer;
+    transition: background-color 1s linear;
+    transition: color 1s linear;
+    list-style: none;
+    margin-bottom: 5px
+  }
+.footer-menu:hover {
+      background-color: #2e8b57; /*seagreen*/
+      color: #ffffff; /*白*/
+      transition: background-color 0.1s linear; /* 追加 */
+}
+/*フッターここまで*/
