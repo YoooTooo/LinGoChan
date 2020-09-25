@@ -5,6 +5,7 @@
 
 import 'bootstrap';
 import '../stylesheets/application.scss';
+import '../stylesheets/staticpages.scss';
 import './bootstrap_custom.js'
 
 require("@rails/ujs").start()
