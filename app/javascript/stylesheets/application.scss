@@ -56,7 +56,22 @@
 
 
   /*ナビバーのボタン*/
+  .drop_button{
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    color: #ffffff;
+    background-color: #2e8b57; /*seagreen*/
+    border-radius: 5px;
+    -weabkit-transition: all 0.5s;
+    transition: all 0.5s;
+    margin: 10px;
+  }
 
+  .drop_button:hover{
+    background-color: #3cb371; /*mediumseagreen*/;
+    color: #ffffff;
+  }
 
 
   /*タグ削除ボタン*/
