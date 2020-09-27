@@ -139,15 +139,7 @@ Rails 6.0.3.2
 
 ・AWS
 
-VPS
-
-RDS
-
-EC2
-
-ALB
-
-Certificate Manager
+VPS, RDS, EC2, ALB, Route 53, S3, CloudWatch
 
 ・nginx 1.18.0
 
