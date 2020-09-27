@@ -1,19 +1,7 @@
 <%#user#show用のタブページ%>
 
-<main class="p-3">
-  <!-- 上部のタブの部分 -->
-  <ul class="nav nav-tabs">
-    <li class="nav-item">
-      <a href="#subject_posts" class="nav-link active" data-toggle="tab">お題</a>
-    </li>
-    <li class="nav-item">
-      <a href="#reply_posts" class="nav-link" data-toggle="tab">ひとこと</a>
-    </li>
-    <li class="nav-item">
-      <a href="#feedback_posts" class="nav-link" data-toggle="tab">フィードバック</a>
-    </li>
-  </ul>
-
+<!-- 上部のタブの部分 -->
+<%= render 'shared/tab_switch'%>
 
   <!-- 内容部分 -->
   <div class="tab-content">
@@ -59,4 +47,3 @@
     </div>
 
   </div>
-</main>

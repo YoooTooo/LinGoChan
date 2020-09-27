@@ -1,26 +1,14 @@
 <%#home用のタブページ%>
 
-<main class="p-3">
   <!-- 上部のタブの部分 -->
-  <ul class="nav nav-tabs">
-    <li class="nav-item">
-      <a href="#subject_posts" class="nav-link active" data-toggle="tab">お題</a>
-    </li>
-    <li class="nav-item">
-      <a href="#reply_posts" class="nav-link" data-toggle="tab">ひとこと</a>
-    </li>
-    <li class="nav-item">
-      <a href="#feedback_posts" class="nav-link" data-toggle="tab">フィードバック</a>
-    </li>
-  </ul>
-
+<%= render 'shared/tab_switch'%>
 
   <!-- 内容部分 -->
   <div class="tab-content">
     <div id="subject_posts" class="tab-pane active">
       <%#お題投稿のタブのfeed%>
       <div class = "homepage-title under_tub_title">
-        <h3 class = "title_letter">お題一覧</h3>
+        <h3 class = "title_letter">投稿したお題一覧</h3>
       </div>
           <%= render 'shared/subject_feed' %>
 
@@ -29,7 +17,7 @@
     <div id="reply_posts" class="tab-pane">
       <%#一言の投稿のタブの中身%>
       <div class = "homepage-title under_tub_title">
-        <h3 class = "title_letter">ひとこと一覧</h3>
+        <h3 class = "title_letter">投稿したひとこと一覧</h3>
       </div>
         <%= render 'shared/reply_feed' %>
     </div>
@@ -37,10 +25,9 @@
     <div id="feedback_posts" class="tab-pane">
       <%#フィードバックタブの中身%>
       <div class = "homepage-title under_tub_title">
-        <h3 class = "title_letter">フィードバック一覧</h3>
+        <h3 class = "title_letter">投稿したフィードバック一覧</h3>
       </div>
       <%= render 'shared/feedback_feed' %>
     </div>
 
   </div>
-</main>
