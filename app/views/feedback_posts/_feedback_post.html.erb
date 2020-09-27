@@ -1,69 +1,29 @@
 
-<% @feedback_posts.each do |feedback_post| %>
+  <dev class = "feedback_post_container">
 
-  <div class = "subject_post">
-
-    <div id="subject_post-<%= feedback_post.reply_post.subject_post.id %>">
-      <%= link_to gravatar_for(feedback_post.reply_post.subject_post.user, size: 50), feedback_post.reply_post.subject_post.user %>
-      <span class="user"><%= link_to feedback_post.reply_post.subject_post.user.name, feedback_post.reply_post.subject_post.user %></span>
-
-      <div>
-        <%= link_to(subject_post_path(feedback_post.reply_post.subject_post), class: 'subject-content') do %>
-        <%= image_tag feedback_post.reply_post.subject_post.img.url if feedback_post.reply_post.subject_post.img? %>
-        <% end %>
-      </div>
-
-      <%#タグ%>
-      <%= render "/shared/subject_post_tag_list", subject_post: feedback_post.reply_post.subject_post  %>
-      <%# タグここまで%>
-
-      <span class="timestamp">
-         <%= time_ago_in_words(feedback_post.reply_post.subject_post.created_at) %>前
-      </span>
+    <div class = "feedback_reply_subject_post">
+          <%#feedback_postのsubject_postとreply_postの部分%>
+          <%= render "/reply_posts/reply_post", reply_post: feedback_post.reply_post  %>
     </div>
 
-  </div>
-
-
-  <div class = "reply_post">
-
-    <div id="reply_post-<%= feedback_post.reply_post.id %>">
-      <%= link_to gravatar_for(feedback_post.reply_post.user, size: 50), feedback_post.reply_post.user %>
-      <span class="user"><%= link_to feedback_post.reply_post.user.name, feedback_post.reply_post.user %></span>
-
-      <div class = "reply_content">
-        <%= feedback_post.reply_post.content %>
-      </div>
-
-      <div>
-        <%= button_to "フィードバックをする！", reply_post_path(feedback_post.reply_post), {method: :get, class: "general_button"} %>
-      </div>
-
-      <span class="timestamp">
-         <%= time_ago_in_words(feedback_post.reply_post.created_at) %>前
-      </span>
-    </div>
-  </div>
-
-
-  <div class = "feedback_post">
-    <div id="feedback_post-<%= feedback_post.id %>">
-      <%= link_to gravatar_for(feedback_post.user, size: 50), feedback_post.user %>
-      <span class="user"><%= link_to feedback_post.user.name, feedback_post.user %></span>
-<br>
-      <dev class = "feedback_content_box">
-        <dev class = "feedback_content">
-          <%= feedback_post.content %>
+    <div class = "feedback_post">
+      <div id="feedback_post-<%= feedback_post.id %>">
+        <%= link_to gravatar_for(feedback_post.user, size: 50), feedback_post.user %>
+        <span class="user"><%= link_to feedback_post.user.name, feedback_post.user %></span>
+  <br>
+        <dev class = "feedback_content_box">
+          <dev class = "feedback_content">
+            <%= feedback_post.content %>
+          </dev>
+  <br>
+          <span class="timestamp">
+          <%= time_ago_in_words(feedback_post.created_at) %>前
+          </span>
         </dev>
-<br>
-        <span class="timestamp">
-        <%= time_ago_in_words(feedback_post.created_at) %>前
-        </span>
-      </dev>
+      </div>
+      <span class = "details">
+        <%= button_to "詳しく見る", feedback_post_path(feedback_post), {method: :get, class: "general_button"}%>
+      </span>
     </div>
-    <span class = "details">
-      <%= button_to "詳しく見る", feedback_post_path(feedback_post), {method: :get, class: "general_button"}%>
-    </span>
-  </div>
 
-<% end %>
+  </dev>

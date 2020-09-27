@@ -3,7 +3,6 @@ class SubjectPostsController < ApplicationController
 #subject_postは画像削除を実装しない。
 #一覧(index)は非ログインユーザでも見れる。
 
-
   def create
     @subject_post = current_user.subject_posts.build(subject_post_params)
       tag_list = params[:subject_post][:tag_name].split(nil)
@@ -31,7 +30,7 @@ class SubjectPostsController < ApplicationController
   end
 
   private
-   def subject_post_params
-    params.require(:subject_post).permit(:img)
-   end
+    def subject_post_params
+     params.require(:subject_post).permit(:img)
+    end
 end

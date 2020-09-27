@@ -1,6 +1,9 @@
 <% if @feedback_posts.present? %>
   <ol class="sublect_posts">
-    <%= render @feedback_posts %>
+
+    <% @feedback_posts.each do |feedback_post| %>
+    <%= render "feedback_posts/feedback_post", feedback_post: feedback_post %>
+    <% end %>
   </ol>
   <%= paginate @feedback_posts %>
 
