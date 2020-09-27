@@ -9,15 +9,15 @@
 
 <% if @feedback_posts.present? %>
 
-<%= paginate @feedback_posts %>
+  <%= paginate @feedback_posts %>
 
-<ul class="feedback_posts">
+  <ul class="feedback_posts">
+    <% @feedback_posts.each do |feedback_post| %>
+      <%= render "/feedback_posts/feedback_post", feedback_post: feedback_post%>
+    <% end %>
+  </ul>
 
-  <%= render "feedback_post" %>
-
-</ul>
-
-<%= paginate @feedback_posts %>
+  <%= paginate @feedback_posts %>
 
 <% else %>
 
