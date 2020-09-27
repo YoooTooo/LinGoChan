@@ -6,11 +6,11 @@
 
   <div class = "main post-show">
 
-    <div class = "show-title">
+    <div class = "show-title under_tub_title">
       <h1><%= link_to @subject_post.user.name, user_path(@subject_post.user)%>のお題</h1>
     </div>
 
-    <%= render 'subject_post_reply_form' %>
+    <%= render 'subject_posts/subject_post_reply_form' %>
 
   <% else %>
     <p>まだ投稿はありません</p>

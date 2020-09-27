@@ -13,7 +13,9 @@
 
   <ul class="reply_posts">
 
-    <%= render "reply_post" %>
+    <% @reply_posts.each do |reply_post| %>
+      <%= render "/reply_posts/reply_post", reply_post: reply_post %>
+    <% end %>
 
   </ul>
 

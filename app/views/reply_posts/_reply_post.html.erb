@@ -2,49 +2,34 @@
 <%# クリックしたら、それぞれsubject#show, reply#showに飛ぶ%>
 <%# そこに、reply, feedbackのformが用意してある %>
 
-<% @reply_posts.each do |reply_post| %>
+  <dev class = reply_post_container>
 
-  <div class = "subject_post">
+    <div class = "reply_subject_post">
+          <%#reply_postのsubject_postの部分%>
+          <%= render "/subject_posts/subject_post", subject_post: reply_post.subject_post  %>
+    </div>
 
-    <li id="subject_post-<%= reply_post.subject_post.id %>">
-      <%= link_to gravatar_for(reply_post.subject_post.user, size: 50), reply_post.subject_post.user %>
-      <span class="user"><%= link_to reply_post.subject_post.user.name, reply_post.subject_post.user %></span>
+    <div class = "reply_post">
+      <li id="reply_post-<%= reply_post.id %>">
+        <%= link_to gravatar_for(reply_post.user, size: 50), reply_post.user %>
+        <span class="user"><%= link_to reply_post.user.name, reply_post.user %></span>
 
-      <div>
-        <%= link_to(subject_post_path(reply_post.subject_post), class: 'subject-content') do %>
-        <%= image_tag reply_post.subject_post.img.url if reply_post.subject_post.img? %>
+        <div class = "reply_content">
+          <%= reply_post.content %>
+        </div>
+
+<%#もし、ひとことのshow(詳細ページ)だったら「フィードバックをする！」ボタンは表示しない%>
+        <% if current_page?("/reply_posts/#{reply_post.id}") %>
+          <div></div>
+        <%else%>
+          <div class = "feedback_button_field">
+            <%= button_to  "フィードバックをする！", reply_post_path(reply_post), {method: :get, class: "general_button"} %>
+          </div>
         <% end %>
-      </div>
 
-        <%#タグ%>
-        <%= render "/shared/subject_post_tag_list", subject_post: reply_post.subject_post  %>
-        <%# タグここまで%>
-
-      <span class="timestamp">
-         <%= time_ago_in_words(reply_post.subject_post.created_at) %>前
-      </span>
-    </li>
-
-  </div>
-
-  <div class = "reply_post">
-
-    <li id="reply_post-<%= reply_post.id %>">
-      <%= link_to gravatar_for(reply_post.user, size: 50), reply_post.user %>
-      <span class="user"><%= link_to reply_post.user.name, reply_post.user %></span>
-
-      <div class = "reply_content">
-        <%= reply_post.content %>
-      </div>
-      <div>
-        <%= button_to  "フィードバックをする！", reply_post_path(reply_post), {method: :get, class: "general_button"} %>
-      </div>
-
-      <span class="timestamp">
-         <%= time_ago_in_words(reply_post.created_at) %>前
-      </span>
-    </li>
-
-  </div>
-
-<% end %>
+        <span class="timestamp">
+           <%= time_ago_in_words(reply_post.created_at) %>前
+        </span>
+      </li>
+    </div>
+  </dev>

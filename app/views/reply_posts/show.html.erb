@@ -7,11 +7,11 @@
 
   <% if @reply_post.present? %>
 
-    <div class = "show-title">
+    <div class = "show-title under_tub_title">
       <h1><%= link_to @reply_post.user.name, user_path(@reply_post.user)%>のひとこと</h1>
     </div>
 
-    <%= render 'subject-reply-feedback_form' %>
+    <%= render 'reply_posts/subject-reply-feedback_form' %>
 
   <% else %>
     <p>まだ投稿はありません</p>
