@@ -7,11 +7,11 @@
 
   <% if @feedback_post.present? %>
 
-    <div class = "show-title">
+    <div class = "show-title under_tub_title">
       <h1><%= link_to @feedback_post.user.name, user_path(@feedback_post.user)%>のフィードバック</h1>
     </div>
 
-    <%= render "/feedback_posts/at_feedback_post"%>
+    <%= render "/feedback_posts/feedback_post", feedback_post: @feedback_post%>
 
   <% else %>
     <p>まだ投稿はありません</p>

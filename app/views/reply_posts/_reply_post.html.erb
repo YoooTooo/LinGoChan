@@ -17,9 +17,15 @@
         <div class = "reply_content">
           <%= reply_post.content %>
         </div>
-        <div>
-          <%= button_to  "フィードバックをする！", reply_post_path(reply_post), {method: :get, class: "general_button"} %>
-        </div>
+
+<%#もし、ひとことのshow(詳細ページ)だったら「フィードバックをする！」ボタンは表示しない%>
+        <% if current_page?("/reply_posts/#{reply_post.id}") %>
+          <div></div>
+        <%else%>
+          <div class = "feedback_button_field">
+            <%= button_to  "フィードバックをする！", reply_post_path(reply_post), {method: :get, class: "general_button"} %>
+          </div>
+        <% end %>
 
         <span class="timestamp">
            <%= time_ago_in_words(reply_post.created_at) %>前

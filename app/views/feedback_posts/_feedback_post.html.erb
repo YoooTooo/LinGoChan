@@ -21,9 +21,28 @@
           </span>
         </dev>
       </div>
-      <span class = "details">
-        <%= button_to "詳しく見る", feedback_post_path(feedback_post), {method: :get, class: "general_button"}%>
-      </span>
+
+<%#もし、フィードバックのshow(詳細ページ)でcurrent_userだったら消去と編集、それ以外だったら「詳しく見る」を表示%>
+      <div class = detail_or_edit_delete>
+        <% if current_page?("/feedback_posts/#{feedback_post.id}") %>
+          <span class = "delete">
+            <% if current_user?(@feedback_post.user) %>
+              <%= button_to "消去", @feedback_post, {method: :delete, class: "general_button", data: { confirm: "本当に消去してもいいですか？" }} %>
+            <% end %>
+          </span>
+
+          <span class = "edit">
+            <% if current_user?(@feedback_post.user) %>
+              <%= button_to "編集", edit_feedback_post_path(@feedback_post), {method: :get, class: "general_button"} %>
+            <% end %>
+          </span>
+        <% else %>
+          <span class = "details">
+            <%= button_to "詳しく見る", feedback_post_path(feedback_post), {method: :get, class: "general_button"}%>
+          </span>
+        <% end %>
+      </div>
+      
     </div>
 
   </dev>

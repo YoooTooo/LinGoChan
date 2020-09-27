@@ -19,22 +19,27 @@
   <div class="tab-content">
     <div id="subject_posts" class="tab-pane active">
       <%#お題投稿のタブのfeed%>
-      <h3>お題一覧</h3>
-        <%= render 'shared/subject_feed' %>
+      <div class = "homepage-title under_tub_title">
+        <h3 class = "title_letter">お題一覧</h3>
+      </div>
+          <%= render 'shared/subject_feed' %>
+
     </div>
 
     <div id="reply_posts" class="tab-pane">
       <%#一言の投稿のタブの中身%>
-      <h3>ひとこと一覧</h3>
+      <div class = "homepage-title under_tub_title">
+        <h3 class = "title_letter">ひとこと一覧</h3>
+      </div>
         <%= render 'shared/reply_feed' %>
     </div>
 
     <div id="feedback_posts" class="tab-pane">
       <%#フィードバックタブの中身%>
-      <h3>フィードバック一覧</h3>
-
+      <div class = "homepage-title under_tub_title">
+        <h3 class = "title_letter">フィードバック一覧</h3>
+      </div>
       <%= render 'shared/feedback_feed' %>
-
     </div>
 
   </div>
