@@ -5,45 +5,37 @@
 
   <!-- 内容部分 -->
   <div class="tab-content">
-    <div id="subject_posts" class="tab-pane active">
-      <%#お題投稿のタブの中身%>
-            <% if @user.subject_posts.any? %>
-              <h3>お題 (<%= @user.subject_posts.count %>)</h3>
-              <ol class="subject_posts">
-                <%= render @subject_posts %>
-              </ol>
-                <%= paginate @subject_posts %>
-            <% else %>
-              <p>まだ「お題」は投稿されていません</p>
-            <% end %>
-    </div>
 
-    <div id="reply_posts" class="tab-pane">
-      <%#一言の投稿のタブの中身%>
-            <div class="col-md-8">
-              <% if @user.reply_posts.any? %>
-                <h3>ひとこと (<%= @user.reply_posts.count %>)</h3>
-                <ol class="reply_posts">
-                  <%= render @reply_posts %>
-                </ol>
-                <%= paginate @reply_posts %>
-              <%else%>
-                <p>まだ「ひとこと」は投稿されていません</p>
-              <% end %>
-            </div>
-    </div>
 
-    <div id="feedback_posts" class="tab-pane">
-      <%#フィードバックタブの中身%>
+    <%#お題投稿のタブの中身%>
+        <div id="subject_posts" class="tab-pane active">
+
+          <% if @user.subject_posts.any? %>
+            <h3><%= @user.name %>のお題 (<%= @user.subject_posts.count %>)</h3>
+          <% end %>
+
+          <%= render "shared/subject_feed", subject_posts: @user.subject_posts %>
+
+        </div>
+
+
+    <%#一言の投稿のタブの中身%>
+      <div id="reply_posts" class="tab-pane">
+          <% if @user.reply_posts.any? %>
+            <h3><%= @user.name %>のひとこと (<%= @user.reply_posts.count %>)</h3>
+          <% end %>
+
+          <%= render "shared/reply_feed", reply_posts: @user.reply_posts %>
+
+      </div>
+
+
+    <%#フィードバックタブの中身%>
+      <div id="feedback_posts" class="tab-pane">
       <% if @user.feedback_posts.any? %>
-        <h3>フィードバック (<%= @user.feedback_posts.count %>)</h3>
-        <ol class="reply_posts">
-          <%= render @feedback_posts %>
-        </ol>
-        <%= paginate @feedback_posts %>
-      <%else%>
-        <p>まだ「フィードバック」は投稿されていません</p>
+        <h3><%= @user.name %>のフィードバック (<%= @user.feedback_posts.count %>)</h3>
       <% end %>
-    </div>
+
+          <%= render "shared/feedback_feed", feedback_posts: @user.feedback_posts %>
 
   </div>

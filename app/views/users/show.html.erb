@@ -3,22 +3,20 @@
 <% breadcrumb :show, @user%>
 <%= render "shared/breadcrumbs" %>
 
-<div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <h1>
+  <section class="row user_info">
+    <aside class="col-md-6">
         <%= gravatar_for @user %>
-        <%= @user.name %>
-      </h1>
+          <h1> <%= @user.name %> </h1>
+   </aside>
 
       <%#自己紹介%>
+    <aside class="col-md-6">
       <div class = "self_introduction">
         <%= @user.self_introduction %>
       </div>
+    </aside>
+  </section>
 
-    </section>
-  </aside>
-  <div class="col-md-8">
+  <div class="item_field">
     <%= render "shared/tabpage"%>
   </div>
-</div>

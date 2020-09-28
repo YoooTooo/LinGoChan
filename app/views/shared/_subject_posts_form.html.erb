@@ -2,14 +2,15 @@
 <%= form_with model: @subject_post do |f| %>
 
   <%= render 'shared/error_messages', object: f.object %>
-<div class="img_explanation">
+<h1 class="img_explanation">
   <%= f.label :img, "お題を投稿してください！" %>
-</div>
+</h1>
 <div class = "image_field">
   <%= f.file_field :img, class: "image", accept: 'image/jpeg,image/gif,image/png' %>
 </div>
 
 <div class = tag_field_container>
+<br>
     <div class = tag_explanation>
       <p> 半角スペースを入れると複数のタグを登録できます</p>
       <p> (例)空 海 森 </p>
@@ -19,10 +20,8 @@
         <%= f.label :tag_name, "タグ"%>
         <%= f.text_field :tag_name %>
     </div>
-</div>
-
  <%= f.submit "投稿する！", class: "btn btn-primary" %>
-
+</div>
 <% end %>
 
 <script type="text/javascript">

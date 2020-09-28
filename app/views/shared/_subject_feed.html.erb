@@ -1,7 +1,13 @@
 <% if @subject_posts.present? %>
-  <ol class="sublect_posts">
-    <%= render @subject_posts %>
-  </ol>
+
+  <div class="row sublect_posts">
+    <% @subject_posts.each do |subject_post| %>
+      <div class = "col-md-6 post_item">
+        <%= render "subject_posts/subject_post", subject_post: subject_post %>
+      </div>
+    <% end %>
+  </div>
+
   <%= paginate @subject_posts %>
 
 <% else %>

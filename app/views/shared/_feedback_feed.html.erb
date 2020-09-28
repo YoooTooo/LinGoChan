@@ -1,10 +1,13 @@
 <% if @feedback_posts.present? %>
-  <ol class="sublect_posts">
 
+  <div class="row sublect_posts">
     <% @feedback_posts.each do |feedback_post| %>
-    <%= render "feedback_posts/feedback_post", feedback_post: feedback_post %>
+      <div class = "col-md-6 post_item">
+        <%= render "feedback_posts/feedback_post", feedback_post: feedback_post %>
+      </div>
     <% end %>
-  </ol>
+  </div>
+
   <%= paginate @feedback_posts %>
 
 <% else %>
