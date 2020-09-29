@@ -10,7 +10,7 @@
 
         <% if current_user?(@user) %>
         <p>
-        <span><%= button_to "自己紹介を書いてみる", edit_user_path(current_user), {method: :get, class: "ungeneral_button",form: {style: 'display:inline;'}} %></span>
+        <span><%= button_to "自己紹介を書いてみる！", edit_user_path(current_user), {method: :get, class: "ungeneral_button",form: {style: 'display:inline;'}} %></span>
         </p>
         <% end %>
 
