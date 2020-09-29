@@ -1,7 +1,7 @@
 <div class = "subject_post_container">
   <div class = "subject_post">
 
-    <li id="subject_post-<%= subject_post.id %>">
+    <div id="subject_post-<%= subject_post.id %>">
       <%= link_to gravatar_for(subject_post.user, size: 50), subject_post.user %>
       <span class="user"><%= link_to subject_post.user.name, subject_post.user %></span>
 
@@ -16,7 +16,7 @@
       </span>
 
       <%= render "/shared/subject_post_tag_list", subject_post: subject_post  %>
-    </li>
+    </div>
 
   </div>
 </div>

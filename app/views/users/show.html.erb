@@ -3,16 +3,29 @@
 <% breadcrumb :show, @user%>
 <%= render "shared/breadcrumbs" %>
 
-  <section class="row user_info">
-    <aside class="col-md-6">
+  <section class="row user_info upper_info_row">
+    <aside class="col-md-6 upper_user_info">
         <%= gravatar_for @user %>
           <h1> <%= @user.name %> </h1>
+
+        <% if current_user?(@user) %>
+        <p>
+        <span><%= button_to "自己紹介を書いてみる", edit_user_path(current_user), {method: :get, class: "ungeneral_button",form: {style: 'display:inline;'}} %></span>
+        </p>
+        <% end %>
+
+        <span clas = "post_count">お題投稿数:<%= @user.subject_posts.count %></span>
+        <span clas = "post_count">ひとこと投稿数:<%= @user.reply_posts.count %></span>
+        <span clas = "post_count">フィードバック投稿数:<%= @user.feedback_posts.count %></span>
+
    </aside>
 
       <%#自己紹介%>
     <aside class="col-md-6">
       <div class = "self_introduction">
+        <p class = "self_introduction_text">
         <%= @user.self_introduction %>
+        </p>
       </div>
     </aside>
   </section>
