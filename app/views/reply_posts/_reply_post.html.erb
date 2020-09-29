@@ -10,7 +10,7 @@
     </div>
 
     <div class = "reply_post">
-      <li id="reply_post-<%= reply_post.id %>">
+      <div id="reply_post-<%= reply_post.id %>">
         <%= link_to gravatar_for(reply_post.user, size: 50), reply_post.user %>
         <span class="user"><%= link_to reply_post.user.name, reply_post.user %></span>
 
@@ -30,6 +30,6 @@
         <span class="timestamp">
            <%= time_ago_in_words(reply_post.created_at) %>前
         </span>
-      </li>
+      </div>
     </div>
   </dev>
