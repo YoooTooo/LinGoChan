@@ -12,10 +12,10 @@
 
 .upper_info_row{
   background-color:rgba(245,245,245,0.9);
-  border-top : solid 0.8px #dcdcdc; /*gainsboro*/
+  border-top : solid 1px #dcdcdc; /*gainsboro*/
   border-bottom : solid 1px #808080; /*darkgray*/
   border-right : solid 1px #808080; /*darkgray*/
-  border-left : solid 0.8px #dcdcdc; /*gainsboro*/
+  border-left : solid 1px #dcdcdc; /*gainsboro*/
   color: #2e8b57; /*seagreen*/
   height: 300px;
 }
@@ -260,16 +260,33 @@ height:50px;
 }
 /*フッターここまで*/
 
-
-
-/*タブについて*/
-.tab_wrap{width:500px; margin:80px auto;}
+/*タブ部分について*/
 .tab_area{font-size:0; margin:0 10px;}
-.tab_area label{width:150px; margin:0 5px; display:inline-block; padding:12px 0; color:#999; background:#ddd; text-align:center; font-size:13px; cursor:pointer; transition:ease 0.2s opacity;}
-.tab_area label:hover{opacity:0.5;}
-.panel_area{background:#fff;}
-.tab_panel{width:100%; padding:80px 0; display:none;}
-.tab_panel p{font-size:14px; letter-spacing:1px; text-align:center;}
-
-.tab_area label.active{background:#fff; color:#000;}
-.tab_panel.active{display:block;}
+.tab_a{
+  width:150px;
+  margin:0 5px;
+  display:inline-block;
+  padding:12px 0;
+  color:#ffffff;
+  background-color: #2e8b57; /*seagreen*/
+  text-align:center;
+  font-size:13px;
+  cursor:pointer;
+  transition:ease 0.2s opacity;
+  border: solid 1px #808080; /*darkgray*/
+  opacity: 0.9;
+}
+.tab_a:hover{opacity:0.5;}
+.tab_a:active{
+  background-color:rgba(245,245,245,0.9);
+}
+.panel_area{
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 15px;
+  background-color:rgba(245,245,245,0.9);
+  border-bottom : solid 1px #808080; /*darkgray*/
+  border-right : solid 1px #808080; /*darkgray*/
+  border-left : solid 1px #dcdcdc; /*gainsboro*/
+  color: #2e8b57; /*seagreen*/
+}
