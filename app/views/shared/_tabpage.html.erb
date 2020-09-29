@@ -4,38 +4,4 @@
 <%= render 'shared/tab_switch'%>
 
   <!-- 内容部分 -->
-  <div class="tab-content">
-
-
-    <%#お題投稿のタブの中身%>
-        <div id="subject_posts" class="tab-pane active">
-
-          <% if @user.subject_posts.any? %>
-            <h3 class = "title_letter"><%= @user.name %>のお題 (<%= @user.subject_posts.count %>)</h3>
-          <% end %>
-
-          <%= render "shared/subject_feed", subject_posts: @user.subject_posts %>
-
-        </div>
-
-
-    <%#一言の投稿のタブの中身%>
-      <div id="reply_posts" class="tab-pane">
-          <% if @user.reply_posts.any? %>
-            <h3 class = "title_letter"><%= @user.name %>のひとこと (<%= @user.reply_posts.count %>)</h3>
-          <% end %>
-
-          <%= render "shared/reply_feed", reply_posts: @user.reply_posts %>
-
-      </div>
-
-
-    <%#フィードバックタブの中身%>
-      <div id="feedback_posts" class="tab-pane">
-      <% if @user.feedback_posts.any? %>
-        <h3 class = "title_letter"><%= @user.name %>のフィードバック (<%= @user.feedback_posts.count %>)</h3>
-      <% end %>
-
-          <%= render "shared/feedback_feed", feedback_posts: @user.feedback_posts %>
-
-  </div>
+<%= render 'shared/tab_contents'%>

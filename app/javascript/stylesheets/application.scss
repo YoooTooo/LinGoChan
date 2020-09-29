@@ -243,15 +243,20 @@ height:50px;
 .footer-menu{
     font-size: 1rem;
     color: #2e8b57; /*seagreen*/
-    background-color: #ffffff;
+    background-color:rgba(245,245,245,0.9);
     display: inline-block;
     padding: 0 15px;
     cursor: pointer;
     transition: background-color 1s linear;
     transition: color 1s linear;
     list-style: none;
-    margin-bottom: 5px
+    margin: 5px;
+    border-top : solid 1px #dcdcdc; /*gainsboro*/
+    border-bottom : solid 1px #808080; /*darkgray*/
+    border-right : solid 1px #808080; /*darkgray*/
+    border-left : solid 1px #dcdcdc; /*gainsboro*/
   }
+
 .footer-menu:hover {
       background-color: #2e8b57; /*seagreen*/
       color: #ffffff; /*白*/

@@ -1,0 +1,45 @@
+<%#homeに関して%>
+<div class="tab-content panel_area">
+
+  <div id="subject_posts" class="tab-pane active tab_panel">
+    <%#お題投稿のタブ%>
+      <% if current_page?(root_path) %>
+        <h3 class = "title_letter">投稿したお題一覧</h3>
+        <%= render 'shared/subject_feed' %>
+      <% else %>
+        <% if @user.subject_posts.any? %>
+          <h3 class = "title_letter"><%= @user.name %>のお題 (<%= @user.subject_posts.count %>)</h3>
+          <%= render "shared/subject_feed", subject_posts: @user.subject_posts %>
+        <% end %>
+      <% end %>
+  </div>
+
+  <div id="reply_posts" class="tab-pane tab_panel">
+    <%#一言の投稿のタブの中身%>
+      <% if current_page?(root_path) %>
+        <h3 class = "title_letter">投稿したひとこと一覧</h3>
+        <%= render 'shared/reply_feed' %>
+      <% else %>
+        <% if @user.reply_posts.any? %>
+          <h3 class = "title_letter"><%= @user.name %>のひとこと (<%= @user.reply_posts.count %>)</h3>
+        <% end %>
+        <%= render "shared/reply_feed", reply_posts: @user.reply_posts %>
+      <% end %>
+  </div>
+
+  <div id="feedback_posts" class="tab-pane tab_panel">
+    <%#フィードバックタブの中身%>
+      <% if current_page?(root_path) %>
+        <h3 class = "title_letter">投稿したフィードバック一覧</h3>
+        <%= render 'shared/feedback_feed' %>
+      <% else %>
+        <% if @user.feedback_posts.any? %>
+          <h3 class = "title_letter"><%= @user.name %>のフィードバック (<%= @user.feedback_posts.count %>)</h3>
+        <% end %>
+        <%= render "shared/feedback_feed", feedback_posts: @user.feedback_posts %>
+      <% end %>
+  </div>
+</div>
+
+<div class = "homepage-title under_tub_title">
+</div>

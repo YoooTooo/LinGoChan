@@ -4,30 +4,5 @@
 <%= render 'shared/tab_switch'%>
 
   <!-- 内容部分 -->
-  <div class="tab-content panel_area">
-    <div id="subject_posts" class="tab-pane active tab_panel">
-      <%#お題投稿のタブのfeed%>
-      <div class = "homepage-title under_tub_title">
-        <h3 class = "title_letter">投稿したお題一覧</h3>
-      </div>
-          <%= render 'shared/subject_feed' %>
 
-    </div>
-
-    <div id="reply_posts" class="tab-pane tab_panel">
-      <%#一言の投稿のタブの中身%>
-      <div class = "homepage-title under_tub_title">
-        <h3 class = "title_letter">投稿したひとこと一覧</h3>
-      </div>
-        <%= render 'shared/reply_feed' %>
-    </div>
-
-    <div id="feedback_posts" class="tab-pane tab_panel">
-      <%#フィードバックタブの中身%>
-      <div class = "homepage-title under_tub_title">
-        <h3 class = "title_letter">投稿したフィードバック一覧</h3>
-      </div>
-      <%= render 'shared/feedback_feed' %>
-    </div>
-
-  </div>
+<%= render 'shared/tab_contents'%>
