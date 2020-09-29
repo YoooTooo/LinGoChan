@@ -15,9 +15,9 @@
 
   <body>
     <%= render("layouts/header") %>
-
+  <%# バックグラウンドのための記述 %>
     <div class = "main_contents",
-     style="background-image: url(<%= asset_pack_path 'media/images/background_img.png' %>); background-size: cover; background-repeat: repeat-x">
+     style="background-image: url(<%= asset_pack_path 'media/images/background_img.png' %>); background-size: cover; background-repeat: repeat-y">
 
   <%#ロードアニメーションのための記述%>
       <body class="is-slide" id="page-animate">

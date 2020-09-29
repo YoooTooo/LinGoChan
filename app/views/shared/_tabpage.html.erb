@@ -1,7 +1,11 @@
-<%#user#show用のタブページ%>
+<%#homeとuserページ共通テンプレート%>
 
-<!-- 上部のタブの部分 -->
-<%= render 'shared/tab_switch'%>
+<div class = tab_field>
 
-  <!-- 内容部分 -->
-<%= render 'shared/tab_contents'%>
+  <!-- 上部のタブの部分 -->
+  <%= render 'shared/tab_switch'%>
+
+    <!-- 内容部分 -->
+  <%= render 'shared/tab_contents'%>
+
+</div>
