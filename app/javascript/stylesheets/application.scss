@@ -83,7 +83,7 @@
   /*ログイン系のボタン*/
 
   /*一般ボタン*/
-.general_button{
+.general_button2{
   display: block;
   text-decoration: none;
   text-align: center;
@@ -94,15 +94,33 @@
   margin: 10px;
 }
 
-.general_button:hover{
+.general_button2:hover{
   background-color: #f9c500;
+}
+
+.general_button{
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  color: #ffffff;
+  background-color: #2e8b57; /*seagreen*/
+  border-radius: 5px;
+  -weabkit-transition: all 0.5s;
+  transition: all 0.5s;
+  margin: 10px;
+}
+
+.general_button:hover{
+  background-color: #3cb371; /*mediumseagreen*/;
+  color: #ffffff;
 }
 
 /*一般じゃないボタン*/
 .ungeneral_button{
   text-decoration: none;
   text-align: center;
-  background-color: #FFA500;
+  color: #ffffff;
+  background-color: #2e8b57; /*seagreen*/
   border-radius: 5px;
   -weabkit-transition: all 0.5s;
   transition: all 0.5s;
@@ -110,7 +128,8 @@
 }
 
 .ungeneral_button:hover{
-  background-color: #f9c500;
+  background-color: #3cb371; /*mediumseagreen*/;
+  color: #ffffff;
 }
 
 
@@ -303,4 +322,10 @@ height:50px;
   border-bottom : solid 1px #808080; /*darkgray*/
   border-right : solid 1px #808080; /*darkgray*/
   opacity: 0.8;
+}
+
+
+/*ユーザー写真について*/
+.user_image:hover{
+    opacity: 0.5;
 }

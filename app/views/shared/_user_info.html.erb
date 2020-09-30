@@ -1,4 +1,4 @@
-<%= link_to gravatar_for(user, size: 50), user %>
+<%= link_to gravatar_for(user, size: 50), user, {class: "user_image"} %>
 <h1><%= user.name %></h1>
 
 <% if current_page?(root_path) %>
