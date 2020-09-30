@@ -6,13 +6,14 @@
 
       <div>
         <%= link_to(subject_post_path(subject_post), class: 'subject-content') do %>
-        <%= image_tag subject_post.img.url if subject_post.img? %>
+          <%  if subject_post.img? %>
+            <%= image_tag(subject_post.img.url, class: 'subject_image')%>
+          <% end %>
         <% end %>
       </div>
 
-      <span class="timestamp">
-         <%= time_ago_in_words(subject_post.created_at) %>前
-      </span>
+      <%# タイムスタンプ(～前みたいなん)%>
+      <%= render 'shared/timestamp', post: subject_post %>
 
       <%= render "/shared/subject_post_tag_list", subject_post: subject_post  %>
     </div>

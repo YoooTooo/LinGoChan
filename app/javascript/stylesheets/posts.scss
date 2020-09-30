@@ -58,17 +58,35 @@
     border-left : solid 1px #dcdcdc; /*gainsboro*/
 }
 
+#timestamp{
+  background-color:rgb(208,226,190); /*https://www.i-iro.com/dic/usumidori*/
+  color: #ffffff;
+}
+
 /*subject_post関連*/
+.subject-image{
+  margin-top: 3px;
+  text-align: center;
+  width: 100%;
+}
+
 .subject-content:hover{
-    opacity: 0.5;
+  opacity: 0.5;
 }
 
+/*reply_post関連*/
+.reply_content{
+  text-align: center;
+  font-size: 1.2em;
+}
+
+/*feedback_post関連*/
+.feedback_content{
+  text-align: center;
+}
+
+/*top画像ほ背景とか*/
 .post_image{
-  margin: 3px;
-  background-color:rgba(221 255 221); /*https://ironodata.info/rgb.php?color=DDFFDD参照*/
+  padding: 3px;
+  background-color:rgb(208,226,190); /*https://www.i-iro.com/dic/usumidori*/
 }
-
-/*タグリストについて*/
-  /*タグリスト全体について*/
-
-  /*個別のタグリスト*/
