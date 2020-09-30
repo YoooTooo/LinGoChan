@@ -1,0 +1,74 @@
+/*タブ部分について*/
+.tab_area{font-size:0; margin:0 10px;}
+.tab_a{
+  width:150px;
+  margin:0 5px;
+  display:inline-block;
+  padding:12px 0;
+  color:#ffffff;
+  background-color: #2e8b57; /*seagreen*/
+  text-align:center;
+  font-size:13px;
+  cursor:pointer;
+  transition:ease 0.2s opacity;
+  border: solid 1px #808080; /*darkgray*/
+  opacity: 0.9;
+}
+.tab_a:hover{opacity:0.5;}
+.tab_a:active{
+  background-color:rgba(245,245,245,0.9);
+}
+.panel_area{
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 15px;
+  background-color:rgba(245,245,245,0.9);
+  border-bottom : solid 1px #808080; /*darkgray*/
+  border-right : solid 1px #808080; /*darkgray*/
+  border-left : solid 1px #dcdcdc; /*gainsboro*/
+  color: #2e8b57; /*seagreen*/
+}
+
+ /*〇〇のお題とかそういう系男子*/
+.title_letter{
+  padding: 0px 2px 2px 2px;
+  margin: 10px 3px 3px 3px;
+  background-color: #ffffff;
+  display: inline-block;
+  border-bottom : solid 1px #808080; /*darkgray*/
+  border-right : solid 1px #808080; /*darkgray*/
+  opacity: 0.8;
+}
+
+
+/*ユーザー写真について*/
+.user_image:hover{
+    opacity: 0.5;
+}
+
+
+/* 全体postの枠 */
+.each_post_container{
+    margin: 5px;
+    padding: 5px;
+    background-color: #ffffff;
+    border-top : solid 1px #dcdcdc; /*gainsboro*/
+    border-bottom : solid 1px #808080; /*darkgray*/
+    border-right : solid 1px #808080; /*darkgray*/
+    border-left : solid 1px #dcdcdc; /*gainsboro*/
+}
+
+/*subject_post関連*/
+.subject-content:hover{
+    opacity: 0.5;
+}
+
+.post_image{
+  margin: 3px;
+  background-color:rgba(221 255 221); /*https://ironodata.info/rgb.php?color=DDFFDD参照*/
+}
+
+/*タグリストについて*/
+  /*タグリスト全体について*/
+
+  /*個別のタグリスト*/

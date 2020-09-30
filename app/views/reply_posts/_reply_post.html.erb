@@ -2,7 +2,7 @@
 <%# クリックしたら、それぞれsubject#show, reply#showに飛ぶ%>
 <%# そこに、reply, feedbackのformが用意してある %>
 
-  <dev class = reply_post_container>
+  <div class = each_post_container>
 
     <div class = "reply_subject_post">
           <%#reply_postのsubject_postの部分%>
@@ -11,8 +11,7 @@
 
     <div class = "reply_post">
       <div id="reply_post-<%= reply_post.id %>">
-        <%= link_to gravatar_for(reply_post.user, size: 50), reply_post.user %>
-        <span class="user"><%= link_to reply_post.user.name, reply_post.user %></span>
+        <%= render 'shared/post_image', post: reply_post %>
 
         <div class = "reply_content">
           <%= reply_post.content %>
@@ -32,4 +31,4 @@
         </span>
       </div>
     </div>
-  </dev>
+  </div>

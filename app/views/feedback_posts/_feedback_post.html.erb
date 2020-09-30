@@ -1,5 +1,5 @@
 
-  <dev class = "feedback_post_container">
+  <div class = "each_post_container">
 
     <div class = "feedback_reply_subject_post">
           <%#feedback_postのsubject_postとreply_postの部分%>
@@ -8,18 +8,17 @@
 
     <div class = "feedback_post">
       <div id="feedback_post-<%= feedback_post.id %>">
-        <%= link_to gravatar_for(feedback_post.user, size: 50), feedback_post.user %>
-        <span class="user"><%= link_to feedback_post.user.name, feedback_post.user %></span>
+      <%= render 'shared/post_image', post: feedback_post %>
   <br>
-        <dev class = "feedback_content_box">
-          <dev class = "feedback_content">
+        <div class = "feedback_content_box">
+          <div class = "feedback_content">
             <%= feedback_post.content %>
-          </dev>
+          </div>
   <br>
           <span class="timestamp">
           <%= time_ago_in_words(feedback_post.created_at) %>前
           </span>
-        </dev>
+        </div>
       </div>
 
 <%#もし、フィードバックのshow(詳細ページ)でcurrent_userだったら消去と編集、それ以外だったら「詳しく見る」を表示%>
@@ -42,7 +41,5 @@
           </span>
         <% end %>
       </div>
-      
     </div>
-
-  </dev>
+  </div>
