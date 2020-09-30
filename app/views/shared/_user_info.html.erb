@@ -1,8 +1,18 @@
-<%= link_to gravatar_for(current_user, size: 50), current_user %>
-<h1><%= current_user.name %></h1>
-<p>
-<span><%= button_to "プロフィールを見る！", current_user, {method: :get, class: "ungeneral_button",form: {style: 'display:inline;'}} %></span>
-</p>
-<span clas = "post_count">お題投稿数:<%= current_user.subject_posts.count %></span>
-<span clas = "post_count">ひとこと投稿数:<%= current_user.reply_posts.count %></span>
-<span clas = "post_count">フィードバック投稿数:<%= current_user.feedback_posts.count %></span>
+<%= link_to gravatar_for(user, size: 50), user, {class: "user_image"} %>
+<h1><%= user.name %></h1>
+
+<% if current_page?(root_path) %>
+  <p>
+  <span><%= button_to "プロフィールを見る！", user, {method: :get, class: "ungeneral_button",form: {style: 'display:inline;'}} %></span>
+  </p>
+<% elsif current_user?(@user) %>
+  <p>
+  <span><%= button_to "自己紹介を書いてみる！", edit_user_path(current_user), {method: :get, class: "ungeneral_button",form: {style: 'display:inline;'}} %></span>
+  </p>
+<% else %>
+  <p></p>
+<% end %>
+
+<span clas = "post_count">お題投稿数:<%= user.subject_posts.count %></span>
+<span clas = "post_count">ひとこと投稿数:<%= user.reply_posts.count %></span>
+<span clas = "post_count">フィードバック投稿数:<%= user.feedback_posts.count %></span>

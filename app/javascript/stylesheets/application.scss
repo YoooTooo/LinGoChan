@@ -1,6 +1,7 @@
 @import './bootstrap_custom.scss';
 
 /*ページ全体に関するCSS*/
+  /*home及びuser#showの上部*/
 .upper_info{
   text-align: center;
 }
@@ -22,6 +23,7 @@
 .self_introduction{
   margin: 25px;
   border: solid 1px #dcdcdc;
+  border-radius: 10px;
   height: 250px;
 }
 
@@ -83,7 +85,7 @@
   /*ログイン系のボタン*/
 
   /*一般ボタン*/
-.general_button{
+.general_button2{
   display: block;
   text-decoration: none;
   text-align: center;
@@ -94,15 +96,33 @@
   margin: 10px;
 }
 
-.general_button:hover{
+.general_button2:hover{
   background-color: #f9c500;
+}
+
+.general_button{
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  color: #ffffff;
+  background-color: #2e8b57; /*seagreen*/
+  border-radius: 5px;
+  -weabkit-transition: all 0.5s;
+  transition: all 0.5s;
+  margin: 10px;
+}
+
+.general_button:hover{
+  background-color: #3cb371; /*mediumseagreen*/;
+  color: #ffffff;
 }
 
 /*一般じゃないボタン*/
 .ungeneral_button{
   text-decoration: none;
   text-align: center;
-  background-color: #FFA500;
+  color: #ffffff;
+  background-color: #2e8b57; /*seagreen*/
   border-radius: 5px;
   -weabkit-transition: all 0.5s;
   transition: all 0.5s;
@@ -110,7 +130,8 @@
 }
 
 .ungeneral_button:hover{
-  background-color: #f9c500;
+  background-color: #3cb371; /*mediumseagreen*/;
+  color: #ffffff;
 }
 
 
@@ -263,44 +284,3 @@ height:50px;
       transition: background-color 0.1s linear; /* 追加 */
 }
 /*フッターここまで*/
-
-/*タブ部分について*/
-.tab_area{font-size:0; margin:0 10px;}
-.tab_a{
-  width:150px;
-  margin:0 5px;
-  display:inline-block;
-  padding:12px 0;
-  color:#ffffff;
-  background-color: #2e8b57; /*seagreen*/
-  text-align:center;
-  font-size:13px;
-  cursor:pointer;
-  transition:ease 0.2s opacity;
-  border: solid 1px #808080; /*darkgray*/
-  opacity: 0.9;
-}
-.tab_a:hover{opacity:0.5;}
-.tab_a:active{
-  background-color:rgba(245,245,245,0.9);
-}
-.panel_area{
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-bottom: 15px;
-  background-color:rgba(245,245,245,0.9);
-  border-bottom : solid 1px #808080; /*darkgray*/
-  border-right : solid 1px #808080; /*darkgray*/
-  border-left : solid 1px #dcdcdc; /*gainsboro*/
-  color: #2e8b57; /*seagreen*/
-}
-
-.title_letter{
-  padding: 0px 2px 2px 2px;
-  margin: 10px 3px 3px 3px;
-  background-color: #ffffff;
-  display: inline-block;
-  border-bottom : solid 1px #808080; /*darkgray*/
-  border-right : solid 1px #808080; /*darkgray*/
-  opacity: 0.8;
-}

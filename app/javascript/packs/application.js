@@ -7,6 +7,7 @@ import 'bootstrap';
 import '../stylesheets/application.scss';
 import '../stylesheets/staticpages.scss';
 import '../stylesheets/userpages.scss';
+import '../stylesheets/posts.scss';
 import './bootstrap_custom.js'
 
 require("@rails/ujs").start()

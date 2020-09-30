@@ -1,4 +1,5 @@
-<%#homeに関して%>
+<%#タブの下側homeとuser#show用%>
+
 <div class="tab-content panel_area">
 
   <div id="subject_posts" class="tab-pane active tab_panel">
@@ -12,8 +13,11 @@
               (<%= @user.subject_posts.count %>)
             <% end %>
           </h3>
-          
-          <%= render "shared/subject_feed", subject_posts: @user.subject_posts %>
+          <div class = "row">
+            <div class = all_posts_container>
+              <%= render "shared/subject_feed", subject_posts: @user.subject_posts %>
+            </div>
+          </div>
       <% end %>
   </div>
 
@@ -28,7 +32,9 @@
              (<%= @user.reply_posts.count %>)
           <% end %>
         </h3>
-        <%= render "shared/reply_feed", reply_posts: @user.reply_posts %>
+        <div class = all_posts_container>
+          <%= render "shared/reply_feed", reply_posts: @user.reply_posts %>
+        </div>
       <% end %>
   </div>
 
@@ -43,7 +49,9 @@
             (<%= @user.feedback_posts.count %>)
           <% end %>
         </h3>
-        <%= render "shared/feedback_feed", feedback_posts: @user.feedback_posts %>
+        <div class = all_posts_container>
+          <%= render "shared/feedback_feed", feedback_posts: @user.feedback_posts %>
+        </div>
       <% end %>
   </div>
 </div>
