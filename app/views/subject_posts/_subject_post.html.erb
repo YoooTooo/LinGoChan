@@ -2,9 +2,13 @@
   <div class = "subject_post">
 
     <div id="subject_post-<%= subject_post.id %>">
-      <%= render 'shared/post_image', post: subject_post %>
 
-      <div>
+      <div class = "post_image">
+        <%= render 'shared/post_image', post: subject_post %>
+        <span>のお題</span>
+      </div>
+
+      <div class = "subject_post_cintainer">
         <%= link_to(subject_post_path(subject_post), class: 'subject-content') do %>
           <%  if subject_post.img? %>
             <%= image_tag(subject_post.img.url, class: 'subject_image')%>

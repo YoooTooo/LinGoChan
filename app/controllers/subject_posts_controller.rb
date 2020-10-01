@@ -5,7 +5,7 @@ class SubjectPostsController < ApplicationController
 
   def create
     @subject_post = current_user.subject_posts.build(subject_post_params)
-      tag_list = params[:subject_post][:tag_name].split(nil)
+      tag_list = params[:subject_post][:tag_name].gsub("　", " ").split(" ")
     if @subject_post.save
        @subject_post.save_tag(tag_list)
       flash[:success] = "投稿完了!"

@@ -3,16 +3,18 @@
 
 <br>
 
-<span class = tag_list>
+<span class = "tag_list">
 <ul>
 <% if subject_post.tags.present? %>
   <% subject_post.tags.each do |list| %>
-      <li class = tag_align>
-        <%= link_to list.tag_name, tag_subject_posts_path(tag_id: list.id) %>
+    <span class = "tag_set">
+      <li class = "tag_align">
+        <%= link_to list.tag_name, "#", {class: "tag_unit"} %>
         <% if logged_in? %>
           <%= button_to '×', "/tags/#{list.id}", {method: :delete, class: "tag_delete_button", form: {style: 'display:inline;'}} %>
         <% end %>
       </li>
+    </span>
       <%#= "(#{list.subject_posts.count})" %>
   <% end %>
 <% end %>

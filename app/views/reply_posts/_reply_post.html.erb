@@ -11,7 +11,11 @@
 
     <div class = "reply_post">
       <div id="reply_post-<%= reply_post.id %>">
-        <%= render 'shared/post_image', post: reply_post %>
+
+        <div class = "post_image">
+          <%= render 'shared/post_image', post: reply_post %>
+          <span>のひとこと</span>
+        </div>
 <br>
         <div class = "reply_content">
           <%= reply_post.content %>

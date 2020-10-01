@@ -1,5 +1,5 @@
 <%#投稿の左側にある顔写真%>
-<div class = "post_image">
+<span class = "post_image_unit">
   <%= link_to gravatar_for(post.user, size: 50), post.user, {class: "user_image"} %>
   <span class="user"><%= link_to post.user.name, post.user %></span>
-</div>
+</span>

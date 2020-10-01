@@ -8,7 +8,11 @@
 
     <div class = "feedback_post">
       <div id="feedback_post-<%= feedback_post.id %>">
-      <%= render 'shared/post_image', post: feedback_post %>
+
+      <div class = "post_image">
+        <%= render 'shared/post_image', post: feedback_post %>
+        <span>のフィードバック</span>
+      </div>
   <br>
         <div class = "feedback_content_box">
           <div class = "feedback_content">

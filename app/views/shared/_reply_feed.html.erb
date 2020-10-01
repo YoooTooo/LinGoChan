@@ -1,7 +1,7 @@
 <% if @reply_posts.present? %>
   <div class="row sublect_posts">
     <% @reply_posts.each do |reply_post| %>
-    <div class = "col-md-6 post_item">
+    <div class = "col-xl-6 post_item">
       <%= render "reply_posts/reply_post", reply_post: reply_post %>
     </div>
     <% end %>
