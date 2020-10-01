@@ -29,6 +29,12 @@ class SubjectPostsController < ApplicationController
     @subject_post_tags = @subject_post.tags           #クリックした投稿に紐付けられているタグを取得。
   end
 
+  def destroy
+    @subject_post.destroy
+    flash[:success] = "投稿を消去しました"
+    redirect_to request.referrer || root_url
+  end
+
   private
     def subject_post_params
      params.require(:subject_post).permit(:img)

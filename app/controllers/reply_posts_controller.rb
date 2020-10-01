@@ -26,6 +26,12 @@ class ReplyPostsController < ApplicationController
     @feedback_post = @reply_post.feedback_posts.build
   end
 
+  def destroy
+    @reply_post.destroy
+    flash[:success] = "投稿を消去しました"
+    redirect_to request.referrer || root_url
+  end
+
   private
     def reply_post_params
     params.require(:reply_post).permit(:content, :subject_post_id)

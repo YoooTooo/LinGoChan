@@ -33,7 +33,16 @@
             </div>
           <% end %>
 
-
+  <%# もし今のページがreply_postのshowのページで、現在のユーザーが管理者のとき消せる %>
+          <div class = "admin_area">
+            <% if current_page?("/reply_posts/#{reply_post.id}") %>
+              <span class = "delete">
+                <% if current_user.admin? %>
+                  <%= button_to "消去", @reply_post, {method: :delete, class: "general_button", data: { confirm: "本当に消去してもいいですか？" }} %>
+                <% end %>
+              </span>
+            <% end %>
+          </div>
 
       </div>
     </div>

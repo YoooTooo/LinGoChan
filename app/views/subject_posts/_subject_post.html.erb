@@ -22,5 +22,16 @@
       <%= render "/shared/subject_post_tag_list", subject_post: subject_post  %>
     </div>
 
+<%# もし今のページがsubject_postのshowのページで、現在のユーザーが管理者のとき消せる %>
+    <div class = "admin_area">
+      <% if current_page?("/subject_posts/#{subject_post.id}") %>
+        <span class = "delete">
+          <% if current_user.admin? %>
+            <%= button_to "消去", @subject_post, {method: :delete, class: "general_button", data: { confirm: "本当に消去してもいいですか？" }} %>
+          <% end %>
+        </span>
+      <% end %>
+    </div>
+
   </div>
 </div>
