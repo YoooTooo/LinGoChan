@@ -22,5 +22,9 @@
       <%= render "/shared/subject_post_tag_list", subject_post: subject_post  %>
     </div>
 
+<%# もし今のページがsubject_postのshowのページで、現在のユーザーが管理者のとき消せる %>
+
+    <%= render 'shared/admin_delete_area', {post: subject_post, posts: "subject_posts"} %>
+
   </div>
 </div>

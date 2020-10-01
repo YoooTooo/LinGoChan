@@ -33,7 +33,8 @@
             </div>
           <% end %>
 
-
+  <%# もし今のページがreply_postのshowのページで、現在のユーザーが管理者のとき消せる %>
+          <%= render 'shared/admin_delete_area', {post: reply_post, posts: "reply_posts"} %>
 
       </div>
     </div>

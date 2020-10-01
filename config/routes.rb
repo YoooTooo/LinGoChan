@@ -18,8 +18,8 @@ Rails.application.routes.draw do
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
 
-  resources :subject_posts,       only: [:create, :show, :index]
-  resources :reply_posts,         only: [:create, :show, :index]
+  resources :subject_posts,       only: [:create, :show, :index, :destroy]
+  resources :reply_posts,         only: [:create, :show, :index, :destroy]
   resources :feedback_posts,      only: [:create, :show, :destroy, :edit, :index, :update]
 
   resources :tags,                only: [:destroy, :create] do

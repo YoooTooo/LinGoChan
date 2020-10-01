@@ -23,11 +23,15 @@
           <%= render 'shared/timestamp', post: feedback_post %>
         </div>
 
+      <%# もし今のページがsubject_postのshowのページで、現在のユーザーが管理者のとき消せる %>
+        <%= render 'shared/admin_delete_area', {post: feedback_post, posts: "feedback_posts"} %>
+
+
   <%#もし、フィードバックのshow(詳細ページ)でcurrent_userだったら消去と編集、それ以外だったら「詳しく見る」を表示%>
         <div class = detail_or_edit_delete>
           <% if current_page?("/feedback_posts/#{feedback_post.id}") %>
             <span class = "delete">
-              <% if current_user?(@feedback_post.user) %>
+              <% if current_user?(@feedback_post.user) && !current_user.admin? %>
                 <%= button_to "消去", @feedback_post, {method: :delete, class: "general_button", data: { confirm: "本当に消去してもいいですか？" }} %>
               <% end %>
             </span>

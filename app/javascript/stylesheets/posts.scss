@@ -58,6 +58,11 @@
     border-left : solid 1px #dcdcdc; /*gainsboro*/
 }
 
+/*タイムスタンプ*/
+.timestamp{
+  margin-left: 10px;
+}
+
 #timestamp{
   background-color:rgb(208,226,190); /*https://www.i-iro.com/dic/usumidori*/
   color: #ffffff;
@@ -93,4 +98,10 @@
 .post_image{
   padding: 3px;
   background-color:rgb(208,226,190); /*https://www.i-iro.com/dic/usumidori*/
+
+}
+
+/*adminのみが削除出来るエリア*/
+.admin_area{
+  background-color: #f0908d; /*薄紅*/
 }
