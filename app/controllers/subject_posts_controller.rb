@@ -1,8 +1,7 @@
 class SubjectPostsController < ApplicationController
   before_action :logged_in_user, only: [:create, :show]
   before_action :admin_user,     only: [:destroy]
-#subject_postは画像削除を実装しない。
-#一覧(index)は非ログインユーザでも見れる。
+#一覧(index)は非ログインユーザでも見れるようにしたい(後々)
 
   def create
     @subject_post = current_user.subject_posts.build(subject_post_params)

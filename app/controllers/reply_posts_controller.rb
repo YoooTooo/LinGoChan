@@ -1,6 +1,7 @@
 class ReplyPostsController < ApplicationController
   before_action :logged_in_user, only: [:create]
   before_action :admin_user,     only: [:destroy]
+
   def create
     @reply_post = current_user.reply_posts.build(reply_post_params)
     if @reply_post.save
