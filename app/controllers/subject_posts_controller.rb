@@ -1,5 +1,6 @@
 class SubjectPostsController < ApplicationController
   before_action :logged_in_user, only: [:create, :show]
+  before_action :admin_user,     only: [:destroy]
 #subject_postは画像削除を実装しない。
 #一覧(index)は非ログインユーザでも見れる。
 
@@ -30,9 +31,10 @@ class SubjectPostsController < ApplicationController
   end
 
   def destroy
+    @subject_post = SubjectPost.find(params[:id])
     @subject_post.destroy
     flash[:success] = "投稿を消去しました"
-    redirect_to request.referrer || root_url
+    redirect_to root_url
   end
 
   private

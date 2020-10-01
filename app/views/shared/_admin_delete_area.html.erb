@@ -1,0 +1,36 @@
+<div class = "admin_area">
+
+  <% if posts == "subject_posts" %>
+    <% if current_page?("/subject_posts/#{post.id}") %>
+    <span class = "delete">
+      <% if current_user.admin? %>
+        <%= button_to "消去", post, {method: :delete, class: "general_button",
+                                data: { confirm: "本当に消去してもいいですか？" }, } %>
+      <% end %>
+    </span>
+  <% end %>
+
+  <% elsif posts == "reply_posts" %>
+    <% if current_page?("/reply_posts/#{post.id}") %>
+    <span class = "delete">
+      <% if current_user.admin? %>
+        <%= button_to "消去", post, {method: :delete, class: "general_button",
+                                data: { confirm: "本当に消去してもいいですか？" }, } %>
+      <% end %>
+    </span>
+  <% end %>
+
+  <% elsif posts == "feedback_posts" %>
+    <% if current_page?("/feedback_posts/#{post.id}") %>
+    <span class = "delete">
+      <% if current_user.admin? %>
+        <%= button_to "消去", post, {method: :delete, class: "general_button",
+                                data: { confirm: "本当に消去してもいいですか？" }, } %>
+      <% end %>
+    </span>
+   <% end %>
+
+<% end %>
+
+
+</div>

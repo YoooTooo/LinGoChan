@@ -1,7 +1,7 @@
 class FeedbackPostsController < ApplicationController
-
   before_action :logged_in_user, only: [:create, :destroy, :edit]
-  before_action :correct_user, only: [:destroy, :edit, :update]
+  before_action :correct_user, only: [:edit, :update]
+  before_action :correct_user_or_admin_user, only: [:destroy]
 
   def create
     @feedback_post = current_user.feedback_posts.build(feedback_post_params)
@@ -18,7 +18,7 @@ class FeedbackPostsController < ApplicationController
   def destroy
     @feedback_post.destroy
     flash[:success] = "投稿を消去しました"
-    redirect_to request.referrer || root_url
+    redirect_to root_url
   end
 
   def edit
@@ -52,5 +52,14 @@ private
   def correct_user
       @feedback_post = current_user.feedback_posts.find_by(id: params[:id])
       redirect_to root_url if @feedback_post.nil?
+  end
+
+  def correct_user_or_admin_user
+    @feedback_post = current_user.feedback_posts.find_by(id: params[:id])
+    admin_boolean = current_user.admin?
+    if admin_boolean == true
+      @feedback_post = FeedbackPost.find_by(id: params[:id])
     end
+    redirect_to root_url if @feedback_post.nil? && admin_boolean == false
+  end
 end
