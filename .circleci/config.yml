@@ -1,15 +1,35 @@
 version: 2.1
 orbs:
-  ruby: circleci/ruby@0.1.2 
+  ruby: circleci/ruby@0.1.2
 
 jobs:
   build:
-    docker:
-      - image: circleci/ruby:2.6.3-stretch-node
-    executor: ruby/default
-    steps:
+    machine:
+        image: circleci/classic:edge
+      steps:
       - checkout
       - run:
+          name: docker-compose build
+          command: docker-compose build
+      - run:
+          name: docker-compose up
+          command: docker-compose up -d
+      - run:
+          name: sleep for waiting launch db
+          command: sleep 1
+      - run:
           name: Which bundler?
-          command: bundle -v
-      - ruby/bundle-install
+          command:docker-compose run app bundle -v
+      - run:
+          name: "before_test: setup db"
+          command: docker-compose run app rails db:create db:migrate
+
+#      - run:
+#          command: |
+#            mkdir /tmp/test-results
+#            TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | \
+#              circleci tests split --split-by=timings)"
+
+      - run:
+          name: docker-compose down
+          command: docker-compose down

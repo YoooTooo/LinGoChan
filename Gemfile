@@ -107,5 +107,13 @@ end
 #envファイル作成のためのgem
 gem 'dotenv-rails'
 
+#カピストラーノのためのgem
+group :development, :test do
+  gem 'capistrano'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+end
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
