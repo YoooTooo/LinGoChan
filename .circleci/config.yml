@@ -19,7 +19,7 @@ jobs:
           command: sleep 1
       - run:
           name: Which bundler?
-          command:docker-compose run app bundle -v
+          command: docker-compose run app bundle -v
       - run:
           name: "before_test: setup db"
           command: docker-compose run app rails db:create db:migrate
