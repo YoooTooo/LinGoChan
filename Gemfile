@@ -59,7 +59,11 @@ gem 'rubocop-rspec'
 
 # rspecの導入
 group :development, :test do
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 3.6'
+end
+
+group :development, :test do
+  gem 'spring-commands-rspec'
 end
 
 #assignsメソッドを使用するために

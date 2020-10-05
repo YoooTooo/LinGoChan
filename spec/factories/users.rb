@@ -1,4 +1,4 @@
-require 'rails_helper'
+
 
 FactoryBot.define do
   factory :user, class: User  do
