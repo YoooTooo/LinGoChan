@@ -4,8 +4,10 @@
 <%= render "shared/breadcrumbs" %>
 
 <div class="row">
-  <div class="col-md-6 col-md-offset-3 edit_container">
+  <div class="col-md-6 col-md-offset-3 form_container">
+
     <h1>プロフィールの設定</h1>
+    
     <%= form_for(@user) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
         <%= f.label :name, "名前" %>
@@ -20,7 +22,7 @@
         <%= f.label :self_introduction, "自己紹介文を書きましょう" %>
               <%= f.text_area :self_introduction, class: 'form-control', id: 'user_introduction', placeholder: "国籍, 日本語のレベル, 趣味, 特技など..."%>
 
-        <div class = "edit_save">
+        <div class = "form_save">
           <%= f.submit "保存する！", class: "btn custom_button" %>
         </div>
     <% end %>

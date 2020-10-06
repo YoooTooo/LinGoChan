@@ -1,8 +1,10 @@
 <% provide(:title, 'Sign up') %>
-<h1>Sign up</h1>
 
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
+  <div class="col-md-6 col-md-offset-3 form_container">
+    
+    <h1>ユーザー登録</h1>
+
     <%= form_for(@user, url: signup_path) do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
 
@@ -18,7 +20,10 @@
       <%= f.label :password_confirmation, "パスワードをもう一度入れてください" %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
 
-      <%= f.submit "アカウントを作成する！", class: "btn btn-primary" %>
+      <div class = "form_save">
+      <%= f.submit "アカウントを作成！", class: "btn custom_button" %>
+      </div>
+
     <% end %>
   </div>
 </div>
