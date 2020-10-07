@@ -21,8 +21,4 @@ ADD Gemfile.lock /lingochan/Gemfile.lock
 RUN gem install bundler
 RUN bundle install
 
-Run mkdir /~
-Run mkdir /~/.ssh
-COPY  id_rsa.pub /~/.ssh/id_rsa.pub
-
 ADD . /lingochan
