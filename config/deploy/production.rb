@@ -65,4 +65,4 @@
 server '3.113.152.109', user: 'yoootooo', roles: %w{app db web}
 
 #デプロイするサーバーにsshログインする鍵の情報を記述
-set :ssh_options, keys: '/lingochan/public/yoootooo.pem'
+set :ssh_options, keys: '/root/.ssh/yoootooo.pem'

@@ -2,7 +2,7 @@
 lock "~> 3.14.1"
 
 set :application, "LinGoChan"
-set :repo_url, "git@github.com:YoooTooo/LinGoChan"
+set :repo_url, "git@github.com:YoooTooo/LinGoChan.git"
 set :branch, "master"
 
 # deploy先のディレクトリ。
