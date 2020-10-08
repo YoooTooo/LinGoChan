@@ -132,9 +132,9 @@ https://acrlog.org/2014/01/13/tales-of-the-undead-learning-theories-the-learning
 
 ☆バックエンド
 
-ruby 2.6.6
+・ruby 2.6.6
 
-Rails 6.0.3.2
+・Rails 6.0.3.2
 
 ☆フロントエンド
 
