@@ -8,10 +8,10 @@ set :branch, "master"
 # deploy先のディレクトリ。
 set :deploy_to, '/var/www/project/LinGoChan'
 
-# シンボリックリンクをはるフォルダ。(※後述)
+# シンボリックリンクをはるフォルダ。
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public')
 
-# 保持するバージョンの個数(※後述)
+# 保持するバージョンの個数
 set :keep_releases, 5
 
 # rubyのバージョン
@@ -22,6 +22,11 @@ set :rbenv_custom_path, '/home/yoootooo/.rbenv'
 
 #出力するログのレベル。
 set :log_level, :debug
+
+#sshキーのための記述, EC2のキーの所在を明記。root@8da3ac5aae89コンテナにおけるpath
+set :ssh_options, auth_methods: ['publickey'],
+                  keys: ['~/.ssh/yoootooo.pem'],
+                  forward_agent: true
 
 namespace :deploy do
   desc 'Restart application'
@@ -58,6 +63,8 @@ namespace :deploy do
     end
   end
 end
+
+
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
