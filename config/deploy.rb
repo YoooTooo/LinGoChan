@@ -29,6 +29,13 @@ namespace :deploy do
     invoke 'unicorn:restart'
   end
 
+#セキュリティのため、EC2の~/.bashrcに変数を記述
+ set :default_env, {
+  AWS_ACCESS_KEY_ID_MER60: 'AKIASDLZKCP23XTA3GOV',
+  AWS_SECRET_ACCESS_KEY_MER60: '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'
+}
+
+
   desc 'Create database'
   task :db_create do
     on roles(:db) do |host|
