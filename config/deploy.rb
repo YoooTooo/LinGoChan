@@ -24,9 +24,16 @@ set :rbenv_custom_path, '/home/yoootooo/.rbenv'
 set :log_level, :debug
 
 #sshキーのための記述, EC2のキーの所在を明記。root@8da3ac5aae89コンテナにおけるpath
-set :ssh_options, auth_methods: ['publickey'],
-                  keys: ['~/.ssh/yoootooo.pem'],
-                  forward_agent: true
+#set :ssh_options, auth_methods: ['publickey'],
+#                  keys: ['~/.ssh/yoootooo.pem'],
+#                  forward_agent: true
+
+#root@8da3ac5aae89コンテナにおけるsshキー, EC2のキーをagent-addする記述。ec2-user
+set :ssh_options, {
+  keys: %w{~/.ssh/yoootooo.pem ~/.ssh/id_rsa},
+  forward_agent: true,
+  auth_methods: %w{publickey}
+}
 
 namespace :deploy do
   desc 'Restart application'

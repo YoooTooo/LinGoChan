@@ -66,3 +66,11 @@ server '3.113.152.109', user: 'yoootooo', roles: %w{app db web}
 
 #デプロイするサーバーにsshログインする鍵の情報を記述
 set :ssh_options, keys: '/root/.ssh/yoootooo.pem'
+
+#root@8da3ac5aae89コンテナにおけるsshキー, EC2のキーをagent-addする記述。ec2-user
+set :ssh_options, {
+  user: 'yoootooo',
+  keys: %w{~/.ssh/yoootooo.pem ~/.ssh/id_rsa},
+  forward_agent: true,
+  auth_methods: %w{publickey}
+}
