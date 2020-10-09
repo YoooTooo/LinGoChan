@@ -2,46 +2,70 @@ require 'rails_helper'
 require 'pry'
 
 RSpec.describe "Edit", type: :system do
-  let(:customized_user) { FactoryBot.create(:customized_user) }
+  let(:user) { FactoryBot.create(:user) }
 
   # 編集に成功
   scenario "successful edit" do
-#    sign_in_as customized_use
     visit login_path
 
-    fill_in "session_email", with: customized_user.email
-    fill_in "session_password", with: customized_user.password
+    fill_in "session_email", with: user.email
+    fill_in "session_password", with: user.password
     click_button 'ログインする！'
-    expect(page).to have_text ("他のユーザー")
-    visit user_path(customized_user)
 
-    expect(current_path).to eq (user_path(customized_user))
+    visit user_path(user)
+    expect(current_path).to eq (user_path(user))
 
-    click_link "プロフィールの設定"
+    click_on('プロフィールの設定')
 
-    fill_in "メールアドレス", with: "edit@example.com"
-    # fill_in "パスワード", with: user.password, match: :first
-    # fill_in "パスワードをもう一度入れてください", with: "test123", match: :first
+    fill_in "user[email]", with: "edit@example.com"
+    fill_in "user[email]", with: "testpass"
+    fill_in "user[password_confirmation]", with: "testpass"
+    fill_in 'user[self_introduction]', with: '国籍：　日本人,　日本語レベル：　ネイティブレベル'
+
     click_button "保存する！"
 
     expect(current_path).to eq user_path(user)
     expect(user.reload.email).to eq "edit@example.com"
-    # expect(user.reload.password).to eq "test123"
+    expect(user.reload.password).to eq "testpass"
   end
 
-  # ユーザーは編集に失敗する
-  scenario "unsuccessful edit" do
-    sign_in_as user
-    visit user_path(user)
-    click_link "アカウント"
-    click_link "プロフィールの設定"
+  # 編集に失敗
+  scenario "unsuccessful edit because of too short password" do
 
-    fill_in "メールアドレス", with: "foo@invalid"
-    fill_in "パスワード", with: "foo", match: :first
-    fill_in "パスワードをもう一度入れてください", with: "bar"
+    visit login_path
+    fill_in "session_email", with: user.email
+    fill_in "session_password", with: user.password
+    click_button 'ログインする！'
+
+    visit user_path(user)
+
+    click_on ('プロフィールの設定')
+
+    fill_in "メールアドレス", with: "hog@invalid"
+    fill_in "パスワード", with: "hog", match: :first
+    fill_in "パスワードをもう一度入れてください", with: "hog"
     click_button "保存する！"
 
-    expect(user.reload.email).to_not eq "foo@invalid"
+    expect(user.reload.email).to_not eq "hog@invalid"
+  end
+
+  scenario "unsuccessful edit because of unmatch between pass and conf" do
+
+    visit login_path
+    fill_in "session_email", with: user.email
+    fill_in "session_password", with: user.password
+    click_button 'ログインする！'
+
+    visit user_path(user)
+
+    click_on ('プロフィールの設定')
+
+    fill_in "メールアドレス", with: "hogehoge@invalid"
+    fill_in "パスワード", with: "hogehoge", match: :first
+    fill_in "パスワードをもう一度入れてください", with: "hagehage"
+    click_button "保存する！"
+
+    expect(user.reload.email).to_not eq "hogehoge@invalid"
   end
 
 end
