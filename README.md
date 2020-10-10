@@ -167,11 +167,11 @@ https://acrlog.org/2014/01/13/tales-of-the-undead-learning-theories-the-learning
 
 ・Circle CI
 
+・Capistrano
+
 ・tera term
 
 ・mysql 5.7
-
-・Capistrano
 
 ・git version 2.9.0
 
@@ -192,9 +192,7 @@ https://acrlog.org/2014/01/13/tales-of-the-undead-learning-theories-the-learning
 
 ・ページネーション
 
-・ユーザプロフィールの編集
-
-・友達機能
+・ユーザプロフィールの編集、削除
 
 ・画像投稿
 
@@ -202,7 +200,11 @@ https://acrlog.org/2014/01/13/tales-of-the-undead-learning-theories-the-learning
 
 ・画像投稿への返信への返信
 
+・画像投稿への返信への返信
+
 ・画像投稿への返信への返信の編集
+
+・各投稿の削除
 
 ・簡単ログイン
 
