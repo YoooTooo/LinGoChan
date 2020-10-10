@@ -24,11 +24,11 @@ jobs:
           name: "before_test: setup db"
           command: docker-compose run app rails db:create db:migrate
 
-#      - run:
-#          command: |
-#            mkdir /tmp/test-results
-#            TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | \
-#              circleci tests split --split-by=timings)"
+      - run:
+          command: |
+            mkdir /tmp/test-results
+            TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | \
+              circleci tests split --split-by=timings)"
 
       - run:
           name: docker-compose down
