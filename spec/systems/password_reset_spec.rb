@@ -1,9 +1,18 @@
 require 'rails_helper'
 
-RSpec.describe "User pages", type: :request do
+RSpec.describe "password reset", type: :system do
   let(:user) { FactoryBot.create(:user) }
 
   include ActiveJob::TestHelper
+
+  it "push forget password" do
+    visit login_path
+    click_on ("パスワードを忘れた")
+    fill_in 'password_reset[email]', with: user.email
+    click_on ("commit")
+    expect(page).to have_content("パスワードリセットのためのメールを送信しました。")
+  end
+
 
   it "resets password" do
     perform_enqueued_jobs do
