@@ -22,7 +22,9 @@ jobs:
           command: docker-compose exec app bundle -v
       - run:
           name: "before_test: setup db"
-          command: docker-compose exec app rails db:create db:migrate
+          command: docker-compose exec app rails db:create
+          command: docker-compose exec app db:migrate rails
+          command: docker-compose exec app db:migrate RAILS_ENV=test
 
       - run:
           command: |
