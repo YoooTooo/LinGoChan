@@ -19,16 +19,20 @@ jobs:
           command: sleep 3m
       - run:
           name: Which bundler?
-          command: docker-compose run app bundle -v
+          command: docker-compose exec app bundle -v
       - run:
           name: "before_test: setup db"
-          command: docker-compose run app rails db:create db:migrate
+          command: docker-compose exec app rails db:create db:migrate
 
       - run:
           command: |
             mkdir /tmp/test-results
             TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | \
               circleci tests split --split-by=timings)"
+
+      - run:
+          name: Rpec test
+          command: docker-compose exec app rails spec
 
       - run:
           name: docker-compose down
