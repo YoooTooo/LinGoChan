@@ -104,4 +104,8 @@ end
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  #テスト環境のDBのために
+  ActiveRecord::Migration.maintain_test_schema!
+
 end

@@ -9,12 +9,14 @@ FactoryBot.define do
     activated { true }
   end
 
-  factory :not_activated_user, class: User do
-    name { 'Example User' }
-    sequence(:email) { |n| "user_#{n}@example.com" }
-    password { 'password' }
-    password_confirmation { 'password' }
-  end
+  factory :administrator, class: User do
+      name { 'administrator' }
+      email { 'admin@saikyo.com' }
+      password { 'administrator' }
+      password_confirmation { 'administrator' }
+      admin { 'true' }
+      activated { true }
+    end
 
     factory :other_user, class: User do
         name { 'Sato jirou' }
@@ -35,16 +37,6 @@ FactoryBot.define do
           activated { true }
           activation_digest { authenticated?(:activation, 999) }
           activated_at { Time.zone.now }
-        end
-
-      factory :sing_up_user, class: User do
-          name { '' }
-          email { '' }
-          password { '' }
-          password_confirmation { '' }
-          admin { '' }
-          activated { true }
-          activated_digest {user.authenticated?(:activation, params[:id])}
         end
 
 end

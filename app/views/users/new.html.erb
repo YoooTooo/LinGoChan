@@ -2,7 +2,7 @@
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3 form_container">
-    
+
     <h1>ユーザー登録</h1>
 
     <%= form_for(@user, url: signup_path) do |f| %>
@@ -23,6 +23,8 @@
       <div class = "form_save">
       <%= f.submit "アカウントを作成！", class: "btn custom_button" %>
       </div>
+
+      <p><%= link_to "既にアカウントをお持ちの方はこちら", login_path, {class: "main-menu"} %></p>
 
     <% end %>
   </div>
