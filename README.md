@@ -167,11 +167,11 @@ https://acrlog.org/2014/01/13/tales-of-the-undead-learning-theories-the-learning
 
 ・Circle CI
 
+・Capistrano
+
 ・tera term
 
 ・mysql 5.7
-
-・Capistrano
 
 ・git version 2.9.0
 
@@ -192,9 +192,7 @@ https://acrlog.org/2014/01/13/tales-of-the-undead-learning-theories-the-learning
 
 ・ページネーション
 
-・ユーザプロフィールの編集
-
-・友達機能
+・ユーザプロフィールの編集、削除
 
 ・画像投稿
 
@@ -202,7 +200,11 @@ https://acrlog.org/2014/01/13/tales-of-the-undead-learning-theories-the-learning
 
 ・画像投稿への返信への返信
 
+・画像投稿への返信への返信
+
 ・画像投稿への返信への返信の編集
+
+・各投稿の削除
 
 ・簡単ログイン
 
@@ -217,11 +219,39 @@ https://acrlog.org/2014/01/13/tales-of-the-undead-learning-theories-the-learning
 10, 代表的な使用gem等
 ------
 
-・Rspec
+・Rspec (rspec-rails)
 
 ・Capybara
 
 ・Rubocop
+
+・byebug
+
+・webdrivers
+
+・factory_bot_rails
+
+・rails-i18n
+
+・kaminari
+
+・letter_opener_web
+
+・pry-byebug
+
+・carrierwave
+
+・mini_magick
+
+・fog-aws
+
+・gretel
+
+・unicorn
+
+・dotenv-rails
+
+・capistrano
 
 -----------------------------------------------------
 
@@ -231,3 +261,6 @@ https://acrlog.org/2014/01/13/tales-of-the-undead-learning-theories-the-learning
 ・atom
 
 -----------------------------------------------------
+
+12, サービスの使い方(詳細)
+--------
