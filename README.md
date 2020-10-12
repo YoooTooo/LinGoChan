@@ -261,3 +261,6 @@ https://acrlog.org/2014/01/13/tales-of-the-undead-learning-theories-the-learning
 ・atom
 
 -----------------------------------------------------
+
+12, サービスの使い方(詳細)
+--------
