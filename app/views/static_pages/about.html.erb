@@ -1,35 +1,49 @@
 <% provide(:title, "LinGoChanって何") %>
 
 
-<div class = "about_container">
+<div class = "about_container row">
 
-  <h1 class = "about_title">LinGoChanって何？</h1>
+  <div class = "about_body col-md-12">
 
-  <div class = "about_body">
+    <h1 class = "about_title">LinGoChanって何？</h1>
+
+    <p>LinGoChanとは3種類の投稿を使って日本語を学べるサイトです</p>
+
     <div class = "about_head">
+
       <h2 class = "about_quasititle">3つの投稿手段で日本語を学ぼう！</h2>
 
-      <p>1,  画像による、お題投稿</p>
+      <div class = "about_statements">
+        <p class = about_statement>1, お題</p>
 
-      <p>2, お題に対するコメント</p>
+        <p class = about_statement>2, ひとこと</p>
 
-      <p>3, コメントに対するフィードバック</p>
+        <p class = about_statement>3, フィードバック</p>
+      </div>
+
     </div>
 
+    <div class = "about_subject_post about_each_post">
+
+      <p  class = "about_quasiquasititle">1, 「お題」を投稿しよう！</p>
+      <%= image_tag("subject_post.png", alt: "LimGoChan-subject_post", class: 'about_size') %>
+
+    </div>
+
+
+    <div class = "about_reply_post about_each_post">
+      <p  class = "about_quasiquasititle">1, お題にたいして「ひとこと」を書こう！</p>
+      <%= image_tag("reply_post.png", alt: "LimGoChan-reply_post", class: 'about_size')%>
+    </div>
+
+    <div class = "about_feedback_post about_each_post">
+      <p  class = "about_quasiquasititle">3, 「ひとこと」にたいして「フィードバック」をしよう！</p>
+      <%= image_tag("feedback_post.png", alt: "LimGoChan-feedback_post", class: 'about_size')%>
+    </div>
+
+      <p  class = "about_quasiquasititle">「フィードバック」は編集したり、削除したりできます</p>
     <div class = "about_subject_post">
-      <%= image_tag class: 'about_size' ("subject_post.png", alt: "LimGoChan-subject_post")%>
-    </div>
-
-    <div class = "about_reply_post">
-      <%= image_tag class: 'about_size' ("reply_post.png", alt: "LimGoChan-reply_post")%>
-    </div>
-
-    <div class = "about_feedback_post">
-      <%= image_tag class: 'about_size' ("feedback_post.png", alt: "LimGoChan-feedback_post")%>
-    </div>
-
-    <div class = "about_subject_post">
-      <%= image_tag class: 'about_size' ("edit_delete.png", alt: "LimGoChan-edit_delete")%>
+      <%= image_tag("edit_delete.png", alt: "LimGoChan-edit_delete", class: 'about_size')%>
     </div>
 
   </div>
