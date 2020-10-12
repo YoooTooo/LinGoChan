@@ -25,6 +25,10 @@ jobs:
           command: docker-compose exec app rails db:create db:migrate db:migrate RAILS_ENV=test
 
       - run:
+          name: "before_test: setup db"
+          command: docker-compose exec app rails RAILS_ENV=test bundle exec rails webpacker:compile
+
+      - run:
           command: |
             mkdir /tmp/test-results
             TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | \
