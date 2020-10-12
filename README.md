@@ -265,4 +265,4 @@ https://acrlog.org/2014/01/13/tales-of-the-undead-learning-theories-the-learning
 12, サービスの使い方(詳細)
 --------
 
-![画像の説明](images/about_page.png "about_page")
+![LinGoChanの使い方](images/about_page.png)
