@@ -219,11 +219,39 @@ https://acrlog.org/2014/01/13/tales-of-the-undead-learning-theories-the-learning
 10, 代表的な使用gem等
 ------
 
-・Rspec
+・Rspec (rspec-rails)
 
 ・Capybara
 
 ・Rubocop
+
+・byebug
+
+・webdrivers
+
+・factory_bot_rails
+
+・rails-i18n
+
+・kaminari
+
+・letter_opener_web
+
+・pry-byebug
+
+・carrierwave
+
+・mini_magick
+
+・fog-aws
+
+・gretel
+
+・unicorn
+
+・dotenv-rails
+
+・capistrano
 
 -----------------------------------------------------
 
