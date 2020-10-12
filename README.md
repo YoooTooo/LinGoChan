@@ -23,10 +23,14 @@
 
 11, 開発エディター
 
+12,【サービスの使い方(詳細)】
+
 -----------------------------------------------------
 
 1, 【コンセプト】
 ---
+
+![LinGoChanの使い方](https://github.com/YoooTooo/LinGoChan/blob/master/app/assets/images/LinGoChan.png)
 
 日本語学習者向けの日本語学習サービス
 
@@ -262,7 +266,7 @@ https://acrlog.org/2014/01/13/tales-of-the-undead-learning-theories-the-learning
 
 -----------------------------------------------------
 
-12, サービスの使い方(詳細)
+12, 【サービスの使い方(詳細)】
 --------
 
 ![LinGoChanの使い方](https://github.com/YoooTooo/LinGoChan/blob/master/app/assets/images/about_page.png)
