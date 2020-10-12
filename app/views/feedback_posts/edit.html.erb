@@ -1,48 +1,9 @@
 <% provide(:title, "Edit feedback_post") %>
 <h1>フィードバックの編集</h1>
 
-<div class = "container">
-  <div class = "subject_post">
-    <div class = "subject_post">
-
-      <li id="subject_post-<%= @feedback_post.reply_post.subject_post.id %>">
-        <%= link_to gravatar_for(@feedback_post.reply_post.subject_post.user, size: 50), @feedback_post.reply_post.subject_post.user %>
-        <span class="user"><%= link_to @feedback_post.reply_post.subject_post.user.name, @feedback_post.reply_post.subject_post.user %></span>
-
-        <div>
-          <%= link_to(subject_post_path(@feedback_post.reply_post.subject_post), class: 'subject-content') do %>
-          <%= image_tag @feedback_post.reply_post.subject_post.img.url if @feedback_post.reply_post.subject_post.img? %>
-          <% end %>
-        </div>
-
-        <span class="timestamp">
-           <%= time_ago_in_words(@feedback_post.reply_post.subject_post.created_at) %>前
-        </span>
-      </li>
-
-    </div>
-  </div>
-
-  <div class = "reply_post">
-
-    <li id="reply_post-<%= @feedback_post.reply_post.id %>">
-      <%= link_to gravatar_for(@feedback_post.reply_post.user, size: 50), @feedback_post.reply_post.user %>
-      <span class="user"><%= link_to @feedback_post.reply_post.user.name, @feedback_post.reply_post.user %></span>
-
-      <div>
-        <%= link_to(reply_post_path(@feedback_post.reply_post), class: 'reply-content') do %>
-        <div>
-          <%= @feedback_post.reply_post.content %>
-        </div>
-        <% end %>
-      </div>
-
-      <span class="timestamp">
-         <%= time_ago_in_words(@feedback_post.reply_post.created_at) %>前
-      </span>
-    </li>
-  </div>
-
+<div class = "reply_post-form">
+  <%= render "/reply_posts/reply_post", reply_post: @feedback_post.reply_post %>
+</div>
 
   <div class = "feedback_form">
     <%= form_for(@feedback_post) do |f| %>
@@ -53,5 +14,3 @@
       <%= f.submit "投稿する！", class: "btn custom_button" %>
     <% end %>
   </div>
-
-</div>

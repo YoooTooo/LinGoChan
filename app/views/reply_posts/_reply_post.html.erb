@@ -25,9 +25,11 @@
         <%= render 'shared/timestamp', post: reply_post %>
 
   <%#もし、ひとことのshow(詳細ページ)だったら「フィードバックをする！」ボタンは表示しない%>
-          <% if current_page?("/reply_posts/#{reply_post.id}") %>
+          <% if @feedback_post.present? && current_page?("/feedback_posts/#{@feedback_post.id}/edit")%>
             <div></div>
-          <%else%>
+          <% elsif current_page?("/reply_posts/#{reply_post.id}") %>
+            <div></div>
+          <% else %>
             <div class = "feedback_button_field">
               <%= button_to  "フィードバックをする！", reply_post_path(reply_post), {method: :get, class: "general_button"} %>
             </div>
