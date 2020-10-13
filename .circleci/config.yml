@@ -2,12 +2,14 @@ version: 2.1
 orbs:
   ruby: circleci/ruby@0.1.2
 
+version: 2
 jobs:
   build:
-    machine:
-      image: circleci/classic:edge
+    docker:
+      
+      - image: circleci/ruby:2.6.0-node-browsers
+        environment:
 
-      environment:
           BUNDLER_VERSION: 2.0.1
 
     steps:
