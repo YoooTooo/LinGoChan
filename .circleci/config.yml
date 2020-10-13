@@ -6,7 +6,9 @@ jobs:
       - image: circleci/ruby:2.6.0-node-browsers
         environment:
 
-          BUNDLER_VERSION: 2.0.1
+          BUNDLER_VERSION: 2.1.4
+
+    working_directory: ~/repo
 
     steps:
       - checkout
@@ -22,6 +24,27 @@ jobs:
       - run:
           name: Which bundler?
           command: docker-compose exec app bundle -v
+
+      # ②
+      - run:
+          name: setup bundler
+          command: |
+            sudo gem update --system
+            sudo gem uninstall bundler
+            sudo rm /usr/local/bin/bundle
+            sudo rm /usr/local/bin/bundler
+            sudo gem install bundler
+
+      - run:
+          name: install dependencies
+          command: |
+            bundle install --jobs=4 --retry=3 --path vendor/bundle
+
+      - run:
+          name: Which bundler?
+          command: docker-compose exec app bundle -v
+
+
       - run:
           name: "before_test: setup db"
           command: docker-compose exec app rails db:create db:migrate db:migrate RAILS_ENV=test
