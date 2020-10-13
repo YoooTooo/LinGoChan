@@ -30,16 +30,8 @@ jobs:
 
       - run:
           name: "before_test: setup db"
-          command: docker-compose exec app nodenv install 12.1.0
-
-      - run:
-          name: "before_test: setup db"
-          command: docker-compose exec app echo 12.1.0
-
-      - run:
-          name: "before_test: setup db"
-          command: docker-compose exec app npm install -g yarn
-
+          command: docker-compose exec app yarn install
+          
       - run:
           name: "before_test: setup db"
           command: docker-compose exec app rails webpacker:install
