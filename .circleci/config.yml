@@ -34,10 +34,6 @@ jobs:
 
       - run:
           name: "before_test: setup db"
-          command: docker-compose exec app bundle exec rails webpacker:install
-
-      - run:
-          name: "before_test: setup db"
           command: docker-compose exec app bundle exec rails webpacker:compile
 
       - run:
