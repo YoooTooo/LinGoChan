@@ -25,16 +25,18 @@ jobs:
           command: docker-compose exec app rails db:create db:migrate db:migrate RAILS_ENV=test
 
       - run:
-          name: make file for Rspec
-          command: mkdir /tmp/test-results TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)"
+          command: |
+            mkdir /tmp/test-results
+            TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | \
+              circleci tests split --split-by=timings)"
 
       - run:
-          name: Run Rspec Test!!!
-          command: bundle exec rspec --format progress \
-                          --format RspecJunitFormatter \
-                          --out /tmp/test-results/rspec.xml \
-                          --format progress \
-                          $TEST_FILES
+          command: |
+            bundle exec rspec --format progress \
+                            --format RspecJunitFormatter \
+                            --out /tmp/test-results/rspec.xml \
+                            --format progress \
+                            $TEST_FILES
 
       - run:
           name: docker-compose down
