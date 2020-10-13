@@ -26,7 +26,7 @@ jobs:
 
       - run:
           name: "before_test: setup db"
-          command: docker-compose exec app node -v
+          command: docker-compose exec app rm -rf ./node_modules/*
 
       - run:
           name: "before_test: setup db"
