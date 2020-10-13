@@ -6,6 +6,10 @@ jobs:
   build:
     machine:
       image: circleci/classic:edge
+
+      environment:
+          BUNDLER_VERSION: 2.0.1
+
     steps:
       - checkout
       - run:
