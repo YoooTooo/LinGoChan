@@ -25,21 +25,13 @@ jobs:
       - run:
           name: setup bundler
           command: |
-            sudo gem update --system
-            sudo gem uninstall bundler
-            sudo rm /usr/local/bin/bundle
-            sudo rm /usr/local/bin/bundler
-            sudo gem install bundler
-
-      - run:
-          name: install dependencies
-          command: |
-            bundle install --jobs=4 --retry=3 --path vendor/bundle
+            gem install bundler -v 1.17.3
+            rm Gemfile.lock
+            bundle _1.17.3_ install
 
       - run:
           name: Which bundler?
           command: docker-compose exec app bundle -v
-
 
       - run:
           name: "before_test: setup db"
