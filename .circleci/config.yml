@@ -42,8 +42,13 @@ commands:
             - vendor/bundle
             # 以下はRails6でWebpackerを使う場合は必須
       - run:
-          name: "Node Sass Install"
-          command: nmp install node-sass@4.12
+          name: "Node.js と npm の更新"
+          command: |
+            curl -sSL "https://nodejs.org/dist/v10.21.0/node-v10.21.0-linux-x64.tar.xz" | sudo tar --strip-components=2 -xJ -C /usr/local/bin/ node-v10.21.0-linux-x64/bin/node
+            curl https://www.npmjs.com/install.sh | sudo bash
+      - run:
+          name: 現行バージョンのノードのチェック
+          command: node -v
 
       - restore_cache:
           keys:
