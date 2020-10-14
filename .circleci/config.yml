@@ -75,7 +75,7 @@ jobs:
           command: sleep 3m #1分では失敗することが多いので3分に変更
       - run:
           name: Database setup
-          command: bin/rails db:schema:load --trace
+          command: rails db:create db:migrate db:migrate RAILS_ENV=test
 
        # Rspecテストの実施
       - run:
