@@ -32,7 +32,11 @@
 
 ![LinGoChanの使い方](https://github.com/YoooTooo/LinGoChan/blob/master/app/assets/images/LinGoChan.png)
 
-日本語学習者向けの日本語学習サービス
+サービス名称: LinGoChan
+
+サービスのコンセプト：　日本語学習者向けの日本語学習サービス
+
+URL: https://lingochan.com/
 
 -----------------------------------------------------
 
