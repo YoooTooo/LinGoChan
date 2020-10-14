@@ -40,8 +40,7 @@ commands:
           key: gem-cache-v1-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
-
-      # Rails6でWebpackerを使うため
+            # 以下はRails6でWebpackerを使う場合は必須
     　- run:
          name: node_sass install
          command: node -v
