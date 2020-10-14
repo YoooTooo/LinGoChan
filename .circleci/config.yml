@@ -45,11 +45,10 @@ commands:
       - run:
           name: Setup NodeJS and Yarn
           command: |
-            # Install NVM
             curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
             echo 'export NVM_DIR="/opt/circleci/.nvm"' >> $BASH_ENV
             echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
-              source $BASH_ENV
+            source $BASH_ENV
             nvm install v10.21.0
             nvm alias default v10.21.0
             npm install -g yarn@1.22.5
