@@ -6,14 +6,15 @@ jobs:
   build:
     machine:
       image: circleci/classic:edge
+
     steps:
       - checkout
 
-    - restore_cache:
-        keys:
-        - v1-dep-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
-        - v1-dep-{{ .Branch }}-
-        - v1-dep-
+      - restore_cache:
+          keys:
+          - v1-dep-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+          - v1-dep-{{ .Branch }}-
+          - v1-dep-
       - run:
           name: update bundler
           command: |
