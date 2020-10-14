@@ -1,49 +1,89 @@
-version: 2.1
-orbs:
-  ruby: circleci/ruby@0.1.2
+version: 2.1 # バージョン指定
 
-jobs:
-  build:
-    machine:
-      image: circleci/classic:edge
+executors:
+  default:
+    working_directory: ~/lingochan
 
+    docker:
+    #appの方の設定
+      - image: circleci/ruby:2.6.6-node-browsers
+        environment:
+          BUNDLER_VERSION: 2.1.4
+          DB_HOST: 127.0.0.1
+          DB_USERNAME: 'root'
+          DB_PASSWORD: 'rootpass'
+    #DBはMySQLを使いたい！
+      - image: circleci/mysql:5.7.22
+        environment:
+          MYSQL_DATABASE: 'ci_test'
+          MYSQL_USER: 'root'
+          MYSQL_ROOT_PASSWORD: 'rootpass'
+
+commands:
+  setup:
     steps:
       - checkout
+      - run:
+          name: Update bundler # bundlerのバージョン２へのアップデート
+          command: gem update bundler
+      - run:
+          name: Which bundler? # バージョン確認
+          command: bundle -v
+      - restore_cache: # キャッシュを読み込む
+          keys:
+            - gem-cache-v1-{{ checksum "Gemfile.lock" }}
+            - gem-cache-v1-
+      - run:
+          name: Bundle Install
+          command: bundle check --path vendor/bundle || bundle install --deployment
+      - save_cache: # キャッシュを保存する
+          key: gem-cache-v1-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+            # 以下はRails6でWebpackerを使う場合は必須
+      - restore_cache:
+          keys:
+            - yarn-cache-v1-{{ checksum "yarn.lock" }}
+            - yarn-cache-v1-
+      - run:
+          name: Yarn Install
+          command: yarn install --cache-folder ~/.cache/yarn
+      - save_cache:
+          key: yarn-cache-v1-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
 
+jobs:
+  test:
+    executor: default
+    environment:
+      RAILS_ENV: test
+    steps:
+      - checkout
+      - setup
       - run:
-          name: docker-compose build
-          command: docker-compose build
+          name: Wait for DB
+          command: dockerize -wait tcp://localhost:5432 -timeout 3m #1分では失敗することが多いので3分に変更
       - run:
-          name: docker-compose up
-          command: docker-compose up -d
-      - run:
-          name: sleep for waiting launch db
-          command: sleep 3m
-      - run:
-          name: Which bundler?
-          command: docker-compose exec app bundle -v
+          name: Database setup
+          command: bin/rails db:schema:load --trace
 
+       # Rspecテストの実施
       - run:
-          name: "before_test: setup db"
-          command: docker-compose exec app rails db:create db:migrate db:migrate RAILS_ENV=test
-
-      - run:
-          name: "before_test: setup db"
-          command: docker-compose exec app bundle exec rails webpacker:compile
-
-      - run:
+          name: make directory for Rspec test
           command: |
-            docker-compose exec app mkdir /tmp/test-results
+            mkdir /tmp/test-results
             TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | \
               circleci tests split --split-by=timings)"
 
       - run:
+          name: Run Rspec!!!
           command: |
-            docker-compose exec app bundle exec rspec --format progress \
+            bundle exec rspec --format progress \
                             --out /tmp/test-results/rspec.xml \
                             --format progress \
                             $TEST_FILES
-
-      - run:
-          name: docker-compose down
-          command: docker-compose down
+workflows:
+  build_and_test:
+    jobs:
+      - test
