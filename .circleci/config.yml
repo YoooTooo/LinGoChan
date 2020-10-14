@@ -8,6 +8,29 @@ jobs:
       image: circleci/classic:edge
     steps:
       - checkout
+
+  - restore_cache:
+      keys:
+      - v1-dep-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+      - v1-dep-{{ .Branch }}-
+      - v1-dep-
+    - run:
+        name: update bundler
+        command: |
+          gem update --system
+          gem install bundler
+    - run:
+        name: install gem dependencies
+        command: |
+          bundle config set clean 'true'
+          bundle config set path 'vendor/bundle'
+          bundle install --jobs=4 --retry=3
+    - save_cache:
+        key: v1-dep-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+        paths:
+        - vendor/bundle
+
+
       - run:
           name: docker-compose build
           command: docker-compose build
