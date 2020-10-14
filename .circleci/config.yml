@@ -42,10 +42,10 @@ commands:
             - vendor/bundle
 
       # Rails6でWebpackerを使うため
-      -run:
-        name: node_sass install
-        command: node -v
-        command: nmp rebuild node-sass@4.12
+    　- run:
+         name: node_sass install
+         command: node -v
+         command: nmp rebuild node-sass@4.12
 
       - restore_cache:
           keys:
