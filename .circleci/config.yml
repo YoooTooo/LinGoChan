@@ -43,7 +43,6 @@ commands:
             # 以下はRails6でWebpackerを使う場合は必須
       - run:
           name: Install
-          command: node -v
           command: nmp rebuild node-sass@4.12
 
       - restore_cache:
