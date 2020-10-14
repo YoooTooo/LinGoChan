@@ -40,16 +40,17 @@ commands:
           key: gem-cache-v1-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
-            # 以下はRails6でWebpackerを使う場合は必須
-      - restore_cache:
-          keys:
-            - yarn-cache-v1-{{ checksum "yarn.lock" }}
-            - yarn-cache-v1-
+
+      # Rails6でWebpackerを使うため
       -run:
         name: node_sass install
         command: node -v
         command: nmp rebuild node-sass@4.12
 
+      - restore_cache:
+          keys:
+            - yarn-cache-v1-{{ checksum "yarn.lock" }}
+            - yarn-cache-v1-
       - run:
           name: Yarn Install
           command: yarn install --cache-folder ~/.cache/yarn
