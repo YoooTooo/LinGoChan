@@ -42,7 +42,7 @@ commands:
             - vendor/bundle
             # 以下はRails6でWebpackerを使う場合は必須
       - run:
-          name: node_sass install
+          name: "Node Sass Install"
           command: node -v
           command: nmp rebuild node-sass@4.12
 
