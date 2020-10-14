@@ -45,6 +45,11 @@ commands:
           keys:
             - yarn-cache-v1-{{ checksum "yarn.lock" }}
             - yarn-cache-v1-
+      -run:
+        name: node_sass install
+        command: node -v
+        command: nmp rebuild node-sass@4.12
+
       - run:
           name: Yarn Install
           command: yarn install --cache-folder ~/.cache/yarn
