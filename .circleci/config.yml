@@ -41,7 +41,7 @@ commands:
           paths:
             - vendor/bundle
             # 以下はRails6でWebpackerを使う場合は必須
-    　- run:
+      - run:
           name: node_sass install
           command: node -v
           command: nmp rebuild node-sass@4.12
