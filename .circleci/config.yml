@@ -42,20 +42,18 @@ commands:
             - vendor/bundle
             # 以下はRails6でWebpackerを使う場合は必須
       - run:
-          name: Install
-          command: nmp rebuild node-sass@4.12
-
-      - restore_cache:
-          keys:
-            - yarn-cache-v1-{{ checksum "yarn.lock" }}
-            - yarn-cache-v1-
-      - run:
-          name: Yarn Install
-          command: yarn install --cache-folder ~/.cache/yarn
-      - save_cache:
-          key: yarn-cache-v1-{{ checksum "yarn.lock" }}
-          paths:
-            - ~/.cache/yarn
+          name: Setup NodeJS and Yarn
+          command: |
+            # Install NVM
+            curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+            echo 'export NVM_DIR="/opt/circleci/.nvm"' >> $BASH_ENV
+            echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
+            source $BASH_ENV
+      # Install NodeJS
+            nvm install v10.21.0
+            nvm alias default v10.21.0
+      # Install Yarn
+            npm install -g yarn@1.22.5
 
 jobs:
   test:
