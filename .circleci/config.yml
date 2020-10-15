@@ -72,7 +72,7 @@ jobs:
       - setup
       - run:
           name: Wait for DB
-          command: sleep 3m #1分では失敗することが多いので2分に変更
+          command: sleep 4m #1分では失敗することが多いので2分に変更
 
       #権限あたえてbin/railsでえpermission denyされるのを阻止する。
       - run:
