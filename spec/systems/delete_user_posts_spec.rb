@@ -6,12 +6,10 @@ RSpec.describe "administrator's move", type: :system do
   let(:subject_post) { FactoryBot.create(:subject_post) }
 
   before :each do
-    user1 = User.create(id:1, name: "user1", email:"user1@example.com", password:"user1passw")
-    @subject_post = SubjectPost.create(id:1, user_id:1,  img: "xxxxxxxxxxxxx.png")
-    @subject_post1 = SubjectPost.create(id:2, user_id:1,  img: "xxxxxxxxxxxxy.png")
-    @reply_post = ReplyPost.create(id:1, user_id:1, subject_post_id:1, content: "りんごちゃん")
-    @feedback_post = FeedbackPost.create(id:1, content: "みかんちゃんですね")
-
+    user1 = User.create(name: "user1", email:"user1@example.com", password:"user1passw")
+    @subject_post = SubjectPost.create(user_id:user1.id,  img: "xxxxxxxxxxxxx.png")
+    @reply_post = ReplyPost.create(user_id:user1.id, subject_post_id:@subject_post.id, content: "りんごちゃん")
+    @feedback_post = FeedbackPost.create(content: "みかんちゃんですね")
     log_in(administrator)
   end
 
