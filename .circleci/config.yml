@@ -9,15 +9,15 @@ executors:
       - image: circleci/ruby:2.6.6-node-browsers
         environment:
           BUNDLER_VERSION: 2.1.4
-          DB_HOST: 'db'
+          DB_HOST: 127.0.0.1
           DB_USERNAME: 'root'
-          DB_PASSWORD: 'password'
+          DB_PASSWORD: 'rootpass'
     #DBはMySQLを使いたい！
       - image: circleci/mysql:5.7.22
         environment:
-          MYSQL_DATABASE: 'LinGoChan_test'
+          MYSQL_DATABASE: 'ci_test'
           MYSQL_USER: 'root'
-          MYSQL_ROOT_PASSWORD: 'password'
+          MYSQL_ROOT_PASSWORD: 'rootpass'
 
 commands:
   setup:
@@ -72,7 +72,7 @@ jobs:
       - setup
       - run:
           name: Wait for DB
-          command: sleep 5m #1分では失敗することが多いので2分に変更
+          command: sleep 3m #1分では失敗することが多いので2分に変更
 
       #権限あたえてbin/railsでえpermission denyされるのを阻止する。
       - run:
