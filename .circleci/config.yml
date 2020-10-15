@@ -9,7 +9,15 @@ executors:
       - image: circleci/ruby:2.6.6-node-browsers
         environment:
           BUNDLER_VERSION: 2.1.4
-
+          DB_HOST: 127.0.0.1
+          DB_USERNAME: 'root'
+          DB_PASSWORD: 'rootpass'
+    #DBはMySQLを使いたい！
+      - image: circleci/mysql:5.7.22
+        environment:
+          MYSQL_DATABASE: 'ci_test'
+          MYSQL_USER: 'root'
+          MYSQL_ROOT_PASSWORD: 'rootpass'
 
 commands:
   setup:
@@ -66,7 +74,9 @@ jobs:
           name: Wait for DB
           command: sleep 3m #1分では失敗することが多いので3分に変更
 
-
+      - run:
+          name: Database setup1
+          command: chmod u+x bin/rails
 
       - run:
           name: Database setup2
