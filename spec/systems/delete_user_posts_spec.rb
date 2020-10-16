@@ -29,3 +29,4 @@ RSpec.describe "administrator's move", type: :system do
     expect{ click_on '削除' }.to change(User, :count).by(-1)
     end
   end
+end
