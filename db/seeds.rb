@@ -14,6 +14,18 @@ User.create!(name:  "りんごちゃん",
              activated: true,
              activated_at: Time.zone.now)
 
+5.times do |n|
+ name  = Faker::Name.name
+ email = "example-#{n+1}@example.org"
+ password = "password"
+ User.create!(name:  name,
+              email: email,
+              password:              'foobar',
+              password_confirmation: 'foobar',
+              activated: true,
+              activated_at: Time.zone.now)
+end
+
 User.create!(name:  "リ　シウ",
             email: "example10@example.org",
             password:              "foobar",
@@ -26,7 +38,7 @@ User.create!(name:  "Justin chow",
              email: "example11@example.org",
              password:              "foobar",
              password_confirmation: "foobar",
-             admin: false,
+             admin: true,
              activated: true,
              activated_at: Time.zone.now)
 
@@ -45,18 +57,6 @@ User.create!(name:  "ほはちゃむ",
             admin: false,
             activated: true,
             activated_at: Time.zone.now)
-
-5.times do |n|
-  name  = Faker::Name.name
-  email = "example-#{n+1}@example.org"
-  password = "password"
-  User.create!(name:  name,
-               email: email,
-               password:              'foobar',
-               password_confirmation: 'foobar',
-               activated: true,
-               activated_at: Time.zone.now)
-end
 
 User.create!(name:  "リカルド　マーセナス",
             email: "example14@example.org",
