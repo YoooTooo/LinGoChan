@@ -6,31 +6,102 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create!(name:  "Example User",
-             email: "example@railstutorial.org",
+User.create!(name:  "りんごちゃん",
+             email: "example@example.org",
              password:              "foobar",
              password_confirmation: "foobar",
              admin: true,
              activated: true,
              activated_at: Time.zone.now)
 
-99.times do |n|
+User.create!(name:  "リ　シウ",
+            email: "example10@example.org",
+            password:              "foobar",
+            password_confirmation: "foobar",
+            admin: false,
+            activated: true,
+            activated_at: Time.zone.now)
+
+User.create!(name:  "Justin chow",
+             email: "example11@example.org",
+             password:              "foobar",
+             password_confirmation: "foobar",
+             admin: false,
+             activated: true,
+             activated_at: Time.zone.now)
+
+User.create!(name:  "金　奈恩",
+            email: "example12@example.org",
+            password:              "foobar",
+            password_confirmation: "foobar",
+            admin: false,
+            activated: true,
+            activated_at: Time.zone.now)
+
+User.create!(name:  "ほはちゃむ",
+            email: "example13@example.org",
+            password:              "foobar",
+            password_confirmation: "foobar",
+            admin: false,
+            activated: true,
+            activated_at: Time.zone.now)
+
+5.times do |n|
   name  = Faker::Name.name
-  email = "example-#{n+1}@railstutorial.org"
+  email = "example-#{n+1}@example.org"
   password = "password"
   User.create!(name:  name,
                email: email,
-               password:              password,
-               password_confirmation: password,
+               password:              'foobar',
+               password_confirmation: 'foobar',
                activated: true,
                activated_at: Time.zone.now)
 end
 
+User.create!(name:  "リカルド　マーセナス",
+            email: "example14@example.org",
+            password:              "foobar",
+            password_confirmation: "foobar",
+            admin: false,
+            activated: true,
+            activated_at: Time.zone.now)
 
-Tag.create([
-  { tag_name: 'tag1' },
-  { tag_name: 'tag2' },
-  { tag_name: 'tag3' },
-  { tag_name: 'tag4' },
-  { tag_name: 'tag5' }
-])
+User.create!(name:  "さんちゃん",
+            email: "example15@example.org",
+            password:              "foobar",
+            password_confirmation: "foobar",
+            admin: false,
+            activated: true,
+            activated_at: Time.zone.now)
+
+User.create!(name:  "助D",
+            email: "example16@ex.org",
+            password:              "foobar",
+            password_confirmation: "foobar",
+            admin: false,
+            activated: true,
+            activated_at: Time.zone.now)
+
+User.create!(name:  "星　林",
+            email: "example17@railstutorial.org",
+            password:              "foobar",
+            password_confirmation: "foobar",
+            admin: false,
+            activated: true,
+            activated_at: Time.zone.now)
+
+User.create!(name:  "桜木　レイラ",
+            email: "example@18railstutorial.org",
+            password:              "foobar",
+            password_confirmation: "foobar",
+            admin: false,
+            activated: true,
+            activated_at: Time.zone.now)
+
+User.create!(name:  "レオン　オズワルド",
+            email: "example@18railstutorial.org",
+            password:              "foobar",
+            password_confirmation: "foobar",
+            admin: false,
+            activated: true,
+            activated_at: Time.zone.now)
