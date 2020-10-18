@@ -11,13 +11,11 @@
           <h3 class = "title_letter"><%= @user.name %>のお題
             <% if @user.subject_posts.any? %>
               (<%= @user.subject_posts.count %>)
-            <% end %>
           </h3>
-          <div class = "row">
+      <% end %>
             <div class = all_posts_container>
               <%= render "shared/subject_feed", subject_posts: @user.subject_posts %>
             </div>
-          </div>
       <% end %>
   </div>
 
