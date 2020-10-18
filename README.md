@@ -25,6 +25,8 @@
 
 12,【サービスの使い方(詳細)】
 
+13, 【今後の課題】
+
 -----------------------------------------------------
 
 1, 【コンセプト】
@@ -274,3 +276,12 @@ https://acrlog.org/2014/01/13/tales-of-the-undead-learning-theories-the-learning
 --------
 
 ![LinGoChanの使い方](https://github.com/YoooTooo/LinGoChan/blob/master/app/assets/images/about_page.png)
+
+
+13, 【今後の課題】
+--------
+・現在のサイトデザインでは、漢字を多用しているため、日本語上級者しかサービスを楽しめない
+
+・不適切な画像、コメントが投稿された場合の対処はどうするか
+
+・タグの機能を充実させる必要がある
