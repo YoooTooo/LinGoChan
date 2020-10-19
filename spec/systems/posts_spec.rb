@@ -11,7 +11,7 @@ RSpec.describe 'signup', type: :system do
   end
 
   describe 'POST subject_post' do
-    visit root_path
+    visit "/"
     expect(current_path).to eq "/"
     attach_file "Upload file", "/app/assets/images/LinGoChan.png"
     click_on("commit")
