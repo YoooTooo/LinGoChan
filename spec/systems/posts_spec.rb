@@ -7,7 +7,7 @@ RSpec.describe 'signup', type: :system do
 
   before do
     log_in(user)
-    expect(current_path).to eq "/users"
+    expect(current_path).to eq "/users/#{user.id}"
   end
 
   scenario 'POST subject_post' do
