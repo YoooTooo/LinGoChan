@@ -10,7 +10,7 @@ RSpec.describe 'signup', type: :system do
     expect(current_path).to eq "/users"
   end
 
-  describe 'POST subject_post' do
+  scenario 'POST subject_post' do
     visit "/"
     expect(current_path).to eq "/"
     attach_file "Upload file", "/app/assets/images/LinGoChan.png"
