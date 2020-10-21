@@ -12,6 +12,20 @@ module TestHelper
     click_button 'ログインする！'
   end
 
+  def post_subject_post
+    visit "/"
+    attach_file "subject_post[img]", "rails_logo.png"
+    click_on ('commit')
+  end
+
+  def post_reply_post
+    post_subject_post()
+    @subject_post = SubjectPost.first
+    visit subject_post_path(@subject_post.id)
+    fill_in 'reply_post[content]', with: "ルビー"
+    click_on ('commit')
+  end
+
  def sign_up(user)
    visit signup_path
    fill_in 'user[name]', with: 'ジャスティン'
