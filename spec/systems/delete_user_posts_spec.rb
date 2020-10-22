@@ -136,7 +136,7 @@ end
 #======================
 #非管理者は投稿を削除できない。
 #=====================
-RSpec.describe "administrator should be able to delete just each post", type: :system do
+RSpec.describe "other_user should NOT be able to delete just each post and a user", type: :system do
   let(:other_user) { FactoryBot.create(:other_user) }
   let(:user) { FactoryBot.create(:user) }
 
@@ -178,7 +178,7 @@ RSpec.describe "administrator should be able to delete just each post", type: :s
 
     #subject_postの消去がみあたらない。
     #uerとしては user1, Example user, administratorの順に登録されてる。
-    it 'should delete feedback and reply_post when delete subject_post' do
+    it 'should not find delete button' do
       expect(page).not_to have_button('消去')
     end
   end
@@ -192,23 +192,22 @@ RSpec.describe "administrator should be able to delete just each post", type: :s
 
     #reply_postの消去が見当たらない。
     #uerとしては user1, Example user, administratorの順に登録されてる。
-    it 'should delete feedback_post when delete reply_post' do
+    it 'should not find delete button' do
       expect(page).not_to have_button('消去')
     end
   end
 
-  #==========feedback_postは削除できる==========
-  context "CAN delete feedbackpost successfully" do
+  #==========feedback_postは削除できない==========
+  context "CANNOT delete feedbackpost successfully" do
     before "visit feedback#show" do
       visit feedback_post_path(FeedbackPost.first.id)
       expect(current_path).to eq feedback_post_path(FeedbackPost.first.id)
     end
 
-    #削除を押下したらfeedback_postが消える。
+    #feedbac_kpostの消去は見当たらない。
     #uerとしては user1, Example user, administratorの順に登録されてる。
-    it 'should be ABLE to delete feedback_post' do
-      expect(page).to have_button('消去')
-      expect{ click_on '消去', match: :first }.to change(FeedbackPost, :count).by(-1).and change { SubjectPost.count }.by(0).and change { ReplyPost.count }.by(0)
+    it 'should not find delete button' do
+      expect(page).not_to have_button('消去')
     end
   end
 end
