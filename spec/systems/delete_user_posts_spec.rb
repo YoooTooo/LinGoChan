@@ -58,7 +58,7 @@ RSpec.describe "administrator should be able to delete each post when delete a u
     #uerとしては user1, Example user, administratorの順に登録されてる。
     it 'should delete all posts including subject, reply, feedbackposts when delete related user' do
       expect(page).to have_button('削除')
-      click_on ('削除'), match: :first
+      #click_on ('削除'), match: :first
       expect{ click_on '削除', match: :first }.to change(User, :count).by(-1).and change { SubjectPost.count }.by(-3).and change { ReplyPost.count }.by(-3).and change { FeedbackPost.count }.by(-3)
     end
   end
