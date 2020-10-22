@@ -210,4 +210,21 @@ RSpec.describe "other_user should NOT be able to delete just each post and a use
       expect(page).not_to have_button('消去')
     end
   end
+
+  #=====feedback_postを投稿したuserなら削除できる======
+  context "CAN delete feedbackpost successfully" do
+    before "visit feedback#show" do
+      click_on("ログアウト")
+      log_in(user)
+      visit feedback_post_path(FeedbackPost.first.id)
+      expect(current_path).to eq feedback_post_path(FeedbackPost.first.id)
+    end
+
+    #削除を押下したらfeedback_postが消える。
+    #uerとしては user1, Example user, administratorの順に登録されてる。
+    it 'should be ABLE to delete feedback_post only' do
+      expect(page).to have_button('消去')
+      expect{ click_on '消去', match: :first }.to change(FeedbackPost, :count).by(-1).and change { SubjectPost.count }.by(0).and change { ReplyPost.count }.by(0)
+    end
+  end
 end
