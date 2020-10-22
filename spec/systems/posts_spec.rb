@@ -1,6 +1,7 @@
 require 'pry'
 require 'rails_helper'
 
+#削除系は→delete_user_posts_spec.rbに記載
 
 RSpec.describe 'Test for each posts', type: :system do
   let(:user) { FactoryBot.create(:user) }

@@ -99,8 +99,8 @@ RSpec.describe "administrator should be able to delete just each post", type: :s
   end
 
   #==========reply_postを削除==========
-  context "delete subjectpost successfully" do
-    before "visit subject#show" do
+  context "delete replypost successfully" do
+    before "visit reply#show" do
       visit reply_post_path(ReplyPost.first.id)
       expect(current_path).to eq reply_post_path(ReplyPost.first.id)
     end
@@ -122,7 +122,91 @@ RSpec.describe "administrator should be able to delete just each post", type: :s
 
     #削除を押下したらfeedback_postが消える。
     #uerとしては user1, Example user, administratorの順に登録されてる。
-    it 'should delete subject and reply_post when delete feedback_post' do
+    it 'should delet feedback_post only' do
+      expect(page).to have_button('消去')
+      expect{ click_on '消去', match: :first }.to change(FeedbackPost, :count).by(-1).and change { SubjectPost.count }.by(0).and change { ReplyPost.count }.by(0)
+    end
+  end
+end
+
+
+
+#======================
+#======================
+#======================
+#非管理者は投稿を削除できない。
+#=====================
+RSpec.describe "administrator should be able to delete just each post", type: :system do
+  let(:other_user) { FactoryBot.create(:other_user) }
+  let(:user) { FactoryBot.create(:user) }
+
+  before "generate posts and administrator's login" do
+
+    log_in(user)
+
+    #今回もuserによるsubject_post, reply_post, feedback_postの3段投稿×3の生成
+    3.times do
+      post_feedback_post()
+    end
+    click_on("ログアウト")
+    log_in(other_user)
+  end
+
+  #admin falseのユーザーにおいて
+
+  #==========ユーザーを削除できない==========
+  context "CANNOT delete user" do
+
+    before "visit user path" do
+      visit "users"
+      expect(current_path).to eq "/users"
+    end
+
+    #削除マークが表示されない。
+    #uerとしては user1, Example user, administratorの順に登録されてる。
+    it 'should not find delete button' do
+      expect(page).not_to have_button('削除')
+    end
+  end
+
+  #==========subject_postを削除できない==========
+  context "CANNOT delete subjectpost successfully" do
+    before "visit subject#show" do
+      visit subject_post_path(SubjectPost.first.id)
+      expect(current_path).to eq subject_post_path(SubjectPost.first.id)
+    end
+
+    #subject_postの消去がみあたらない。
+    #uerとしては user1, Example user, administratorの順に登録されてる。
+    it 'should delete feedback and reply_post when delete subject_post' do
+      expect(page).not_to have_button('消去')
+    end
+  end
+
+  #==========reply_postを削除できない==========
+  context "CANNOT delete replypost successfully" do
+    before "visit reply#show" do
+      visit reply_post_path(ReplyPost.first.id)
+      expect(current_path).to eq reply_post_path(ReplyPost.first.id)
+    end
+
+    #reply_postの消去が見当たらない。
+    #uerとしては user1, Example user, administratorの順に登録されてる。
+    it 'should delete feedback_post when delete reply_post' do
+      expect(page).not_to have_button('消去')
+    end
+  end
+
+  #==========feedback_postは削除できる==========
+  context "CAN delete feedbackpost successfully" do
+    before "visit feedback#show" do
+      visit feedback_post_path(FeedbackPost.first.id)
+      expect(current_path).to eq feedback_post_path(FeedbackPost.first.id)
+    end
+
+    #削除を押下したらfeedback_postが消える。
+    #uerとしては user1, Example user, administratorの順に登録されてる。
+    it 'should be ABLE to delete feedback_post' do
       expect(page).to have_button('消去')
       expect{ click_on '消去', match: :first }.to change(FeedbackPost, :count).by(-1).and change { SubjectPost.count }.by(0).and change { ReplyPost.count }.by(0)
     end
