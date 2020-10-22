@@ -26,6 +26,14 @@ module TestHelper
     click_on ('commit')
   end
 
+  def post_feedback_post
+    post_reply_post()
+    @reply_post = ReplyPost.first
+    visit reply_post_path(@reply_post.id)
+    fill_in 'feedback_post[content]', with: "ルビーですね～"
+    click_on ('commit')
+  end
+
  def sign_up(user)
    visit signup_path
    fill_in 'user[name]', with: 'ジャスティン'
