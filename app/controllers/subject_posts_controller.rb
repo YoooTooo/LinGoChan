@@ -13,7 +13,8 @@ class SubjectPostsController < ApplicationController
     else
       @subject_feed_items = []
       flash[:danger] = '投稿に失敗しました'
-      render 'static_pages/home'
+      #render "static_pages/home" renderではurlがsubject_postsのままになる。
+      redirect_to root_url
     end
   end
 

@@ -69,8 +69,7 @@ RSpec.describe 'Test for each posts', type: :system do
   scenario 'CANNOT post subject_post without image' do
     visit "/"
     expect(current_path).to eq "/"
-    click_on("commit")
-    #expect{ click_on 'commit' }.to change(SubjectPost, :count).by(0)
+    expect{ click_on 'commit' }.to change(SubjectPost, :count).by(0)
     expect(current_path).to eq "/"
   end
 end
