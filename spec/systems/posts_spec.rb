@@ -50,4 +50,18 @@ RSpec.describe 'Test for each posts', type: :system do
     expect{ click_on 'commit' }.to change(FeedbackPost, :count).by(1)
     expect(current_path).to eq "/"
   end
+
+  scenario 'user can edit feedback_post' do
+
+    post_feedback_post()
+    @feedback_post = FeedbackPost.first
+    visit feedback_post_path(@feedback_post)
+    expect(current_path).to eq feedback_post_path(@feedback_post)
+    click_on("編集")
+    expect(current_path).to eq edit_feedback_post_path(@feedback_post)
+    fill_in 'feedback_post[content]', with: "サファイアかもよ～"
+    click_on ('commit')
+    visit feedback_post_path(@feedback_post)
+    expect(page).to have_content "サファイアかもよ～"
+  end
 end
