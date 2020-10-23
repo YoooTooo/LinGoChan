@@ -64,4 +64,12 @@ RSpec.describe 'Test for each posts', type: :system do
     visit feedback_post_path(@feedback_post)
     expect(page).to have_content "サファイアかもよ～"
   end
+
+#===画像添付せずに投稿してみる
+  scenario 'CANNOT post subject_post without images' do
+    visit "/"
+    expect(current_path).to eq "/"
+    expect{ click_on 'commit' }.to change(SubjectPost, :count).by(0)
+    expect(current_path).to eq "/"
+  end
 end
