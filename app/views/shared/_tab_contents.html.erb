@@ -2,7 +2,7 @@
 
 <div class="tab-content panel_area">
   <div id="subject_posts" class="tab-pane active tab_panel">
-    
+
     <%#お題投稿のタブ%>
       <% if current_page?(root_path) %>
         <h3 class = "title_letter">投稿したお題一覧</h3>
@@ -11,8 +11,8 @@
           <h3 class = "title_letter"><%= @user.name %>のお題
             <% if @user.subject_posts.any? %>
               (<%= @user.subject_posts.count %>)
+            <% end %>
           </h3>
-      <% end %>
             <div class = all_posts_container>
               <%= render "shared/subject_feed", subject_posts: @user.subject_posts %>
             </div>
