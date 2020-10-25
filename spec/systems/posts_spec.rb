@@ -79,25 +79,25 @@ RSpec.describe 'Test for each posts', type: :system do
 
 #=========144字以上の文字で投稿してみると失敗========
   before do "generate 145 letters"
-    errored_letters =  "#{'a' * 145}"
-    extended_errored_letters = "#{'a' * 290}"
+    @errored_letters =  "#{'a' * 145}"
+    @extended_errored_letters = "#{'a' * 290}"
   end
 
   scenario 'CANNOT post reply_post with 145 letters' do
     post_subject_post()
     visit subject_post_path(SubjectPost.first.id)
-    fill_in 'reply_post[content]', with: errored_letters
+    fill_in 'reply_post[content]', with: @errored_letters
     expect{ click_on 'commit' }.to change(ReplyPost, :count).by(0)
     expect(page).to have_content "投稿に失敗しました"
-    expect(current_path).to eq subject_post_path(SubjectPost.first.id)
+    expect(current_path).to eq "/"
   end
 
-  scenario 'CANNOT post reply_post without comments' do
+  scenario 'CANNOT post reply_post without any comments' do
     post_subject_post()
     visit subject_post_path(SubjectPost.first.id)
     fill_in 'reply_post[content]', with: ""
     expect{ click_on 'commit' }.to change(ReplyPost, :count).by(0)
     expect(page).to have_content "投稿に失敗しました"
-    expect(current_path).to eq subject_post_path(SubjectPost.first.id)
+    expect(current_path).to eq "/"
   end
 end
