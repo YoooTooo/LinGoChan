@@ -11,7 +11,8 @@ class FeedbackPostsController < ApplicationController
     else
       @feedback_feed_items = []
       flash[:danger] = '投稿に失敗しました'
-      render 'static_pages/home'
+      redirect_to root_url
+      #render 'static_pages/home' renderではurlがfeedback_postsのままになる。
     end
   end
 

@@ -12,7 +12,8 @@ class ReplyPostsController < ApplicationController
       flash[:danger] = '投稿に失敗しました'
       @reply_feed_items = []
       @subject_post = SubjectPost.new
-      render 'static_pages/home'
+      #render 'static_pages/home' renderではurlがreply_postsのままになる。
+      redirect_to root_url
     end
   end
 

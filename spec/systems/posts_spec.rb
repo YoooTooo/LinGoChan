@@ -16,6 +16,7 @@ RSpec.describe 'Test for each posts', type: :system do
     expect(current_path).to eq "/"
     attach_file "subject_post[img]", "rails_logo.png"
     expect{ click_on 'commit' }.to change(SubjectPost, :count).by(1)
+    expect(page).to have_content "投稿完了!"
     expect(current_path).to eq "/"
   end
 
@@ -32,6 +33,7 @@ RSpec.describe 'Test for each posts', type: :system do
     visit subject_post_path(@subject_post.id)
     fill_in 'reply_post[content]', with: "ルビー"
     expect{ click_on 'commit' }.to change(ReplyPost, :count).by(1)
+    expect(page).to have_content "投稿完了!"
     expect(current_path).to eq "/"
   end
 
@@ -48,6 +50,7 @@ RSpec.describe 'Test for each posts', type: :system do
     visit reply_post_path(@reply_post.id)
     fill_in 'feedback_post[content]', with: "ルビーですね～"
     expect{ click_on 'commit' }.to change(FeedbackPost, :count).by(1)
+    expect(page).to have_content "投稿完了!"
     expect(current_path).to eq "/"
   end
 
@@ -65,11 +68,36 @@ RSpec.describe 'Test for each posts', type: :system do
     expect(page).to have_content "サファイアかもよ～"
   end
 
-#=========画像添付せずに投稿してみる========
+#=========画像添付せずに投稿してみると失敗========
   scenario 'CANNOT post subject_post without image' do
     visit "/"
     expect(current_path).to eq "/"
     expect{ click_on 'commit' }.to change(SubjectPost, :count).by(0)
+    expect(page).to have_content "投稿に失敗しました"
     expect(current_path).to eq "/"
+  end
+
+#=========144字以上の文字で投稿してみると失敗========
+  before do "generate 145 letters"
+    errored_letters =  "#{'a' * 145}"
+    extended_errored_letters = "#{'a' * 290}"
+  end
+
+  scenario 'CANNOT post reply_post with 145 letters' do
+    post_subject_post()
+    visit subject_post_path(SubjectPost.first.id)
+    fill_in 'reply_post[content]', with: errored_letters
+    expect{ click_on 'commit' }.to change(ReplyPost, :count).by(0)
+    expect(page).to have_content "投稿に失敗しました"
+    expect(current_path).to eq subject_post_path(SubjectPost.first.id)
+  end
+
+  scenario 'CANNOT post reply_post without comments' do
+    post_subject_post()
+    visit subject_post_path(SubjectPost.first.id)
+    fill_in 'reply_post[content]', with: ""
+    expect{ click_on 'commit' }.to change(ReplyPost, :count).by(0)
+    expect(page).to have_content "投稿に失敗しました"
+    expect(current_path).to eq subject_post_path(SubjectPost.first.id)
   end
 end
