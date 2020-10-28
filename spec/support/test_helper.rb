@@ -18,6 +18,13 @@ module TestHelper
     click_on ('commit')
   end
 
+  def post_tags()
+    visit "/"
+    attach_file "subject_post[img]", "rails_logo.png"
+    fill_in "subject_post[tag_name]", with: "ジェム　ルビー プログラミング Rails"
+    click_on ('commit')
+  end
+
   def post_reply_post
     post_subject_post()
     @subject_post = SubjectPost.first

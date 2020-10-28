@@ -77,7 +77,7 @@ RSpec.describe 'Test for each posts', type: :system do
     expect(current_path).to eq "/"
   end
 
-#=========144字以上の文字で投稿してみると失敗========
+#=========140字以上の文字でひとこと投稿してみると失敗========
   before do "generate 145 letters"
     @errored_letters =  "#{'a' * 145}"
     @extended_errored_letters = "#{'a' * 290}"
@@ -92,6 +92,8 @@ RSpec.describe 'Test for each posts', type: :system do
     expect(current_path).to eq "/"
   end
 
+#=========コメント欄空欄でひとこと投稿してみると失敗========
+
   scenario 'CANNOT post reply_post without any comments' do
     post_subject_post()
     visit subject_post_path(SubjectPost.first.id)
@@ -99,5 +101,58 @@ RSpec.describe 'Test for each posts', type: :system do
     expect{ click_on 'commit' }.to change(ReplyPost, :count).by(0)
     expect(page).to have_content "投稿に失敗しました"
     expect(current_path).to eq "/"
+  end
+
+#=========280字以上の文字でフィードバック投稿してみると失敗========
+  scenario 'CANNOT post reply_post with 290 letters' do
+    post_reply_post()
+    visit reply_post_path(ReplyPost.first.id)
+    fill_in 'feedback_post[content]', with: @extended_errored_letters
+    expect{ click_on 'commit' }.to change(FeedbackPost, :count).by(0)
+    expect(page).to have_content "投稿に失敗しました"
+    expect(current_path).to eq "/"
+  end
+
+#=========コメント欄空欄でフィードバック投稿してみると失敗========
+
+  scenario 'CANNOT post reply_post without any comments' do
+    post_reply_post()
+    visit reply_post_path(ReplyPost.first.id)
+    fill_in 'feedback_post[content]', with: ""
+    expect{ click_on 'commit' }.to change(FeedbackPost, :count).by(0)
+    expect(page).to have_content "投稿に失敗しました"
+    expect(current_path).to eq "/"
+  end
+
+#=========タグ付の投稿テスト========
+  context 'POST subject_post with tags' do
+
+    it "success post tags with 2 types of space" do
+      visit "/"
+      expect(current_path).to eq "/"
+      attach_file "subject_post[img]", "rails_logo.png"
+      fill_in "subject_post[tag_name]", with: "ジェム　ルビー プログラミング"
+      expect{ click_on 'commit' }.to change(Tag, :count).by(3)
+      expect(page).to have_content "投稿完了!"
+      expect(current_path).to eq "/"
+    end
+
+    it "success post tags useing other selectors without spaces" do
+      visit "/"
+      expect(current_path).to eq "/"
+      attach_file "subject_post[img]", "rails_logo.png"
+      fill_in "subject_post[tag_name]", with: "ジェム/ルビー,プログラミング"
+      expect{ click_on 'commit' }.to change(Tag, :count).by(1)
+      expect(page).to have_content "投稿完了!"
+      expect(current_path).to eq "/"
+    end
+
+    it "should be deleted a tag in pusshing x" do
+      post_tags()
+      visit "/"
+      expect(current_path).to eq "/"
+      expect{ click_on "×", match: :first }.to change(Tag, :count).by(-1)
+      expect(current_path).to eq "/"
+    end
   end
 end
