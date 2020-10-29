@@ -224,6 +224,8 @@ https://acrlog.org/2014/01/13/tales-of-the-undead-learning-theories-the-learning
 
 ・パンくずリスト
 
+・文字数カウンター(jQuery)
+
 ---------------------------------------------------
 
 <a id="anchor10">10, 代表的な使用gem等</a>
