@@ -1,8 +1,13 @@
 <%= form_for(@reply_post) do |f| %>
 
   <%= render 'shared/error_messages', object: f.object %>
-  <div class="field" "ひとこと！">
-    <%= f.text_area :content, placeholder: "お題に対して一言..." %>
+  <div class = "row">
+    <div class="field col-md-12" "ひとこと！">
+      <div class = "letter_counter">
+        <b>残り</b>：<span class="reply_count"></span>文字
+      </div>
+      <%= f.text_area :content, placeholder: "お題に対して一言..." %>
+    </div>
   </div>
   <%= f.hidden_field :subject_post_id, value: @subject_post.id %>
   <%= f.submit "投稿する！", class: "btn custom_button"%>
