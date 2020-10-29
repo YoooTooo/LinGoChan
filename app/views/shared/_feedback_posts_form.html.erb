@@ -1,8 +1,13 @@
 
 <%= form_for(@feedback_post) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
-  <div class="field" "フィードバック">
-    <%= f.text_area :content, placeholder: "フィードバックを書いてください" %>
+  <div class = "row">
+    <div class="field col-md-12" "フィードバック">
+      <div class = "letter_counter">
+        <b>残り</b>：<span class="feedback_count"></span>文字
+      </div>
+      <%= f.text_area :content, placeholder: "フィードバックを書いてください" %>
+    </div>
   </div>
 <%= f.hidden_field :reply_post_id, value: @reply_post.id %>
   <%= f.submit "投稿する！", class: "btn custom_button" %>

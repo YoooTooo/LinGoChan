@@ -8,9 +8,14 @@
   <div class = "feedback_form">
     <%= form_for(@feedback_post) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
+    <div class = "row">
       <div class="field" "フィードバック">
+        <div class = "letter_counter">
+          <b>残り</b>：<span class="feedback_count"></span>文字
+        </div>
         <%= f.text_area :content, placeholder: "フィードバックを書いてください" %>
       </div>
+    </div>
       <%= f.submit "投稿する！", class: "btn custom_button" %>
     <% end %>
   </div>
