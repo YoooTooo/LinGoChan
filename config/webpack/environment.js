@@ -1,6 +1,9 @@
 
 const { environment } = require('@rails/webpacker')
 
+//VueLoaderPluginのための記述
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
+
 const webpack = require('webpack')
 environment.plugins.prepend('Provide', new webpack.ProvidePlugin({
   $: 'jquery/src/jquery',
@@ -18,3 +21,10 @@ environment.loaders.get('sass').use.splice(-1, 0, {
 environment.plugins.prepend('VueLoaderPlugin', new VueLoaderPlugin())
 environment.loaders.prepend('vue', vue)
 module.exports = environment
+
+
+//VueLoaderPluginのための記述その2
+environment.loaders.append('vue', {
+    test: /\.vue$/,
+    loader: 'vue-loader'
+});
