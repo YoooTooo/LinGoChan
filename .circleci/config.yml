@@ -92,6 +92,10 @@ jobs:
               circleci tests split --split-by=timings)"
 
       - run:
+          name: webpacker compile
+          command: NODE_ENV=test bundle exec rails webpacker:compile
+
+      - run:
           name: Run Rspec!!!
           command: |
             bundle exec rspec --format progress \
