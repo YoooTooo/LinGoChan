@@ -90,7 +90,7 @@ group :development do
 end
 
 #画像アップロードのためのgem
-gem 'carrierwave', '1.2.2'
+gem 'carrierwave', '1.3.2'
 
 #画像のリサイズのためのgem
 gem 'mini_magick',">= 4.9.4"
